@@ -1,0 +1,1122 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<meta name="author" content="author" />
+
+<title>step by step to create a jekyll theme — Your Title</title>
+<meta name="description" content="In this post you can learn how to create your own jekyll theme"/>
+
+<link rel="icon" href="/w3c/images/sicon.png" type="image/x-icon" />
+<link rel="shortcut icon" href="/w3c/images/sicon.png" type="image/x-icon" />
+<link rel="canonical" href="http://yourdomain.github.io/2016/09/03/stey-by-step-to-create-a-jekyll-theme.html" href="http://yourdomain.github.io/db/feed.xml">
+
+
+<link href='/w3c/css/markdown.css' rel='stylesheet' type='text/css' />
+<link href='/w3c/css/rouge.css' rel='stylesheet' type='text/css' />
+
+<style type="text/css">
+html {
+	display: block;
+	height: 100%;
+	overflow-y: scroll;
+}
+body {
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	padding: 0;
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+.content {
+	line-height: 20px;
+	color: #413838;
+}
+.pin {
+	position: fixed;
+	right: 10px;
+	z-index: 100;
+	bottom: 40%;
+	display: none;
+}
+.pin span {
+	border: 1px solid #999999;
+  border-radius: 100%;
+  padding: 2px;
+}
+/****** post ******/
+.center-aside {
+	width: 60%;
+	margin-right: auto;
+	margin-left: auto;
+}
+.center-aside .header-image {
+	height: 200px;
+	background: url("/w3c/images/bg.jpg");
+	background-position: center;
+	background-size: cover;
+	-webkit-background-size: cover;
+	-o-background-size: cover;
+}
+.center-aside .author {
+	margin-top: 10px;
+	margin-bottom: 30px;
+	padding-left: 8px;
+	padding-bottom: 15px;
+	border-bottom: 1px solid #eeeeee;
+	overflow: hidden;
+	font-size: 15px;
+	color: #999999;
+}
+.center-aside .author .avatar {
+	float: left;
+	width: 80px;
+	height: 80px;
+	margin-right: 10px;
+	border-radius: 50%;
+}
+.center-aside .author .avatar img {
+	width: 100%;
+	height: 100%;
+	border-radius: 100%;
+	-webkit-border-radius: 100%;
+	box-sizing: border-box;
+}
+.center-aside .author .info {
+	margin-top: 7px;
+	letter-spacing: 1px;
+}
+.center-aside .author .info .talk{
+	margin: 0;
+	margin-top: 3px;
+}
+.center-aside .author .info .talk img{
+  vertical-align: initial;
+}
+.center-aside .title {
+	font-size: 32px;
+	font-weight: bold;
+	line-height: 1.5;
+	margin: 10px 0;
+	text-align: center;
+}
+.center-aside .meta {
+	margin: 10px 0 20px 0;
+	text-align: center;
+}
+.center-aside .meta span {
+	position: relative;
+	top: 1px;
+	margin-right: 10px;
+	font-size: 13px;
+	color: #999999;
+}
+.center-aside .post {
+	padding: 0px 10px;
+	line-height: 1.5em;
+	color: #413838;
+}
+.post-footer {
+	text-align: center;
+  margin-top: 50px;
+  padding-bottom: 20px
+}
+.post-tags {
+	margin: 5px 10px;
+}
+.post-tags span.tag {
+	border: 1px solid #999999;
+  border-radius: 4px;
+  padding: 2px;
+	line-height: 1.8em;
+	margin-left: 5px;
+}
+.PageNavigation {
+  font-size: 14px;
+  display: block;
+  width: auto;
+  overflow: hidden;
+	padding: 0 5px;
+}
+.PageNavigation a {
+  display: block;
+  width: 50%;
+  float: left;
+  margin: 1em 0;
+}
+.PageNavigation .next {
+	float: right;
+  text-align: right;
+}
+.footer {
+  text-align: center;
+  margin-top: 50px;
+  padding-bottom: 50px
+}
+</style>
+<style type="text/css">
+ul.nostyle {
+	margin-left: 0;
+	padding-left: 20px;
+	list-style: none;
+}
+a, a:hover, a:visited {
+	color: #bf8b8b;
+	text-decoration: none;
+	cursor: auto;
+}
+a.blue-link, a.blue-link:hover, a.blue-link:visited {
+	color: #4094c7;
+}
+a.grey-link, a.grey-link:hover, a.grey-link:visited {
+	color: #999999;
+}
+</style>
+<style type="text/css">
+@media (max-width: 1366px)
+{
+	.center-aside {
+		width: 800px;
+	}
+}
+@media (max-width: 768px)
+{
+	.center-aside {
+		width: 100%;
+	}
+}
+</style>
+</head>
+
+<body>
+	
+	
+
+
+
+
+<img src="http://yourdomain.github.io/w3c/images/jekyll.jpg" style="display:none;"/>
+<div class="content">
+	<div class="pin"><span><a href="javascript:void(0);">up</a></span>
+	</div>
+	<div class="top-aside">
+	</div>
+	<div class="center-aside">
+		<div class="header-image">
+			<a style="display:block;height:100%;" href="/article" title="Go Home"></a>
+		</div>
+		<div class="author">
+				<div>
+	      <a class="avatar" href="/aboutme">
+	        <img src="/w3c/images/avator.jpg" alt="100" title="About Me"/>
+				</a>
+				</div>
+				<div class="info">
+					<span class="label">
+	          作者
+	      	</span>
+	      	<a class="author-name blue-link" href="/aboutme">
+	        	<span>author</span>
+					</a>
+					<span style="margin-left: 10px;">2016-09-03 23:47:05</span>
+	      	<div>
+						<span>写了<a class="blue-link" href="/article"><i style="font-style:normal;" id="totalPosts">0</i>篇</a>文章</span>，
+	        	<span>共<i style="font-style:normal;" id="totalWords">0</i>字</span>，
+						<span>获得了<i style="font-style:normal;" id="totalComments">0</i>条评论</span>
+						<!-- <span>获得了<i style="font-style:normal;" id="totalLikes">0</i>个喜欢</span> -->
+	      	</div>
+					<div class="talk"><span id="shuoshuo">暂无说说</span><a class="blue-link" target="_parent" href="/#comments"> · 评论</a></div>
+				</div>
+    </div>
+		<div class="title">step by step to create a jekyll theme</div>
+		<div class="meta">
+            <span class="wordage">字数·3254</span>
+            <!-- <span class="views-count">阅读5448</span> -->
+            <span ><a class="grey-link post-data" target="_parent" href="#comments" data-method="comments" data-thread-key="20160903-154705" data-text="评论·%s">评论0</a></span>
+						<span class="post-data" data-method="likes" data-thread-key="20160903-154705" data-text="喜欢·%s">喜欢0</span>
+            <span class="post-data" data-method="reposts" data-thread-key="20160903-154705" data-text="转发·%s">转发0</span>
+    </div>
+
+		<div class="post">
+			<h1 id="in-this-post-you-can-learn-how-to-create-your-own-jekyll-theme">In this post you can learn how to create your own jekyll theme</h1>
+
+<h2>目录</h2>
+
+<ul id="markdown-toc">
+  <li><a href="#in-this-post-you-can-learn-how-to-create-your-own-jekyll-theme" id="markdown-toc-in-this-post-you-can-learn-how-to-create-your-own-jekyll-theme">In this post you can learn how to create your own jekyll theme</a>    <ul>
+      <li><a href="#set-up-the-jekyll-environment" id="markdown-toc-set-up-the-jekyll-environment">Set up the Jekyll environment</a></li>
+      <li><a href="#run-the-jekyll-server" id="markdown-toc-run-the-jekyll-server">Run the Jekyll server</a></li>
+      <li><a href="#github-pages-localization" id="markdown-toc-github-pages-localization">Github Pages localization</a></li>
+      <li><a href="#set-up-the-environment-on-windows" id="markdown-toc-set-up-the-environment-on-windows">Set up the environment on Windows</a></li>
+      <li><a href="#you-need-a-web-prototype" id="markdown-toc-you-need-a-web-prototype">You need a Web Prototype</a></li>
+      <li><a href="#what-is-jekyll" id="markdown-toc-what-is-jekyll">What is Jekyll</a></li>
+      <li><a href="#how-markdown-works-in-jekyll" id="markdown-toc-how-markdown-works-in-jekyll">How markdown Works in Jekyll</a></li>
+      <li><a href="#how-highlight-works-in-jekyll" id="markdown-toc-how-highlight-works-in-jekyll">How highlight Works in Jekyll</a></li>
+      <li><a href="#create-the-jekyll-theme" id="markdown-toc-create-the-jekyll-theme">Create the Jekyll Theme</a>        <ul>
+          <li><a href="#new-a-theme" id="markdown-toc-new-a-theme">new a theme</a></li>
+          <li><a href="#the-jekyll-theme-structure" id="markdown-toc-the-jekyll-theme-structure">the Jekyll theme structure</a></li>
+          <li><a href="#simplify-the-theme" id="markdown-toc-simplify-the-theme">Simplify the theme</a></li>
+          <li><a href="#deeper-in-jekyll" id="markdown-toc-deeper-in-jekyll">Deeper in Jekyll</a>            <ul>
+              <li><a href="#the-layouts-directory" id="markdown-toc-the-layouts-directory">the <code class="highlighter-rouge">_layouts</code> Directory</a></li>
+              <li><a href="#the-includes-directory" id="markdown-toc-the-includes-directory">the <code class="highlighter-rouge">_includes</code> Directory</a></li>
+              <li><a href="#the-configyml-file" id="markdown-toc-the-configyml-file">the <code class="highlighter-rouge">_config.yml</code> File</a></li>
+              <li><a href="#new-a-page" id="markdown-toc-new-a-page">New a Page</a></li>
+              <li><a href="#the-front-matter-in-page" id="markdown-toc-the-front-matter-in-page">the <code class="highlighter-rouge">front matter</code> in page</a></li>
+              <li><a href="#the-site-variable" id="markdown-toc-the-site-variable">the <code class="highlighter-rouge">site</code> Variable</a></li>
+              <li><a href="#the-page-variable" id="markdown-toc-the-page-variable">the <code class="highlighter-rouge">page</code> Variable</a></li>
+              <li><a href="#the-liquid-language" id="markdown-toc-the-liquid-language">the <code class="highlighter-rouge">Liquid</code> Language</a></li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+      <li><a href="#what-else-did-i-do" id="markdown-toc-what-else-did-i-do">What else did I do</a>        <ul>
+          <li><a href="#database-file" id="markdown-toc-database-file">Database File</a></li>
+          <li><a href="#a-category-a-page" id="markdown-toc-a-category-a-page">A category a page</a></li>
+          <li><a href="#subdirs-as-categories" id="markdown-toc-subdirs-as-categories">Subdirs as Categories</a></li>
+        </ul>
+      </li>
+      <li><a href="#upload-your-theme-to-jekyllthemes" id="markdown-toc-upload-your-theme-to-jekyllthemes">Upload your theme to JekyllThemes</a></li>
+      <li><a href="#references" id="markdown-toc-references">References</a></li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="set-up-the-jekyll-environment">Set up the Jekyll environment</h2>
+
+<ol>
+  <li>install ruby<br />
+  <code class="highlighter-rouge">sudo apt-get install ruby</code></li>
+  <li>install the Jekyll ruby gem<br />
+  <code class="highlighter-rouge">sudo gem install jekyll</code></li>
+  <li>install the kramdown ruby gem<br />
+  <code class="highlighter-rouge">sudo gem install kramdown</code></li>
+  <li>install the rouge ruby gem<br />
+  <code class="highlighter-rouge">sudo gem install rouge</code></li>
+  <li>test Jekyll<br />
+  <code class="highlighter-rouge">jekyll --version</code></li>
+</ol>
+
+<blockquote>
+  <p>From above you can know all these are base on ruby language</p>
+</blockquote>
+
+<h2 id="run-the-jekyll-server">Run the Jekyll server</h2>
+
+<ol>
+  <li>new a jekyll theme<br />
+  <code class="highlighter-rouge">jekyll new mytheme</code></li>
+  <li>run the server<br />
+  <code class="highlighter-rouge">cd mytheme</code><br />
+  <code class="highlighter-rouge">jekyll server</code></li>
+  <li>visit <a href="http://127.0.0.1:4000">127.0.0.1:4000</a></li>
+</ol>
+
+<h2 id="github-pages-localization">Github Pages localization</h2>
+
+<p>After Pushing the jekyll theme to github pages, the site would run on the github server which is different with the local environment. It may cause some display problems. So it’s recommended to set up the github pages environment locally.</p>
+
+<ol>
+  <li>update ruby to 2.0.0 or higher<br />
+if <code class="highlighter-rouge">ruby --version</code> is not higher than 2.0.0，you need to update it</li>
+  <li>install the <a href="http://bundler.io/">Bundler</a><br />
+  <code class="highlighter-rouge">sudo gem install bundler</code></li>
+  <li>create a file called <code class="highlighter-rouge">Gemfile</code> in the jekyll theme root directory</li>
+  <li>add these text to the <code class="highlighter-rouge">Gemfile</code><br />
+  <code class="highlighter-rouge">source 'https://rubygems.org'</code><br />
+  <code class="highlighter-rouge">gem 'github-pages', group::jekyll_plugins</code></li>
+  <li>install the Github Pages tool sets<br />
+  <code class="highlighter-rouge">bundle install</code></li>
+  <li>run<br />
+  <code class="highlighter-rouge">bundle exec jekyll serve</code></li>
+</ol>
+
+<p>More About Github Pages Localization, See <a href="https://help.github.com/articles/setting-up-your-github-pages-site-locally-with-jekyll">github-helper-setting-up-your-github-pages-site-locally-with-jekyll</a></p>
+
+<p>If <code class="highlighter-rouge">bundle exec jekyll serve</code> is ok but <code class="highlighter-rouge">jekyll serve</code> is failed, you can delete the <code class="highlighter-rouge">Gemfile</code> and the <code class="highlighter-rouge">Gemfile.lock</code> then run <code class="highlighter-rouge">jekyll serve</code> again.</p>
+
+<h2 id="set-up-the-environment-on-windows">Set up the environment on Windows</h2>
+
+<ol>
+  <li>install the ruby and devkit for windows<br />
+  download <a href="http://rubyinstaller.org/downloads">ruby for windows</a>, it’s better to install ruby 2.0.0 or higher。<br />
+  you need to install the <a href="http://rubyinstaller.org/downloads">ruby-devkit</a> too !</li>
+  <li>set up the command line environment variable<br />
+  generally the installer would do this for you, but you also can add it by yourself. Add <code class="highlighter-rouge">C:\Ruby22\bin;</code> to the windows environment variable <code class="highlighter-rouge">path</code>.</li>
+  <li>install Jekyll<br />
+  <code class="highlighter-rouge">gem install jekyll</code><br />
+  if not found the command, run <code class="highlighter-rouge">set a = b</code> and try it again. maybe the variable was not active.</li>
+  <li>install bundler<br />
+  <code class="highlighter-rouge">gem install bundler</code></li>
+  <li>github pages Localization<br />
+  create a <code class="highlighter-rouge">Gemfile</code> and add the text above<br />
+  <code class="highlighter-rouge">bundle install</code></li>
+  <li>run<br />
+  <code class="highlighter-rouge">bundle exec jekyll server</code></li>
+</ol>
+
+<blockquote>
+  <p>on windows command line<br />
+command gem is the gem.bat</p>
+</blockquote>
+
+<h2 id="you-need-a-web-prototype">You need a Web Prototype</h2>
+
+<p>The current blog only has three pages：<code class="highlighter-rouge">index.html</code>、<code class="highlighter-rouge">article.html</code> and <code class="highlighter-rouge">post.html</code>.<br />
+If you already had the web prototype, you can merge into the jekyll theme now.</p>
+
+<h2 id="what-is-jekyll">What is Jekyll</h2>
+
+<p>Jekyll is a static blog system, it dose not has the database and comment modules.</p>
+
+<blockquote>
+  <p>jekyll is writable before run and is read-only when running.</p>
+</blockquote>
+
+<h2 id="how-markdown-works-in-jekyll">How markdown Works in Jekyll</h2>
+
+<p>this is a markdown text：</p>
+
+<div class="language-markdown highlighter-rouge"><pre class="highlight"><code><span class="gu">## Markdown Demo</span>
+
+This is a <span class="sb">`markdown`</span> demo
+<span class="gt">
+&gt; try it</span>
+</code></pre>
+</div>
+
+<p>After a markdown converter we got the html：</p>
+
+<div class="language-html highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;h2&gt;</span>Markdown Demo<span class="nt">&lt;/h2&gt;</span>
+<span class="nt">&lt;p&gt;</span>This is a <span class="nt">&lt;code&gt;</span>markdown<span class="nt">&lt;/code&gt;</span> demo<span class="nt">&lt;/p&gt;</span>
+<span class="nt">&lt;blockquote&gt;</span>
+    <span class="nt">&lt;p&gt;</span>try it<span class="nt">&lt;/p&gt;</span>
+<span class="nt">&lt;/blockquote&gt;</span>
+</code></pre>
+</div>
+
+<p>We directly open it with a browser：</p>
+
+<p><img src="/w3c/images/markdown/markdown-plain.jpg" alt="markdown-plain" title="html效果" /></p>
+
+<p>Yet, it dose not has any visual effects.<br />
+<strong>Markdown text is only converted to html text，it has no any style-sheet !</strong></p>
+
+<p>For pretty view, we add the following style-sheet:</p>
+
+<div class="language-css highlighter-rouge"><pre class="highlight"><code><span class="o">&lt;</span><span class="nt">style</span><span class="o">&gt;</span>
+<span class="nt">h2</span> <span class="p">{</span>
+	<span class="nl">color</span><span class="p">:</span> <span class="no">red</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nt">blockquote</span> <span class="p">{</span>
+	<span class="nl">background-color</span><span class="p">:</span> <span class="m">#fef3f3</span><span class="p">;</span>
+	<span class="nl">border-left</span><span class="p">:</span> <span class="m">4px</span> <span class="nb">solid</span> <span class="m">#d6a6a6</span><span class="p">;</span>
+	<span class="nl">margin</span><span class="p">:</span> <span class="m">0</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="o">&lt;/</span><span class="nt">style</span><span class="o">&gt;</span>
+</code></pre>
+</div>
+<p>Yes, now we got a more beautiful page：</p>
+
+<p><img src="/w3c/images/markdown/markdown-css.jpg" alt="markdown-css" title="添加css后html效果" /></p>
+
+<p><strong>Summary</strong></p>
+
+<ol>
+  <li>markdown converter converts the markdown text to html plain text</li>
+  <li>there is a css file for markdown in the Jekyll theme</li>
+</ol>
+
+<h2 id="how-highlight-works-in-jekyll">How highlight Works in Jekyll</h2>
+
+<p>this is a markdown code block：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code> ```css
+  &lt;style&gt;
+ ```
+</code></pre>
+</div>
+
+<p>through language highlighter <a href="https://github.com/jneen/rouge">rouge</a>，we got the html text：</p>
+
+<div class="language-html highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"language-css highlighter-rouge"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;pre</span> <span class="na">class=</span><span class="s">"highlight"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;code&gt;</span>
+      <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"o"</span><span class="nt">&gt;</span><span class="ni">&amp;lt;</span><span class="nt">&lt;/span&gt;</span>
+      <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"nt"</span><span class="nt">&gt;</span>style<span class="nt">&lt;/span&gt;</span>
+      <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"o"</span><span class="nt">&gt;</span><span class="ni">&amp;gt;</span><span class="nt">&lt;/span&gt;</span>&gt;
+    <span class="nt">&lt;/code&gt;</span>
+  <span class="nt">&lt;/pre&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+</code></pre>
+</div>
+
+<p>rouge has a style sheet called rouge.css：</p>
+
+<div class="language-css highlighter-rouge"><pre class="highlight"><code><span class="nc">.highlight</span> <span class="p">{</span>
+  <span class="nl">color</span><span class="p">:</span> <span class="m">#D53FB7</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nc">.highlight</span> <span class="nc">.o</span> <span class="p">{</span>
+  <span class="nl">color</span><span class="p">:</span> <span class="m">#f92672</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nc">.highlight</span> <span class="nc">.nt</span> <span class="p">{</span>
+  <span class="nl">color</span><span class="p">:</span> <span class="m">#f92672</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p>This is why the language can highlight by strings variables or keywords</p>
+
+<p><strong>Summary</strong></p>
+
+<ol>
+  <li>highlighter converts the code language with different selector</li>
+  <li>there is a css file for highlight in the Jekyll theme</li>
+</ol>
+
+<p><code class="highlighter-rouge">Tips</code> how to get the rouge.css</p>
+
+<div class="language-shell highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>rougify foo.rb
+<span class="gp">$ </span>rougify style monokai.sublime &gt; rouge.css
+</code></pre>
+</div>
+<blockquote>
+  <p>you can found these in the rouge site</p>
+</blockquote>
+
+<h2 id="create-the-jekyll-theme">Create the Jekyll Theme</h2>
+
+<h3 id="new-a-theme">new a theme</h3>
+<p><code class="highlighter-rouge">jekyll new mytheme</code></p>
+
+<h3 id="the-jekyll-theme-structure">the Jekyll theme structure</h3>
+<p>use <code class="highlighter-rouge">tree</code> command to see the root directory</p>
+
+<div class="language-ruby highlighter-rouge"><pre class="highlight"><code><span class="err">├──</span> <span class="n">index</span><span class="p">.</span><span class="nf">html</span>
+<span class="err">├──</span> <span class="n">about</span><span class="p">.</span><span class="nf">md</span>
+<span class="err">├──</span> <span class="n">_config</span><span class="p">.</span><span class="nf">yml</span>       <span class="c1"># Jekyll config file</span>
+<span class="err">├──</span> <span class="n">feed</span><span class="p">.</span><span class="nf">xml</span>
+<span class="err">├──</span> <span class="no">Gemfile</span>           <span class="c1"># Github Pages Localization File</span>
+<span class="err">├──</span> <span class="no">Gemfile</span><span class="p">.</span><span class="nf">lock</span>      <span class="c1"># Github Pages Localization File</span>
+<span class="err">├──</span> <span class="n">_sass</span>
+<span class="err">│  </span> <span class="err">├──</span> <span class="n">_base</span><span class="p">.</span><span class="nf">scss</span>                  <span class="c1"># markdown css</span>
+<span class="err">│  </span> <span class="err">├──</span> <span class="n">_layout</span><span class="p">.</span><span class="nf">scss</span>
+<span class="err">│  </span> <span class="err">└──</span> <span class="n">_syntax</span><span class="o">-</span><span class="n">highlighting</span><span class="p">.</span><span class="nf">scss</span>   <span class="c1"># highlight css</span>
+<span class="err">├──</span> <span class="n">css</span>
+<span class="err">│  </span> <span class="err">└──</span> <span class="n">main</span><span class="p">.</span><span class="nf">scss</span>           <span class="c1">#</span>
+<span class="err">├──</span> <span class="n">_includes</span>
+<span class="err">│  </span> <span class="err">├──</span> <span class="n">footer</span><span class="p">.</span><span class="nf">html</span>         <span class="c1"># html segment</span>
+<span class="err">│  </span> <span class="err">├──</span> <span class="n">header</span><span class="p">.</span><span class="nf">html</span>         <span class="c1">#</span>
+<span class="err">│  </span> <span class="err">├──</span> <span class="n">head</span><span class="p">.</span><span class="nf">html</span>           <span class="c1">#</span>
+<span class="err">│  </span> <span class="err">├──</span> <span class="n">icon</span><span class="o">-</span><span class="n">github</span><span class="p">.</span><span class="nf">html</span>    <span class="c1">#</span>
+<span class="err">│  </span> <span class="err">├──</span> <span class="n">icon</span><span class="o">-</span><span class="n">github</span><span class="p">.</span><span class="nf">svg</span>     <span class="c1"># github icon</span>
+<span class="err">│  </span> <span class="err">├──</span> <span class="n">icon</span><span class="o">-</span><span class="n">twitter</span><span class="p">.</span><span class="nf">html</span>   <span class="c1">#</span>
+<span class="err">│  </span> <span class="err">└──</span> <span class="n">icon</span><span class="o">-</span><span class="n">twitter</span><span class="p">.</span><span class="nf">svg</span>    <span class="c1"># twitter icon</span>
+<span class="err">├──</span> <span class="n">_layouts</span>
+<span class="err">│  </span> <span class="err">├──</span> <span class="n">default</span><span class="p">.</span><span class="nf">html</span>        <span class="c1"># default layout</span>
+<span class="err">│  </span> <span class="err">├──</span> <span class="n">page</span><span class="p">.</span><span class="nf">html</span>           <span class="c1"># page layout</span>
+<span class="err">│  </span> <span class="err">└──</span> <span class="n">post</span><span class="p">.</span><span class="nf">html</span>           <span class="c1"># post layout</span>
+<span class="err">├──</span> <span class="n">_posts</span>
+<span class="err">│  </span> <span class="err">└──</span> <span class="mi">2016</span><span class="o">-</span><span class="mi">08</span><span class="o">-</span><span class="mi">24</span><span class="o">-</span><span class="n">welcome</span><span class="o">-</span><span class="n">to</span><span class="o">-</span><span class="n">jekyll</span><span class="p">.</span><span class="nf">markdown</span>
+<span class="err">└──</span> <span class="n">_site</span>             <span class="c1"># The Release Jekyll Site</span>
+    <span class="err">├──</span> <span class="n">about</span>
+    <span class="err">│  </span> <span class="err">└──</span> <span class="n">index</span><span class="p">.</span><span class="nf">html</span>
+    <span class="err">├──</span> <span class="n">css</span>
+    <span class="err">│  </span> <span class="err">└──</span> <span class="n">main</span><span class="p">.</span><span class="nf">css</span>  <span class="c1"># all the css above merge to this</span>
+    <span class="err">├──</span> <span class="n">feed</span><span class="p">.</span><span class="nf">xml</span>
+    <span class="err">├──</span> <span class="no">Gemfile</span>
+    <span class="err">├──</span> <span class="no">Gemfile</span><span class="p">.</span><span class="nf">lock</span>
+    <span class="err">├──</span> <span class="n">index</span><span class="p">.</span><span class="nf">html</span>
+    <span class="err">└──</span> <span class="n">jekyll</span>
+        <span class="err">└──</span> <span class="n">update</span>
+            <span class="err">└──</span> <span class="mi">2016</span>
+                <span class="err">└──</span> <span class="mi">08</span>
+                    <span class="err">└──</span> <span class="mi">24</span>
+                        <span class="err">└──</span> <span class="n">welcome</span><span class="o">-</span><span class="n">to</span><span class="o">-</span><span class="n">jekyll</span><span class="p">.</span><span class="nf">html</span>
+</code></pre>
+</div>
+
+<h3 id="simplify-the-theme">Simplify the theme</h3>
+<p>remove unnecessary files, Simplify the theme：</p>
+
+<div class="language-ruby highlighter-rouge"><pre class="highlight"><code><span class="err">├──</span> <span class="n">index</span><span class="p">.</span><span class="nf">html</span>
+<span class="err">├──</span> <span class="n">_config</span><span class="p">.</span><span class="nf">yml</span>       <span class="c1"># Jekyll config file</span>
+<span class="err">├──</span> <span class="n">feed</span><span class="p">.</span><span class="nf">xml</span>
+<span class="err">├──</span> <span class="no">Gemfile</span>           <span class="c1"># Github Pages Localization File</span>
+<span class="err">├──</span> <span class="no">Gemfile</span><span class="p">.</span><span class="nf">lock</span>      <span class="c1"># Github Pages Localization File</span>
+<span class="err">├──</span> <span class="n">css</span>
+<span class="err">│  </span> <span class="err">└──</span> <span class="n">markdown</span><span class="p">.</span><span class="nf">css</span>    <span class="c1"># extract markdown css from _site/css/main.css</span>
+<span class="err">│  </span> <span class="err">└──</span> <span class="n">highlight</span><span class="p">.</span><span class="nf">css</span>   <span class="c1"># extract highlight css from _site/css/main.css</span>
+<span class="err">├──</span> <span class="n">_includes</span>
+<span class="err">├──</span> <span class="n">_layouts</span>
+<span class="err">│  </span> <span class="err">└──</span> <span class="n">post</span><span class="p">.</span><span class="nf">html</span>       <span class="c1"># post layout</span>
+<span class="err">├──</span> <span class="n">_posts</span>
+<span class="err">│  </span> <span class="err">└──</span> <span class="mi">2016</span><span class="o">-</span><span class="mi">08</span><span class="o">-</span><span class="mi">24</span><span class="o">-</span><span class="n">welcome</span><span class="o">-</span><span class="n">to</span><span class="o">-</span><span class="n">jekyll</span><span class="p">.</span><span class="nf">markdown</span>
+
+</code></pre>
+</div>
+
+<h3 id="deeper-in-jekyll">Deeper in Jekyll</h3>
+
+<h4 id="the-layouts-directory">the <code class="highlighter-rouge">_layouts</code> Directory</h4>
+<p>the file in this directory is ”include” others.</p>
+
+<h4 id="the-includes-directory">the <code class="highlighter-rouge">_includes</code> Directory</h4>
+<p>the file in this directory is “be included” by others.<br />
+the include expression：  <code class="highlighter-rouge"><span class="p">{</span><span class="err">%</span><span class="w"> </span><span class="err">include</span><span class="w"> </span><span class="err">head.html</span><span class="w"> </span><span class="err">%</span><span class="p">}</span></code></p>
+
+<p>the releationships between _layouts 、_includes and the html pages：<br />
+<img src="/w3c/images/jekyll/jekyll-layout-include.jpg" alt="jekyll-layout-include" title="layout与include关系图" /></p>
+
+<blockquote>
+  <p>NOTE：<code class="highlighter-rouge">content</code> in default.html is different with <code class="highlighter-rouge">page.content</code> or <code class="highlighter-rouge">post.content</code>, the former is the html text after converted but the latters are source markdown text!</p>
+</blockquote>
+
+<h4 id="the-configyml-file">the <code class="highlighter-rouge">_config.yml</code> File</h4>
+<p>the most important file in Jekyll, you can store data, set the jekyll plugins or set up the runtime environment.</p>
+
+<div class="language-ruby highlighter-rouge"><pre class="highlight"><code><span class="c1"># set a variable</span>
+<span class="ss">domain: </span><span class="s2">"http://jokinkuang.info"</span> <span class="c1"># the domain URL for your site</span>
+
+<span class="c1"># config</span>
+<span class="ss">excerpt_separator: </span><span class="s2">"</span><span class="se">\n\n</span><span class="s2">"</span> <span class="c1"># you can specify your own separator here, default is "\n\n" String</span>
+<span class="ss">permalink: </span><span class="sr">/:year/</span><span class="ss">:month</span><span class="o">/</span><span class="ss">:day</span><span class="o">/</span><span class="ss">:title</span><span class="p">.</span><span class="nf">html</span>
+<span class="ss">highlighter: </span><span class="n">rouge</span>  <span class="c1"># use rouge as highlighter</span>
+<span class="ss">markdown: </span><span class="n">kramdown</span>  <span class="c1"># use kramdown as markdown convertor</span>
+<span class="ss">kramdown:
+  input: </span><span class="no">GFM</span>
+  <span class="ss">hard_wrap: </span><span class="kp">true</span> <span class="c1"># a newline in markdown text would be changed to &lt;br&gt;</span>
+<span class="ss">gems:
+  </span><span class="o">-</span> <span class="n">jemoji</span> <span class="c1"># if need Github Emoji you have to add it</span>
+
+<span class="c1"># the Github would set up when upload to Github Pages，See：Github Help With Configuring Jekyll</span>
+
+<span class="c1"># Github Pages default settings, you can Override here !</span>
+<span class="c1"># kramdown:</span>
+<span class="c1">#   input: GFM</span>
+<span class="c1">#   hard_wrap: false</span>
+<span class="c1"># gems:</span>
+<span class="c1">#   - jekyll-coffeescript</span>
+<span class="c1">#   - jekyll-paginate</span>
+
+<span class="c1"># Github Pages settings which you can NOT Override !</span>
+<span class="c1"># lsi: false</span>
+<span class="c1"># safe: true</span>
+<span class="c1"># source: [your repo's top level directory]</span>
+<span class="c1"># incremental: false</span>
+<span class="c1"># highlighter: rouge</span>
+<span class="c1"># gist:</span>
+<span class="c1">#  noscript: false</span>
+<span class="c1"># kramdown:</span>
+<span class="c1">#  math_engine: mathjax</span>
+</code></pre>
+</div>
+
+<h4 id="new-a-page">New a Page</h4>
+
+<table>
+  <tbody>
+    <tr>
+      <td>Way 1</td>
+      <td>add <code class="highlighter-rouge">xxx.html</code> in <strong>jekyll-root</strong>，site path is <code class="highlighter-rouge">/xxx.html</code></td>
+    </tr>
+    <tr>
+      <td>Way 2</td>
+      <td>add <code class="highlighter-rouge">xxx/index.html</code> in <strong>jekyll-root</strong>，site path is <code class="highlighter-rouge">/xxx</code>，No need postfix</td>
+    </tr>
+  </tbody>
+</table>
+
+<h4 id="the-front-matter-in-page">the <code class="highlighter-rouge">front matter</code> in page</h4>
+<p>Every page has its own YAML front matter, which can create variables or override the variables in _config.yml</p>
+
+<div class="language-ruby highlighter-rouge"><pre class="highlight"><code><span class="o">---</span>
+<span class="ss">layout: </span><span class="n">post</span>
+<span class="ss">title: </span><span class="n">step</span> <span class="n">by</span> <span class="n">step</span>
+<span class="ss">categories: </span><span class="p">[</span><span class="n">jekyll</span> <span class="n">github</span> <span class="n">markdown</span> <span class="n">rouge</span><span class="p">]</span>
+<span class="ss">date: </span><span class="mi">2016</span><span class="o">-</span><span class="mi">9</span><span class="o">-</span><span class="mi">3</span> <span class="mi">15</span><span class="p">:</span><span class="mi">47</span><span class="p">:</span><span class="mo">05</span>
+<span class="ss">excerpt: </span><span class="s2">""</span>   <span class="c1"># override the post's default excerpt</span>
+<span class="ss">pid: </span><span class="s2">""</span>       <span class="c1"># new a pid variable</span>
+<span class="o">---</span>
+</code></pre>
+</div>
+
+<h4 id="the-site-variable">the <code class="highlighter-rouge">site</code> Variable</h4>
+<p>the site variable can access variables in <code class="highlighter-rouge">_config.yml</code> or Jekyll：</p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>site.posts</td>
+      <td>a posts collections from new to old</td>
+    </tr>
+    <tr>
+      <td>site.categories</td>
+      <td>categories and posts Map<code class="highlighter-rouge"><span class="p">{</span><span class="err">cate1:[post1,</span><span class="w"> </span><span class="err">post2],</span><span class="w"> </span><span class="err">cate2:[post3,</span><span class="w"> </span><span class="err">post4]</span><span class="p">}</span></code></td>
+    </tr>
+    <tr>
+      <td>site.tags</td>
+      <td>tags and posts Map<code class="highlighter-rouge"><span class="p">{</span><span class="err">tag1:[post1,</span><span class="w"> </span><span class="err">post2],</span><span class="w"> </span><span class="err">tag2:[post3,</span><span class="w"> </span><span class="err">post4]</span><span class="p">}</span></code></td>
+    </tr>
+    <tr>
+      <td>site.XXX</td>
+      <td>variables define in <code class="highlighter-rouge">_config.yml</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<h4 id="the-page-variable">the <code class="highlighter-rouge">page</code> Variable</h4>
+<p>the variable refer to current page, for example, in index.html, page is the index.html page, you can access the front matter in index.html:</p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>page.content</td>
+      <td>page <strong>source</strong>(markdown text)</td>
+    </tr>
+    <tr>
+      <td>page.title</td>
+      <td>page title</td>
+    </tr>
+    <tr>
+      <td>page.excerpt</td>
+      <td>excerpt <strong>source</strong></td>
+    </tr>
+    <tr>
+      <td>page.url</td>
+      <td>the <strong>relative path</strong></td>
+    </tr>
+    <tr>
+      <td>page.date</td>
+      <td>the date</td>
+    </tr>
+    <tr>
+      <td>page.categories</td>
+      <td>the categories array，<code class="highlighter-rouge">linux/ruby/_posts/ruby.md</code> would merge linux and ruby into categories，NOTE page.categories is different with site.categories！</td>
+    </tr>
+    <tr>
+      <td>page.tags</td>
+      <td>the tags array</td>
+    </tr>
+    <tr>
+      <td>page.path</td>
+      <td>the path in source directory(source path)</td>
+    </tr>
+  </tbody>
+</table>
+
+<blockquote>
+  <p>NOTE：the post in site.posts is almost the same as page variable</p>
+</blockquote>
+
+<h4 id="the-liquid-language">the <code class="highlighter-rouge">Liquid</code> Language</h4>
+<p>if you want to do some logic operation, you need to learn the <a href="https://github.com/Shopify/liquid/wiki/Liquid-for-Designers">Liquid language</a></p>
+
+<ol>
+  <li>
+    <p>show the value of a variable<br />
+ <code class="highlighter-rouge"><span class="p">{</span><span class="err">{</span><span class="w"> </span><span class="err">variable</span><span class="w"> </span><span class="p">}</span><span class="err">}</span></code></p>
+
+    <p>combine a string：<code class="highlighter-rouge">"head{{ variable }}tail"</code></p>
+
+    <p>or use Filter：<code class="highlighter-rouge"><span class="p">{</span><span class="err">{</span><span class="w"> </span><span class="nt">"head"</span><span class="w"> </span><span class="err">|</span><span class="w"> </span><span class="err">append</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="err">variable</span><span class="w"> </span><span class="err">|</span><span class="w"> </span><span class="err">append</span><span class="w"> </span><span class="err">:</span><span class="w"> </span><span class="s2">"tail"</span><span class="w"> </span><span class="p">}</span><span class="err">}</span></code></p>
+  </li>
+  <li>
+    <p>assign<br />
+ <code class="highlighter-rouge"><span class="p">{</span><span class="err">%</span><span class="w"> </span><span class="err">assign</span><span class="w"> </span><span class="err">titleAndDate</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="err">page.title</span><span class="w"> </span><span class="err">|</span><span class="w"> </span><span class="err">append:</span><span class="w"> </span><span class="err">page.date</span><span class="w"> </span><span class="err">%</span><span class="p">}</span></code></p>
+
+    <p><code class="highlighter-rouge">assign x = y</code> to create a <code class="highlighter-rouge">x</code> variable，<strong>when assign you have to assign a value！</strong></p>
+
+    <p><code class="highlighter-rouge">xxx | append: "str"</code> is Liquid’s Filter, just like <code class="highlighter-rouge">object | method:parameter</code></p>
+  </li>
+  <li>
+    <p>if</p>
+
+    <div class="language-liquid highlighter-rouge"><pre class="highlight"><code><span class="p">{%</span><span class="w"> </span><span class="kr">if</span><span class="w"> </span><span class="nv">site</span><span class="p">.</span><span class="nv">title</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">""</span><span class="w"> </span><span class="p">%}</span>
+<span class="p">{%</span><span class="w"> </span><span class="nt">assign</span><span class="w"> </span><span class="nv">title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"A"</span><span class="w"> </span><span class="p">%}</span>
+</code></pre>
+    </div>
+    <p>{% elsif site.title == “stepbystep” %}<br />
+{% assign title = “B” %}<br />
+{% else %}<br />
+{% assign title = “C” %}<br />
+{% endif %}</p>
+  </li>
+  <li>
+    <p>for</p>
+
+    <div class="language-liquid highlighter-rouge"><pre class="highlight"><code><span class="p">{%</span><span class="w"> </span><span class="nt">for</span><span class="w"> </span>post<span class="w"> </span>in<span class="w"> </span>site.posts<span class="w"> </span><span class="p">%}</span>
+ <span class="p">{%</span><span class="w"> </span><span class="nt">assign</span><span class="w"> </span><span class="nv">title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">post</span><span class="p">.</span><span class="nv">title</span><span class="w"> </span><span class="p">%}</span>
+ The post title is <span class="p">{{</span><span class="w"> </span><span class="nv">title</span><span class="w"> </span><span class="p">}}</span>
+<span class="p">{%</span><span class="w"> </span><span class="nt">endfor</span><span class="w"> </span><span class="p">%}</span>
+</code></pre>
+    </div>
+  </li>
+  <li>
+    <p>access map’s key and value<br />
+ like <code class="highlighter-rouge">site.categories</code>, access the category called <code class="highlighter-rouge">linux</code> has two ways：<br />
+ Way 1: <code class="highlighter-rouge">site.categories.linux</code> is the posts list of linux category<br />
+ Way 2: <code class="highlighter-rouge">for cate in site.categories</code>，<code class="highlighter-rouge">cate[0]</code> is linux，<code class="highlighter-rouge">cate[1]</code> is the posts list</p>
+  </li>
+</ol>
+
+<blockquote>
+  <p>NOTE：{% %} <strong>can not break line</strong></p>
+</blockquote>
+
+<h2 id="what-else-did-i-do">What else did I do</h2>
+
+<h3 id="database-file">Database File</h3>
+<p>Jekyll dose not has database, but just like most <code class="highlighter-rouge">feed.xml</code> in jekyll themes, it just like a database file. Therefore, we can create a <code class="highlighter-rouge">postfile</code> to load all data we need and then get it by javascript when requesting the html page.</p>
+
+<p>A Postfile formatted with json:</p>
+
+<div class="language-json highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"posts"</span><span class="p">:</span><span class="w">
+  </span><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+     </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"step by step to create a Jekyll theme"</span><span class="p">,</span><span class="w">
+     </span><span class="nt">"words"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1932"</span><span class="p">,</span><span class="w">
+     </span><span class="nt">"author"</span><span class="p">:</span><span class="w"> </span><span class="s2">"jokin"</span><span class="p">,</span><span class="w">
+     </span><span class="nt">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2016-09-03 23:47:05"</span><span class="p">,</span><span class="w">
+     </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/2016/09/03/how-to-create-the-jekyll-theme.html"</span><span class="p">,</span><span class="w">
+     </span><span class="nt">"pid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"20160903-154705"</span><span class="p">,</span><span class="w">
+     </span><span class="nt">"image"</span><span class="p">:</span><span class="w"> </span><span class="s2">"/w3c/images/jekyll.jpg"</span><span class="p">,</span><span class="w">
+     </span><span class="nt">"categories"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"jekyll"</span><span class="p">],</span><span class="w">
+     </span><span class="nt">"excerpt"</span><span class="p">:</span><span class="w"> </span><span class="s2">"learn how to create the jekyll theme..."</span><span class="w">
+   </span><span class="p">}</span><span class="w">
+   </span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="err">...</span><span class="w"> </span><span class="err">...</span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+</div>
+
+<p>Liquid Syntax：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"posts"</span><span class="p">:</span><span class="w">
+  </span><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="err">%</span><span class="w"> </span><span class="err">for</span><span class="w"> </span><span class="err">post</span><span class="w"> </span><span class="err">in</span><span class="w"> </span><span class="err">site.posts</span><span class="w"> </span><span class="err">%</span><span class="p">}</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{{ post.title }}"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"words"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{{ post.content | number_of_words }}"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"author"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{{ site.author }}"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{{ post.date | date:"</span><span class="err">%Y-%m-%d</span><span class="w"> </span><span class="err">%H:%M:%S</span><span class="s2">" }}"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{{ post.url }}"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"pid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"{{ post.pid }}"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"categories"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+        </span><span class="p">{</span><span class="err">%</span><span class="w"> </span><span class="err">for</span><span class="w"> </span><span class="err">cate</span><span class="w"> </span><span class="err">in</span><span class="w"> </span><span class="err">post.categories</span><span class="w"> </span><span class="err">%</span><span class="p">}</span><span class="w">
+          </span><span class="s2">"{{ cate }}"</span><span class="w">
+        </span><span class="p">{</span><span class="err">%</span><span class="w"> </span><span class="err">endfor</span><span class="w"> </span><span class="err">%</span><span class="p">}</span><span class="w">
+      </span><span class="p">]</span><span class="w">
+      </span><span class="err">......</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">{</span><span class="err">%</span><span class="w"> </span><span class="err">endfor</span><span class="w"> </span><span class="err">%</span><span class="p">}</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+</div>
+
+<p><a href="https://raw.githubusercontent.com/jokinkuang/stepbystep/master/db/Postfile">Download the Postfile</a></p>
+
+<h3 id="a-category-a-page">A category a page</h3>
+<p>Usually the categories html page in jekyll theme is one page:</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>linux
+    - shell
+mac
+    - ios
+    - xcode
+windows
+    - windows API
+</code></pre>
+</div>
+
+<p>Because we only can loop it like this:</p>
+
+<div class="language-liquid highlighter-rouge"><pre class="highlight"><code><span class="p">{%</span><span class="w"> </span><span class="nt">for</span><span class="w"> </span>cates<span class="w"> </span>in<span class="w"> </span>site.categories<span class="w"> </span><span class="p">%}</span>
+<span class="p">{{</span><span class="w"> </span><span class="nv">cates</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="p">}}</span>
+  <span class="p">{%</span><span class="w"> </span><span class="nt">for</span><span class="w"> </span>post<span class="w"> </span>in<span class="w"> </span>cates[<span class="mi">1</span>]<span class="w"> </span><span class="p">%}</span>
+    <span class="p">{{</span><span class="w"> </span><span class="nv">post</span><span class="p">.</span><span class="nv">title</span><span class="w"> </span><span class="p">}}</span>
+  <span class="p">{%</span><span class="w"> </span><span class="nt">endfor</span><span class="w"> </span><span class="p">%}</span>
+<span class="p">{%</span><span class="w"> </span><span class="nt">endfor</span><span class="w"> </span><span class="p">%}</span>
+</code></pre>
+</div>
+
+<p>If we want a category a page, we can not loop. we have to add the new category page hand by hand.<br />
+But with upper <code class="highlighter-rouge">postfile</code> we can do that with javascript at the fore-end in browser.</p>
+
+<p>We can loop it in browser to show the posts of the selected category.</p>
+
+<h3 id="subdirs-as-categories">Subdirs as Categories</h3>
+<p>Jekyll default supports that <code class="highlighter-rouge">/windows/api/_posts/2016-9-22-category.md</code>, the <code class="highlighter-rouge">windows</code> and <code class="highlighter-rouge">api</code> would be merged into the post categories.</p>
+
+<p>But why not <code class="highlighter-rouge">_posts/windows/api/2016-9-22-category.md</code>.</p>
+
+<p>We can use Liquid script to implement this feature. In <code class="highlighter-rouge">page</code> variable, <code class="highlighter-rouge">page.path</code> refers to the source path string <code class="highlighter-rouge">_posts/windows/api/2016-9-22-category.md</code>, we can split it to get the subdirs we want.</p>
+
+<p>But note that, after that we can not access the <code class="highlighter-rouge">post.categories</code> or <code class="highlighter-rouge">site.categories</code> directly, cause the subdirs are not include.</p>
+
+<p><a href="https://raw.githubusercontent.com/jokinkuang/stepbystep/master/_includes/post-categories.liquid">Liquid script to get the post’s categories</a><br />
+<a href="https://raw.githubusercontent.com/jokinkuang/stepbystep/master/_includes/total-categories.liquid">Liquid script to get the site’s categories</a></p>
+
+<h2 id="upload-your-theme-to-jekyllthemes">Upload your theme to JekyllThemes</h2>
+<p><a href="http://jekyllthemes.org/">JekyllThemes</a></p>
+
+<h2 id="references">References</h2>
+
+<table>
+  <tbody>
+    <tr>
+      <td>Read·<a href="http://jekyll.bootcss.com/">Jekyll Chinese</a></td>
+      <td><a href="http://jekyllrb.com/">English</a></td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>Read·<a href="https://help.shopify.com/themes/liquid">Liquid Doc1</a></td>
+      <td><a href="https://github.com/Shopify/liquid/wiki/Liquid-for-Designers">Doc2</a></td>
+      <td><a href="https://shopify.github.io/liquid/">Doc3</a></td>
+    </tr>
+    <tr>
+      <td>Read·<a href="https://github.com/jneen/rouge">highlighter rouge Doc</a></td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>Read·<a href="http://kramdown.gettalong.org/">Markdown convertor kramdown （support maruku）</a></td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>Read·<a href="http://maruku.rubyforge.org/maruku.html">Markdown convertor maruku （support TOC）</a></td>
+      <td> </td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+
+		</div>
+
+		<div class="post-footer">
+			<p>&copy; Your Title</p>
+		</div>
+
+		<div class="post-tags">
+			TAGS:
+			
+			
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+		
+	
+
+	
+		
+
+
+			
+			<span class="tag"><a href="/article?category=jekyll">jekyll</a></span>
+			
+		</div>
+
+		<div class="PageNavigation">
+		  
+		    <a class="prev" href="/2016/09/03/how-to-create-the-jekyll-theme.html">&nbsp;&laquo; 一步一步创建Jekyll主题</a>
+		  
+		  
+		</div>
+
+		<div style="height: 20px;"></div>
+		<div class="ds-share flat" data-thread-key="20160903-154705" data-title="step by step to create a jekyll theme" data-images="http://yourdomain.github.io/w3c/images/jekyll.jpg" data-content="" data-url="http://yourdomain.github.io/2016/09/03/stey-by-step-to-create-a-jekyll-theme.html">
+    <div class="ds-share-inline">
+      <ul  class="ds-share-icons-16">
+      	<li ><span class="ds-more">分享到：</span></li>
+        <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+        <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+        <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+				<li><a class="ds-facebook" href="javascript:void(0);" data-service="facebook">Facebook</a></li>
+      </ul>
+      <div class="ds-share-icons-more">
+      </div>
+    </div>
+ 		</div>
+		<!-- duoshuo -->
+		<div name="comments" id="comments">
+		<div class="ds-thread" data-thread-key="20160903-154705" data-max-depth="2" data-title="step by step to create a jekyll theme" data-url="http://yourdomain.github.io/2016/09/03/stey-by-step-to-create-a-jekyll-theme.html"></div>
+		</div>
+	</div>
+</div>
+
+<!-- duoshuo -->
+<script>
+// baidu-tongji
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+<script>
+// google-analytics
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', '', 'auto');
+  ga('send', 'pageview');
+</script>
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"sbys"};
+  var duoshuoDir = "/w3c/duoshuo/embed.min.js";
+  duoshuoDir = duoshuoDir.substring(0, duoshuoDir.lastIndexOf("/")+1);
+  //console.log(duoshuoDir);
+  var duoshuoShortName = "sbys";
+  var duoshuoUserName = "xk";
+</script>
+<script src="/w3c/duoshuo/embed.min.js"></script>
+<style type="text/css">
+/**************override duoshuo css*************/
+#ds-share #ds-reset.ds-share-inline {
+  margin: 0 7px;
+}
+#ds-thread {
+  margin: 5px 10px 5px 5px;
+}
+#ds-thread #ds-reset .ds-login-buttons .ds-social-links {
+	width: auto;
+}
+#ds-notify {
+  bottom: 5px;
+  right: 5px;
+}
+#ds-thread #ds-reset a.ds-user-name[data-user-id='6324572809590735618']:after {
+	content: "博主";
+	margin-left: 6px;
+	font-size: 12px;
+	color: #ffffff;
+	background: rgba(62, 46, 46, 0.35);
+	border-radius: 4px;
+	padding: 1px 3px;
+}
+#ds-thread #ds-reset span.ds-user-name:after {
+  content: "游客";
+  margin-left: 6px;
+  font-size: 12px;
+  color: #bbb6ae;
+  /* background: rgba(62, 46, 46, 0.35); */
+  border-radius: 4px;
+  padding: 1px 3px;
+}
+/* likes */
+#ds-thread #ds-reset a.ds-like-thread-button {
+  /* background: none; */
+  /* border: none; */
+  padding: 2px 5px;
+  border-radius: 15px;
+}
+/* recent comments */
+#ds-thread #ds-reset .ds-meta {
+  padding: 3px 0 0;
+  border: none;
+}
+#ds-thread #ds-reset a {
+  color: #333;
+}
+div#ds-recent-comments.ds-recent-comments {
+  border: 1px dotted #ddd;
+  border-radius: 10px;
+  padding: 0px 5px 7px 7px;
+}
+#ds-recent-comments li.ds-comment {
+  border-top: none;
+}
+#ds-recent-comments li.ds-comment .ds-excerpt {
+  color: #666;
+  margin-top: 10px;
+}
+/* hot comments */
+#ds-thread #ds-reset #ds-hot-posts {
+  border-radius: 10px;
+}
+/* share checkbox */
+#ds-thread #ds-reset .ds-post-options .ds-sync {
+  display: none;
+}
+/* comments */
+#ds-thread #ds-reset li.ds-tab a.ds-current {
+  border: 0px;
+}
+/* smiles */
+#ds-smilies-tooltip {
+  width: initial;
+  max-width: 600px;
+  margin-right: 15px;
+}
+#ds-smilies-tooltip ul.ds-smilies-tabs {
+  width: 80px;
+}
+#ds-smilies-tooltip .ds-smilies-container {
+  margin-left: 80px;
+}
+/* image */
+#ds-thread #ds-reset .ds-replybox .ds-avatar img {
+  margin-left: -8px;
+}
+</style>
+<!--多说的通知区域是从脚本插入的，要覆盖它的样式，也需要在脚本里覆盖，暂时不做 @2016-8-2-->
+
+
+<!-- jQuery -->
+<script type="text/javascript">
+	var sitefile = "/db/Sitefile";
+</script>
+<script src="http://cdn.bootcss.com/jquery/3.1.0/jquery.min.js"></script>
+<script src="/w3c/js/timeago.js"></script>
+<script src="/w3c/js/pagecache.js"></script>
+<script src="/w3c/js/jquery.duoshuo.js"></script>
+
+<script src="/w3c/js/post.js"></script>
+<script>
+$(".pin").on("click", function(event) {
+    var target = $("html, body");
+    if( target.length ) {
+        event.preventDefault();
+        $("html, body").stop().animate({
+            scrollTop: target.offset().top
+        }, 1000);
+    }
+});
+$(window).scroll(function(event){
+	var top = $(window).scrollTop();
+	var target = $("body");
+	if ( target.length ) {
+		if ( target.scrollTop() > 2000 ) {
+			$(".pin").show();
+		} else {
+			$(".pin").hide();
+		}
+	}
+});
+</script>
+</body>
+</html>

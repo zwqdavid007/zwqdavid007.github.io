@@ -1,0 +1,1755 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Your Title</title>
+    <description>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.
+</description>
+    <link>http://yourdomain.github.io/</link>
+    <atom:link href="http://yourdomain.github.io/feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Tue, 09 Apr 2019 21:57:00 +0800</pubDate>
+    <lastBuildDate>Tue, 09 Apr 2019 21:57:00 +0800</lastBuildDate>
+    <generator>Jekyll v3.1.6</generator>
+    
+      <item>
+        <title>step by step to create a jekyll theme</title>
+        <description>&lt;h1 id=&quot;in-this-post-you-can-learn-how-to-create-your-own-jekyll-theme&quot;&gt;In this post you can learn how to create your own jekyll theme&lt;/h1&gt;
+
+&lt;h2&gt;目录&lt;/h2&gt;
+
+&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#in-this-post-you-can-learn-how-to-create-your-own-jekyll-theme&quot; id=&quot;markdown-toc-in-this-post-you-can-learn-how-to-create-your-own-jekyll-theme&quot;&gt;In this post you can learn how to create your own jekyll theme&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#set-up-the-jekyll-environment&quot; id=&quot;markdown-toc-set-up-the-jekyll-environment&quot;&gt;Set up the Jekyll environment&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#run-the-jekyll-server&quot; id=&quot;markdown-toc-run-the-jekyll-server&quot;&gt;Run the Jekyll server&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#github-pages-localization&quot; id=&quot;markdown-toc-github-pages-localization&quot;&gt;Github Pages localization&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#set-up-the-environment-on-windows&quot; id=&quot;markdown-toc-set-up-the-environment-on-windows&quot;&gt;Set up the environment on Windows&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#you-need-a-web-prototype&quot; id=&quot;markdown-toc-you-need-a-web-prototype&quot;&gt;You need a Web Prototype&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#what-is-jekyll&quot; id=&quot;markdown-toc-what-is-jekyll&quot;&gt;What is Jekyll&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#how-markdown-works-in-jekyll&quot; id=&quot;markdown-toc-how-markdown-works-in-jekyll&quot;&gt;How markdown Works in Jekyll&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#how-highlight-works-in-jekyll&quot; id=&quot;markdown-toc-how-highlight-works-in-jekyll&quot;&gt;How highlight Works in Jekyll&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#create-the-jekyll-theme&quot; id=&quot;markdown-toc-create-the-jekyll-theme&quot;&gt;Create the Jekyll Theme&lt;/a&gt;        &lt;ul&gt;
+          &lt;li&gt;&lt;a href=&quot;#new-a-theme&quot; id=&quot;markdown-toc-new-a-theme&quot;&gt;new a theme&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#the-jekyll-theme-structure&quot; id=&quot;markdown-toc-the-jekyll-theme-structure&quot;&gt;the Jekyll theme structure&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#simplify-the-theme&quot; id=&quot;markdown-toc-simplify-the-theme&quot;&gt;Simplify the theme&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#deeper-in-jekyll&quot; id=&quot;markdown-toc-deeper-in-jekyll&quot;&gt;Deeper in Jekyll&lt;/a&gt;            &lt;ul&gt;
+              &lt;li&gt;&lt;a href=&quot;#the-layouts-directory&quot; id=&quot;markdown-toc-the-layouts-directory&quot;&gt;the &lt;code class=&quot;highlighter-rouge&quot;&gt;_layouts&lt;/code&gt; Directory&lt;/a&gt;&lt;/li&gt;
+              &lt;li&gt;&lt;a href=&quot;#the-includes-directory&quot; id=&quot;markdown-toc-the-includes-directory&quot;&gt;the &lt;code class=&quot;highlighter-rouge&quot;&gt;_includes&lt;/code&gt; Directory&lt;/a&gt;&lt;/li&gt;
+              &lt;li&gt;&lt;a href=&quot;#the-configyml-file&quot; id=&quot;markdown-toc-the-configyml-file&quot;&gt;the &lt;code class=&quot;highlighter-rouge&quot;&gt;_config.yml&lt;/code&gt; File&lt;/a&gt;&lt;/li&gt;
+              &lt;li&gt;&lt;a href=&quot;#new-a-page&quot; id=&quot;markdown-toc-new-a-page&quot;&gt;New a Page&lt;/a&gt;&lt;/li&gt;
+              &lt;li&gt;&lt;a href=&quot;#the-front-matter-in-page&quot; id=&quot;markdown-toc-the-front-matter-in-page&quot;&gt;the &lt;code class=&quot;highlighter-rouge&quot;&gt;front matter&lt;/code&gt; in page&lt;/a&gt;&lt;/li&gt;
+              &lt;li&gt;&lt;a href=&quot;#the-site-variable&quot; id=&quot;markdown-toc-the-site-variable&quot;&gt;the &lt;code class=&quot;highlighter-rouge&quot;&gt;site&lt;/code&gt; Variable&lt;/a&gt;&lt;/li&gt;
+              &lt;li&gt;&lt;a href=&quot;#the-page-variable&quot; id=&quot;markdown-toc-the-page-variable&quot;&gt;the &lt;code class=&quot;highlighter-rouge&quot;&gt;page&lt;/code&gt; Variable&lt;/a&gt;&lt;/li&gt;
+              &lt;li&gt;&lt;a href=&quot;#the-liquid-language&quot; id=&quot;markdown-toc-the-liquid-language&quot;&gt;the &lt;code class=&quot;highlighter-rouge&quot;&gt;Liquid&lt;/code&gt; Language&lt;/a&gt;&lt;/li&gt;
+            &lt;/ul&gt;
+          &lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#what-else-did-i-do&quot; id=&quot;markdown-toc-what-else-did-i-do&quot;&gt;What else did I do&lt;/a&gt;        &lt;ul&gt;
+          &lt;li&gt;&lt;a href=&quot;#database-file&quot; id=&quot;markdown-toc-database-file&quot;&gt;Database File&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#a-category-a-page&quot; id=&quot;markdown-toc-a-category-a-page&quot;&gt;A category a page&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#subdirs-as-categories&quot; id=&quot;markdown-toc-subdirs-as-categories&quot;&gt;Subdirs as Categories&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#upload-your-theme-to-jekyllthemes&quot; id=&quot;markdown-toc-upload-your-theme-to-jekyllthemes&quot;&gt;Upload your theme to JekyllThemes&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#references&quot; id=&quot;markdown-toc-references&quot;&gt;References&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;set-up-the-jekyll-environment&quot;&gt;Set up the Jekyll environment&lt;/h2&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;install ruby&lt;br /&gt;
+  &lt;code class=&quot;highlighter-rouge&quot;&gt;sudo apt-get install ruby&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;install the Jekyll ruby gem&lt;br /&gt;
+  &lt;code class=&quot;highlighter-rouge&quot;&gt;sudo gem install jekyll&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;install the kramdown ruby gem&lt;br /&gt;
+  &lt;code class=&quot;highlighter-rouge&quot;&gt;sudo gem install kramdown&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;install the rouge ruby gem&lt;br /&gt;
+  &lt;code class=&quot;highlighter-rouge&quot;&gt;sudo gem install rouge&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;test Jekyll&lt;br /&gt;
+  &lt;code class=&quot;highlighter-rouge&quot;&gt;jekyll --version&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;From above you can know all these are base on ruby language&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;run-the-jekyll-server&quot;&gt;Run the Jekyll server&lt;/h2&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;new a jekyll theme&lt;br /&gt;
+  &lt;code class=&quot;highlighter-rouge&quot;&gt;jekyll new mytheme&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;run the server&lt;br /&gt;
+  &lt;code class=&quot;highlighter-rouge&quot;&gt;cd mytheme&lt;/code&gt;&lt;br /&gt;
+  &lt;code class=&quot;highlighter-rouge&quot;&gt;jekyll server&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;visit &lt;a href=&quot;http://127.0.0.1:4000&quot;&gt;127.0.0.1:4000&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;github-pages-localization&quot;&gt;Github Pages localization&lt;/h2&gt;
+
+&lt;p&gt;After Pushing the jekyll theme to github pages, the site would run on the github server which is different with the local environment. It may cause some display problems. So it’s recommended to set up the github pages environment locally.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;update ruby to 2.0.0 or higher&lt;br /&gt;
+if &lt;code class=&quot;highlighter-rouge&quot;&gt;ruby --version&lt;/code&gt; is not higher than 2.0.0，you need to update it&lt;/li&gt;
+  &lt;li&gt;install the &lt;a href=&quot;http://bundler.io/&quot;&gt;Bundler&lt;/a&gt;&lt;br /&gt;
+  &lt;code class=&quot;highlighter-rouge&quot;&gt;sudo gem install bundler&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;create a file called &lt;code class=&quot;highlighter-rouge&quot;&gt;Gemfile&lt;/code&gt; in the jekyll theme root directory&lt;/li&gt;
+  &lt;li&gt;add these text to the &lt;code class=&quot;highlighter-rouge&quot;&gt;Gemfile&lt;/code&gt;&lt;br /&gt;
+  &lt;code class=&quot;highlighter-rouge&quot;&gt;source &#39;https://rubygems.org&#39;&lt;/code&gt;&lt;br /&gt;
+  &lt;code class=&quot;highlighter-rouge&quot;&gt;gem &#39;github-pages&#39;, group::jekyll_plugins&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;install the Github Pages tool sets&lt;br /&gt;
+  &lt;code class=&quot;highlighter-rouge&quot;&gt;bundle install&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;run&lt;br /&gt;
+  &lt;code class=&quot;highlighter-rouge&quot;&gt;bundle exec jekyll serve&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;More About Github Pages Localization, See &lt;a href=&quot;https://help.github.com/articles/setting-up-your-github-pages-site-locally-with-jekyll&quot;&gt;github-helper-setting-up-your-github-pages-site-locally-with-jekyll&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;If &lt;code class=&quot;highlighter-rouge&quot;&gt;bundle exec jekyll serve&lt;/code&gt; is ok but &lt;code class=&quot;highlighter-rouge&quot;&gt;jekyll serve&lt;/code&gt; is failed, you can delete the &lt;code class=&quot;highlighter-rouge&quot;&gt;Gemfile&lt;/code&gt; and the &lt;code class=&quot;highlighter-rouge&quot;&gt;Gemfile.lock&lt;/code&gt; then run &lt;code class=&quot;highlighter-rouge&quot;&gt;jekyll serve&lt;/code&gt; again.&lt;/p&gt;
+
+&lt;h2 id=&quot;set-up-the-environment-on-windows&quot;&gt;Set up the environment on Windows&lt;/h2&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;install the ruby and devkit for windows&lt;br /&gt;
+  download &lt;a href=&quot;http://rubyinstaller.org/downloads&quot;&gt;ruby for windows&lt;/a&gt;, it’s better to install ruby 2.0.0 or higher。&lt;br /&gt;
+  you need to install the &lt;a href=&quot;http://rubyinstaller.org/downloads&quot;&gt;ruby-devkit&lt;/a&gt; too !&lt;/li&gt;
+  &lt;li&gt;set up the command line environment variable&lt;br /&gt;
+  generally the installer would do this for you, but you also can add it by yourself. Add &lt;code class=&quot;highlighter-rouge&quot;&gt;C:\Ruby22\bin;&lt;/code&gt; to the windows environment variable &lt;code class=&quot;highlighter-rouge&quot;&gt;path&lt;/code&gt;.&lt;/li&gt;
+  &lt;li&gt;install Jekyll&lt;br /&gt;
+  &lt;code class=&quot;highlighter-rouge&quot;&gt;gem install jekyll&lt;/code&gt;&lt;br /&gt;
+  if not found the command, run &lt;code class=&quot;highlighter-rouge&quot;&gt;set a = b&lt;/code&gt; and try it again. maybe the variable was not active.&lt;/li&gt;
+  &lt;li&gt;install bundler&lt;br /&gt;
+  &lt;code class=&quot;highlighter-rouge&quot;&gt;gem install bundler&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;github pages Localization&lt;br /&gt;
+  create a &lt;code class=&quot;highlighter-rouge&quot;&gt;Gemfile&lt;/code&gt; and add the text above&lt;br /&gt;
+  &lt;code class=&quot;highlighter-rouge&quot;&gt;bundle install&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;run&lt;br /&gt;
+  &lt;code class=&quot;highlighter-rouge&quot;&gt;bundle exec jekyll server&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;on windows command line&lt;br /&gt;
+command gem is the gem.bat&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;you-need-a-web-prototype&quot;&gt;You need a Web Prototype&lt;/h2&gt;
+
+&lt;p&gt;The current blog only has three pages：&lt;code class=&quot;highlighter-rouge&quot;&gt;index.html&lt;/code&gt;、&lt;code class=&quot;highlighter-rouge&quot;&gt;article.html&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;post.html&lt;/code&gt;.&lt;br /&gt;
+If you already had the web prototype, you can merge into the jekyll theme now.&lt;/p&gt;
+
+&lt;h2 id=&quot;what-is-jekyll&quot;&gt;What is Jekyll&lt;/h2&gt;
+
+&lt;p&gt;Jekyll is a static blog system, it dose not has the database and comment modules.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;jekyll is writable before run and is read-only when running.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;how-markdown-works-in-jekyll&quot;&gt;How markdown Works in Jekyll&lt;/h2&gt;
+
+&lt;p&gt;this is a markdown text：&lt;/p&gt;
+
+&lt;div class=&quot;language-markdown highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gu&quot;&gt;## Markdown Demo&lt;/span&gt;
+
+This is a &lt;span class=&quot;sb&quot;&gt;`markdown`&lt;/span&gt; demo
+&lt;span class=&quot;gt&quot;&gt;
+&amp;gt; try it&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;After a markdown converter we got the html：&lt;/p&gt;
+
+&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;h2&amp;gt;&lt;/span&gt;Markdown Demo&lt;span class=&quot;nt&quot;&gt;&amp;lt;/h2&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;p&amp;gt;&lt;/span&gt;This is a &lt;span class=&quot;nt&quot;&gt;&amp;lt;code&amp;gt;&lt;/span&gt;markdown&lt;span class=&quot;nt&quot;&gt;&amp;lt;/code&amp;gt;&lt;/span&gt; demo&lt;span class=&quot;nt&quot;&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;blockquote&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;p&amp;gt;&lt;/span&gt;try it&lt;span class=&quot;nt&quot;&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/blockquote&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;We directly open it with a browser：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/w3c/images/markdown/markdown-plain.jpg&quot; alt=&quot;markdown-plain&quot; title=&quot;html效果&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Yet, it dose not has any visual effects.&lt;br /&gt;
+&lt;strong&gt;Markdown text is only converted to html text，it has no any style-sheet !&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;For pretty view, we add the following style-sheet:&lt;/p&gt;
+
+&lt;div class=&quot;language-css highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;style&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;h2&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+	&lt;span class=&quot;nl&quot;&gt;color&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;red&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;blockquote&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+	&lt;span class=&quot;nl&quot;&gt;background-color&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;#fef3f3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+	&lt;span class=&quot;nl&quot;&gt;border-left&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;4px&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;solid&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;#d6a6a6&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+	&lt;span class=&quot;nl&quot;&gt;margin&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;style&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;Yes, now we got a more beautiful page：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/w3c/images/markdown/markdown-css.jpg&quot; alt=&quot;markdown-css&quot; title=&quot;添加css后html效果&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Summary&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;markdown converter converts the markdown text to html plain text&lt;/li&gt;
+  &lt;li&gt;there is a css file for markdown in the Jekyll theme&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;how-highlight-works-in-jekyll&quot;&gt;How highlight Works in Jekyll&lt;/h2&gt;
+
+&lt;p&gt;this is a markdown code block：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; ```css
+  &amp;lt;style&amp;gt;
+ ```
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;through language highlighter &lt;a href=&quot;https://github.com/jneen/rouge&quot;&gt;rouge&lt;/a&gt;，we got the html text：&lt;/p&gt;
+
+&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;language-css highlighter-rouge&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;pre&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;highlight&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;code&amp;gt;&lt;/span&gt;
+      &lt;span class=&quot;nt&quot;&gt;&amp;lt;span&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;o&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;ni&quot;&gt;&amp;amp;lt;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;/span&amp;gt;&lt;/span&gt;
+      &lt;span class=&quot;nt&quot;&gt;&amp;lt;span&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;nt&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;style&lt;span class=&quot;nt&quot;&gt;&amp;lt;/span&amp;gt;&lt;/span&gt;
+      &lt;span class=&quot;nt&quot;&gt;&amp;lt;span&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;o&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;ni&quot;&gt;&amp;amp;gt;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;/span&amp;gt;&lt;/span&gt;&amp;gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/code&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;/pre&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;rouge has a style sheet called rouge.css：&lt;/p&gt;
+
+&lt;div class=&quot;language-css highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nc&quot;&gt;.highlight&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nl&quot;&gt;color&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;#D53FB7&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;nc&quot;&gt;.highlight&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;.o&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nl&quot;&gt;color&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;#f92672&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;nc&quot;&gt;.highlight&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;.nt&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nl&quot;&gt;color&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;#f92672&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;This is why the language can highlight by strings variables or keywords&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Summary&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;highlighter converts the code language with different selector&lt;/li&gt;
+  &lt;li&gt;there is a css file for highlight in the Jekyll theme&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Tips&lt;/code&gt; how to get the rouge.css&lt;/p&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;rougify foo.rb
+&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;rougify style monokai.sublime &amp;gt; rouge.css
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;you can found these in the rouge site&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;create-the-jekyll-theme&quot;&gt;Create the Jekyll Theme&lt;/h2&gt;
+
+&lt;h3 id=&quot;new-a-theme&quot;&gt;new a theme&lt;/h3&gt;
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;jekyll new mytheme&lt;/code&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;the-jekyll-theme-structure&quot;&gt;the Jekyll theme structure&lt;/h3&gt;
+&lt;p&gt;use &lt;code class=&quot;highlighter-rouge&quot;&gt;tree&lt;/code&gt; command to see the root directory&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;err&quot;&gt;├──&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;index&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;html&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;├──&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;about&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;md&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;├──&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;_config&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;yml&lt;/span&gt;       &lt;span class=&quot;c1&quot;&gt;# Jekyll config file&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;├──&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;feed&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;xml&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;├──&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Gemfile&lt;/span&gt;           &lt;span class=&quot;c1&quot;&gt;# Github Pages Localization File&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;├──&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Gemfile&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;lock&lt;/span&gt;      &lt;span class=&quot;c1&quot;&gt;# Github Pages Localization File&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;├──&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;_sass&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;│  &lt;/span&gt; &lt;span class=&quot;err&quot;&gt;├──&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;_base&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;scss&lt;/span&gt;                  &lt;span class=&quot;c1&quot;&gt;# markdown css&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;│  &lt;/span&gt; &lt;span class=&quot;err&quot;&gt;├──&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;_layout&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;scss&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;│  &lt;/span&gt; &lt;span class=&quot;err&quot;&gt;└──&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;_syntax&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;highlighting&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;scss&lt;/span&gt;   &lt;span class=&quot;c1&quot;&gt;# highlight css&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;├──&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;css&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;│  &lt;/span&gt; &lt;span class=&quot;err&quot;&gt;└──&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;scss&lt;/span&gt;           &lt;span class=&quot;c1&quot;&gt;#&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;├──&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;_includes&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;│  &lt;/span&gt; &lt;span class=&quot;err&quot;&gt;├──&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;footer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;html&lt;/span&gt;         &lt;span class=&quot;c1&quot;&gt;# html segment&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;│  &lt;/span&gt; &lt;span class=&quot;err&quot;&gt;├──&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;header&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;html&lt;/span&gt;         &lt;span class=&quot;c1&quot;&gt;#&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;│  &lt;/span&gt; &lt;span class=&quot;err&quot;&gt;├──&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;head&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;html&lt;/span&gt;           &lt;span class=&quot;c1&quot;&gt;#&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;│  &lt;/span&gt; &lt;span class=&quot;err&quot;&gt;├──&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;icon&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;github&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;html&lt;/span&gt;    &lt;span class=&quot;c1&quot;&gt;#&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;│  &lt;/span&gt; &lt;span class=&quot;err&quot;&gt;├──&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;icon&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;github&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;svg&lt;/span&gt;     &lt;span class=&quot;c1&quot;&gt;# github icon&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;│  &lt;/span&gt; &lt;span class=&quot;err&quot;&gt;├──&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;icon&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;twitter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;html&lt;/span&gt;   &lt;span class=&quot;c1&quot;&gt;#&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;│  &lt;/span&gt; &lt;span class=&quot;err&quot;&gt;└──&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;icon&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;twitter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;svg&lt;/span&gt;    &lt;span class=&quot;c1&quot;&gt;# twitter icon&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;├──&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;_layouts&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;│  &lt;/span&gt; &lt;span class=&quot;err&quot;&gt;├──&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;default&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;html&lt;/span&gt;        &lt;span class=&quot;c1&quot;&gt;# default layout&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;│  &lt;/span&gt; &lt;span class=&quot;err&quot;&gt;├──&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;page&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;html&lt;/span&gt;           &lt;span class=&quot;c1&quot;&gt;# page layout&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;│  &lt;/span&gt; &lt;span class=&quot;err&quot;&gt;└──&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;post&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;html&lt;/span&gt;           &lt;span class=&quot;c1&quot;&gt;# post layout&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;├──&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;_posts&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;│  &lt;/span&gt; &lt;span class=&quot;err&quot;&gt;└──&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2016&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;08&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;24&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;welcome&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;to&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;jekyll&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;markdown&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;└──&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;_site&lt;/span&gt;             &lt;span class=&quot;c1&quot;&gt;# The Release Jekyll Site&lt;/span&gt;
+    &lt;span class=&quot;err&quot;&gt;├──&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;about&lt;/span&gt;
+    &lt;span class=&quot;err&quot;&gt;│  &lt;/span&gt; &lt;span class=&quot;err&quot;&gt;└──&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;index&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;html&lt;/span&gt;
+    &lt;span class=&quot;err&quot;&gt;├──&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;css&lt;/span&gt;
+    &lt;span class=&quot;err&quot;&gt;│  &lt;/span&gt; &lt;span class=&quot;err&quot;&gt;└──&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;css&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;# all the css above merge to this&lt;/span&gt;
+    &lt;span class=&quot;err&quot;&gt;├──&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;feed&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;xml&lt;/span&gt;
+    &lt;span class=&quot;err&quot;&gt;├──&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Gemfile&lt;/span&gt;
+    &lt;span class=&quot;err&quot;&gt;├──&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Gemfile&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;lock&lt;/span&gt;
+    &lt;span class=&quot;err&quot;&gt;├──&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;index&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;html&lt;/span&gt;
+    &lt;span class=&quot;err&quot;&gt;└──&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;jekyll&lt;/span&gt;
+        &lt;span class=&quot;err&quot;&gt;└──&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;update&lt;/span&gt;
+            &lt;span class=&quot;err&quot;&gt;└──&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2016&lt;/span&gt;
+                &lt;span class=&quot;err&quot;&gt;└──&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;08&lt;/span&gt;
+                    &lt;span class=&quot;err&quot;&gt;└──&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;24&lt;/span&gt;
+                        &lt;span class=&quot;err&quot;&gt;└──&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;welcome&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;to&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;jekyll&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;html&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;simplify-the-theme&quot;&gt;Simplify the theme&lt;/h3&gt;
+&lt;p&gt;remove unnecessary files, Simplify the theme：&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;err&quot;&gt;├──&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;index&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;html&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;├──&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;_config&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;yml&lt;/span&gt;       &lt;span class=&quot;c1&quot;&gt;# Jekyll config file&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;├──&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;feed&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;xml&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;├──&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Gemfile&lt;/span&gt;           &lt;span class=&quot;c1&quot;&gt;# Github Pages Localization File&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;├──&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Gemfile&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;lock&lt;/span&gt;      &lt;span class=&quot;c1&quot;&gt;# Github Pages Localization File&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;├──&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;css&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;│  &lt;/span&gt; &lt;span class=&quot;err&quot;&gt;└──&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;markdown&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;css&lt;/span&gt;    &lt;span class=&quot;c1&quot;&gt;# extract markdown css from _site/css/main.css&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;│  &lt;/span&gt; &lt;span class=&quot;err&quot;&gt;└──&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;highlight&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;css&lt;/span&gt;   &lt;span class=&quot;c1&quot;&gt;# extract highlight css from _site/css/main.css&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;├──&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;_includes&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;├──&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;_layouts&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;│  &lt;/span&gt; &lt;span class=&quot;err&quot;&gt;└──&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;post&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;html&lt;/span&gt;       &lt;span class=&quot;c1&quot;&gt;# post layout&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;├──&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;_posts&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;│  &lt;/span&gt; &lt;span class=&quot;err&quot;&gt;└──&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2016&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;08&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;24&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;welcome&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;to&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;jekyll&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;markdown&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;deeper-in-jekyll&quot;&gt;Deeper in Jekyll&lt;/h3&gt;
+
+&lt;h4 id=&quot;the-layouts-directory&quot;&gt;the &lt;code class=&quot;highlighter-rouge&quot;&gt;_layouts&lt;/code&gt; Directory&lt;/h4&gt;
+&lt;p&gt;the file in this directory is ”include” others.&lt;/p&gt;
+
+&lt;h4 id=&quot;the-includes-directory&quot;&gt;the &lt;code class=&quot;highlighter-rouge&quot;&gt;_includes&lt;/code&gt; Directory&lt;/h4&gt;
+&lt;p&gt;the file in this directory is “be included” by others.&lt;br /&gt;
+the include expression：  &lt;code class=&quot;highlighter-rouge&quot;&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;include&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;head.html&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;the releationships between _layouts 、_includes and the html pages：&lt;br /&gt;
+&lt;img src=&quot;/w3c/images/jekyll/jekyll-layout-include.jpg&quot; alt=&quot;jekyll-layout-include&quot; title=&quot;layout与include关系图&quot; /&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;NOTE：&lt;code class=&quot;highlighter-rouge&quot;&gt;content&lt;/code&gt; in default.html is different with &lt;code class=&quot;highlighter-rouge&quot;&gt;page.content&lt;/code&gt; or &lt;code class=&quot;highlighter-rouge&quot;&gt;post.content&lt;/code&gt;, the former is the html text after converted but the latters are source markdown text!&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h4 id=&quot;the-configyml-file&quot;&gt;the &lt;code class=&quot;highlighter-rouge&quot;&gt;_config.yml&lt;/code&gt; File&lt;/h4&gt;
+&lt;p&gt;the most important file in Jekyll, you can store data, set the jekyll plugins or set up the runtime environment.&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;# set a variable&lt;/span&gt;
+&lt;span class=&quot;ss&quot;&gt;domain: &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;http://jokinkuang.info&quot;&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# the domain URL for your site&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# config&lt;/span&gt;
+&lt;span class=&quot;ss&quot;&gt;excerpt_separator: &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n\n&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# you can specify your own separator here, default is &quot;\n\n&quot; String&lt;/span&gt;
+&lt;span class=&quot;ss&quot;&gt;permalink: &lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;/:year/&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:month&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:day&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:title&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;html&lt;/span&gt;
+&lt;span class=&quot;ss&quot;&gt;highlighter: &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;rouge&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;# use rouge as highlighter&lt;/span&gt;
+&lt;span class=&quot;ss&quot;&gt;markdown: &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;kramdown&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;# use kramdown as markdown convertor&lt;/span&gt;
+&lt;span class=&quot;ss&quot;&gt;kramdown:
+  input: &lt;/span&gt;&lt;span class=&quot;no&quot;&gt;GFM&lt;/span&gt;
+  &lt;span class=&quot;ss&quot;&gt;hard_wrap: &lt;/span&gt;&lt;span class=&quot;kp&quot;&gt;true&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# a newline in markdown text would be changed to &amp;lt;br&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;ss&quot;&gt;gems:
+  &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;jemoji&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# if need Github Emoji you have to add it&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# the Github would set up when upload to Github Pages，See：Github Help With Configuring Jekyll&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# Github Pages default settings, you can Override here !&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;# kramdown:&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;#   input: GFM&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;#   hard_wrap: false&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;# gems:&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;#   - jekyll-coffeescript&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;#   - jekyll-paginate&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# Github Pages settings which you can NOT Override !&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;# lsi: false&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;# safe: true&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;# source: [your repo&#39;s top level directory]&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;# incremental: false&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;# highlighter: rouge&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;# gist:&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;#  noscript: false&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;# kramdown:&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;#  math_engine: mathjax&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h4 id=&quot;new-a-page&quot;&gt;New a Page&lt;/h4&gt;
+
+&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Way 1&lt;/td&gt;
+      &lt;td&gt;add &lt;code class=&quot;highlighter-rouge&quot;&gt;xxx.html&lt;/code&gt; in &lt;strong&gt;jekyll-root&lt;/strong&gt;，site path is &lt;code class=&quot;highlighter-rouge&quot;&gt;/xxx.html&lt;/code&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Way 2&lt;/td&gt;
+      &lt;td&gt;add &lt;code class=&quot;highlighter-rouge&quot;&gt;xxx/index.html&lt;/code&gt; in &lt;strong&gt;jekyll-root&lt;/strong&gt;，site path is &lt;code class=&quot;highlighter-rouge&quot;&gt;/xxx&lt;/code&gt;，No need postfix&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h4 id=&quot;the-front-matter-in-page&quot;&gt;the &lt;code class=&quot;highlighter-rouge&quot;&gt;front matter&lt;/code&gt; in page&lt;/h4&gt;
+&lt;p&gt;Every page has its own YAML front matter, which can create variables or override the variables in _config.yml&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;---&lt;/span&gt;
+&lt;span class=&quot;ss&quot;&gt;layout: &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;post&lt;/span&gt;
+&lt;span class=&quot;ss&quot;&gt;title: &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;step&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;by&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;step&lt;/span&gt;
+&lt;span class=&quot;ss&quot;&gt;categories: &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;jekyll&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;github&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;markdown&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;rouge&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+&lt;span class=&quot;ss&quot;&gt;date: &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2016&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;9&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;15&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;47&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mo&quot;&gt;05&lt;/span&gt;
+&lt;span class=&quot;ss&quot;&gt;excerpt: &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&quot;&lt;/span&gt;   &lt;span class=&quot;c1&quot;&gt;# override the post&#39;s default excerpt&lt;/span&gt;
+&lt;span class=&quot;ss&quot;&gt;pid: &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&quot;&lt;/span&gt;       &lt;span class=&quot;c1&quot;&gt;# new a pid variable&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;---&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h4 id=&quot;the-site-variable&quot;&gt;the &lt;code class=&quot;highlighter-rouge&quot;&gt;site&lt;/code&gt; Variable&lt;/h4&gt;
+&lt;p&gt;the site variable can access variables in &lt;code class=&quot;highlighter-rouge&quot;&gt;_config.yml&lt;/code&gt; or Jekyll：&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;site.posts&lt;/td&gt;
+      &lt;td&gt;a posts collections from new to old&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;site.categories&lt;/td&gt;
+      &lt;td&gt;categories and posts Map&lt;code class=&quot;highlighter-rouge&quot;&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;cate1:[post1,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;post2],&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;cate2:[post3,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;post4]&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;site.tags&lt;/td&gt;
+      &lt;td&gt;tags and posts Map&lt;code class=&quot;highlighter-rouge&quot;&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;tag1:[post1,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;post2],&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;tag2:[post3,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;post4]&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;site.XXX&lt;/td&gt;
+      &lt;td&gt;variables define in &lt;code class=&quot;highlighter-rouge&quot;&gt;_config.yml&lt;/code&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h4 id=&quot;the-page-variable&quot;&gt;the &lt;code class=&quot;highlighter-rouge&quot;&gt;page&lt;/code&gt; Variable&lt;/h4&gt;
+&lt;p&gt;the variable refer to current page, for example, in index.html, page is the index.html page, you can access the front matter in index.html:&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;page.content&lt;/td&gt;
+      &lt;td&gt;page &lt;strong&gt;source&lt;/strong&gt;(markdown text)&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;page.title&lt;/td&gt;
+      &lt;td&gt;page title&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;page.excerpt&lt;/td&gt;
+      &lt;td&gt;excerpt &lt;strong&gt;source&lt;/strong&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;page.url&lt;/td&gt;
+      &lt;td&gt;the &lt;strong&gt;relative path&lt;/strong&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;page.date&lt;/td&gt;
+      &lt;td&gt;the date&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;page.categories&lt;/td&gt;
+      &lt;td&gt;the categories array，&lt;code class=&quot;highlighter-rouge&quot;&gt;linux/ruby/_posts/ruby.md&lt;/code&gt; would merge linux and ruby into categories，NOTE page.categories is different with site.categories！&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;page.tags&lt;/td&gt;
+      &lt;td&gt;the tags array&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;page.path&lt;/td&gt;
+      &lt;td&gt;the path in source directory(source path)&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;NOTE：the post in site.posts is almost the same as page variable&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h4 id=&quot;the-liquid-language&quot;&gt;the &lt;code class=&quot;highlighter-rouge&quot;&gt;Liquid&lt;/code&gt; Language&lt;/h4&gt;
+&lt;p&gt;if you want to do some logic operation, you need to learn the &lt;a href=&quot;https://github.com/Shopify/liquid/wiki/Liquid-for-Designers&quot;&gt;Liquid language&lt;/a&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;show the value of a variable&lt;br /&gt;
+ &lt;code class=&quot;highlighter-rouge&quot;&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;variable&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/p&gt;
+
+    &lt;p&gt;combine a string：&lt;code class=&quot;highlighter-rouge&quot;&gt;&quot;head{{ variable }}tail&quot;&lt;/code&gt;&lt;/p&gt;
+
+    &lt;p&gt;or use Filter：&lt;code class=&quot;highlighter-rouge&quot;&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;head&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;append&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;variable&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;append&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;tail&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;assign&lt;br /&gt;
+ &lt;code class=&quot;highlighter-rouge&quot;&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;assign&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;titleAndDate&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;page.title&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;append:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;page.date&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/p&gt;
+
+    &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;assign x = y&lt;/code&gt; to create a &lt;code class=&quot;highlighter-rouge&quot;&gt;x&lt;/code&gt; variable，&lt;strong&gt;when assign you have to assign a value！&lt;/strong&gt;&lt;/p&gt;
+
+    &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;xxx | append: &quot;str&quot;&lt;/code&gt; is Liquid’s Filter, just like &lt;code class=&quot;highlighter-rouge&quot;&gt;object | method:parameter&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;if&lt;/p&gt;
+
+    &lt;div class=&quot;language-liquid highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;{%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kr&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;site&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;title&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;==&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;%}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;assign&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;title&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;A&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;%}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;/div&gt;
+    &lt;p&gt;{% elsif site.title == “stepbystep” %}&lt;br /&gt;
+{% assign title = “B” %}&lt;br /&gt;
+{% else %}&lt;br /&gt;
+{% assign title = “C” %}&lt;br /&gt;
+{% endif %}&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;for&lt;/p&gt;
+
+    &lt;div class=&quot;language-liquid highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;{%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;post&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;in&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;site.posts&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;%}&lt;/span&gt;
+ &lt;span class=&quot;p&quot;&gt;{%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;assign&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;title&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;post&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;title&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;%}&lt;/span&gt;
+ The post title is &lt;span class=&quot;p&quot;&gt;{{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;title&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;endfor&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;%}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;access map’s key and value&lt;br /&gt;
+ like &lt;code class=&quot;highlighter-rouge&quot;&gt;site.categories&lt;/code&gt;, access the category called &lt;code class=&quot;highlighter-rouge&quot;&gt;linux&lt;/code&gt; has two ways：&lt;br /&gt;
+ Way 1: &lt;code class=&quot;highlighter-rouge&quot;&gt;site.categories.linux&lt;/code&gt; is the posts list of linux category&lt;br /&gt;
+ Way 2: &lt;code class=&quot;highlighter-rouge&quot;&gt;for cate in site.categories&lt;/code&gt;，&lt;code class=&quot;highlighter-rouge&quot;&gt;cate[0]&lt;/code&gt; is linux，&lt;code class=&quot;highlighter-rouge&quot;&gt;cate[1]&lt;/code&gt; is the posts list&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;NOTE：{% %} &lt;strong&gt;can not break line&lt;/strong&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;what-else-did-i-do&quot;&gt;What else did I do&lt;/h2&gt;
+
+&lt;h3 id=&quot;database-file&quot;&gt;Database File&lt;/h3&gt;
+&lt;p&gt;Jekyll dose not has database, but just like most &lt;code class=&quot;highlighter-rouge&quot;&gt;feed.xml&lt;/code&gt; in jekyll themes, it just like a database file. Therefore, we can create a &lt;code class=&quot;highlighter-rouge&quot;&gt;postfile&lt;/code&gt; to load all data we need and then get it by javascript when requesting the html page.&lt;/p&gt;
+
+&lt;p&gt;A Postfile formatted with json:&lt;/p&gt;
+
+&lt;div class=&quot;language-json highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;posts&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+     &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;title&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;step by step to create a Jekyll theme&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+     &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;words&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;1932&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+     &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;author&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;jokin&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+     &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;date&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;2016-09-03 23:47:05&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+     &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;url&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;/2016/09/03/how-to-create-the-jekyll-theme.html&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+     &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;pid&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;20160903-154705&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+     &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;image&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;/w3c/images/jekyll.jpg&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+     &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;categories&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;jekyll&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+     &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;excerpt&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;learn how to create the jekyll theme...&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+   &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+   &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;...&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;...&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Liquid Syntax：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;posts&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;post&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;in&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;site.posts&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+      &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;title&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;{{ post.title }}&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+      &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;words&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;{{ post.content | number_of_words }}&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+      &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;author&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;{{ site.author }}&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+      &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;date&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;{{ post.date | date:&quot;&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;%Y-%m-%d&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;%H:%M:%S&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot; }}&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+      &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;url&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;{{ post.url }}&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+      &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;pid&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;{{ post.pid }}&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+      &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;categories&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+        &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;cate&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;in&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;post.categories&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+          &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;{{ cate }}&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+        &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;endfor&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+      &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+      &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;......&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;endfor&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://raw.githubusercontent.com/jokinkuang/stepbystep/master/db/Postfile&quot;&gt;Download the Postfile&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;a-category-a-page&quot;&gt;A category a page&lt;/h3&gt;
+&lt;p&gt;Usually the categories html page in jekyll theme is one page:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;linux
+    - shell
+mac
+    - ios
+    - xcode
+windows
+    - windows API
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Because we only can loop it like this:&lt;/p&gt;
+
+&lt;div class=&quot;language-liquid highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;{%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;cates&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;in&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;site.categories&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;%}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;cates&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}}&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;{%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;post&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;in&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;cates[&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;]&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;%}&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;{{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;post&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;title&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}}&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;{%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;endfor&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;%}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;endfor&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;%}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;If we want a category a page, we can not loop. we have to add the new category page hand by hand.&lt;br /&gt;
+But with upper &lt;code class=&quot;highlighter-rouge&quot;&gt;postfile&lt;/code&gt; we can do that with javascript at the fore-end in browser.&lt;/p&gt;
+
+&lt;p&gt;We can loop it in browser to show the posts of the selected category.&lt;/p&gt;
+
+&lt;h3 id=&quot;subdirs-as-categories&quot;&gt;Subdirs as Categories&lt;/h3&gt;
+&lt;p&gt;Jekyll default supports that &lt;code class=&quot;highlighter-rouge&quot;&gt;/windows/api/_posts/2016-9-22-category.md&lt;/code&gt;, the &lt;code class=&quot;highlighter-rouge&quot;&gt;windows&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;api&lt;/code&gt; would be merged into the post categories.&lt;/p&gt;
+
+&lt;p&gt;But why not &lt;code class=&quot;highlighter-rouge&quot;&gt;_posts/windows/api/2016-9-22-category.md&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;We can use Liquid script to implement this feature. In &lt;code class=&quot;highlighter-rouge&quot;&gt;page&lt;/code&gt; variable, &lt;code class=&quot;highlighter-rouge&quot;&gt;page.path&lt;/code&gt; refers to the source path string &lt;code class=&quot;highlighter-rouge&quot;&gt;_posts/windows/api/2016-9-22-category.md&lt;/code&gt;, we can split it to get the subdirs we want.&lt;/p&gt;
+
+&lt;p&gt;But note that, after that we can not access the &lt;code class=&quot;highlighter-rouge&quot;&gt;post.categories&lt;/code&gt; or &lt;code class=&quot;highlighter-rouge&quot;&gt;site.categories&lt;/code&gt; directly, cause the subdirs are not include.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://raw.githubusercontent.com/jokinkuang/stepbystep/master/_includes/post-categories.liquid&quot;&gt;Liquid script to get the post’s categories&lt;/a&gt;&lt;br /&gt;
+&lt;a href=&quot;https://raw.githubusercontent.com/jokinkuang/stepbystep/master/_includes/total-categories.liquid&quot;&gt;Liquid script to get the site’s categories&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;upload-your-theme-to-jekyllthemes&quot;&gt;Upload your theme to JekyllThemes&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&quot;http://jekyllthemes.org/&quot;&gt;JekyllThemes&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;references&quot;&gt;References&lt;/h2&gt;
+
+&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Read·&lt;a href=&quot;http://jekyll.bootcss.com/&quot;&gt;Jekyll Chinese&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;a href=&quot;http://jekyllrb.com/&quot;&gt;English&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Read·&lt;a href=&quot;https://help.shopify.com/themes/liquid&quot;&gt;Liquid Doc1&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;a href=&quot;https://github.com/Shopify/liquid/wiki/Liquid-for-Designers&quot;&gt;Doc2&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;a href=&quot;https://shopify.github.io/liquid/&quot;&gt;Doc3&lt;/a&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Read·&lt;a href=&quot;https://github.com/jneen/rouge&quot;&gt;highlighter rouge Doc&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Read·&lt;a href=&quot;http://kramdown.gettalong.org/&quot;&gt;Markdown convertor kramdown （support maruku）&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Read·&lt;a href=&quot;http://maruku.rubyforge.org/maruku.html&quot;&gt;Markdown convertor maruku （support TOC）&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+</description>
+        <pubDate>Sat, 03 Sep 2016 23:47:05 +0800</pubDate>
+        <link>http://yourdomain.github.io/2016/09/03/stey-by-step-to-create-a-jekyll-theme.html</link>
+        <guid isPermaLink="true">http://yourdomain.github.io/2016/09/03/stey-by-step-to-create-a-jekyll-theme.html</guid>
+        
+        
+        <category>jekyll</category>
+        
+      </item>
+    
+      <item>
+        <title>一步一步创建Jekyll主题</title>
+        <description>&lt;p&gt;讲述当前Jekyll站点的制作过程&lt;/p&gt;
+
+&lt;h2&gt;目录&lt;/h2&gt;
+
+&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#jekyll&quot; id=&quot;markdown-toc-jekyll&quot;&gt;搭建本地的Jekyll环境&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#section&quot; id=&quot;markdown-toc-section&quot;&gt;本地跑起来&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#github-pages&quot; id=&quot;markdown-toc-github-pages&quot;&gt;Github Pages环境本地化&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#windowsjekyll&quot; id=&quot;markdown-toc-windowsjekyll&quot;&gt;Windows下搭建Jekyll环境&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#bundle-install&quot; id=&quot;markdown-toc-bundle-install&quot;&gt;bundle install失败&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#rubybinbundlebundlebat&quot; id=&quot;markdown-toc-rubybinbundlebundlebat&quot;&gt;ruby/bin下面的bundle与bundle.bat区别&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#section-1&quot; id=&quot;markdown-toc-section-1&quot;&gt;环境配置总结&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#section-2&quot; id=&quot;markdown-toc-section-2&quot;&gt;需要一个网页原型&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#jekyll-1&quot; id=&quot;markdown-toc-jekyll-1&quot;&gt;初步认识Jekyll&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#jekyll-2&quot; id=&quot;markdown-toc-jekyll-2&quot;&gt;Jekyll是什么&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#section-3&quot; id=&quot;markdown-toc-section-3&quot;&gt;静态网页&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#section-4&quot; id=&quot;markdown-toc-section-4&quot;&gt;没有数据库&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#section-5&quot; id=&quot;markdown-toc-section-5&quot;&gt;没有评论功能&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#markdown&quot; id=&quot;markdown-toc-markdown&quot;&gt;理解Markdown是如何工作的&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#highlight&quot; id=&quot;markdown-toc-highlight&quot;&gt;理解Highlight语法高亮是如何实现的&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#jekyll-3&quot; id=&quot;markdown-toc-jekyll-3&quot;&gt;开始制作自己的Jekyll主题&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#jekyll-4&quot; id=&quot;markdown-toc-jekyll-4&quot;&gt;新建Jekyll模板&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#jekyll-5&quot; id=&quot;markdown-toc-jekyll-5&quot;&gt;认识Jekyll模板的结构&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#section-6&quot; id=&quot;markdown-toc-section-6&quot;&gt;简化模板&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#section-7&quot; id=&quot;markdown-toc-section-7&quot;&gt;将网页原型加入模板&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#jekyll-6&quot; id=&quot;markdown-toc-jekyll-6&quot;&gt;深入理解Jekyll&lt;/a&gt;        &lt;ul&gt;
+          &lt;li&gt;&lt;a href=&quot;#layouts&quot; id=&quot;markdown-toc-layouts&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;_layouts&lt;/code&gt;目录&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#includes&quot; id=&quot;markdown-toc-includes&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;_includes&lt;/code&gt;目录&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#configyml&quot; id=&quot;markdown-toc-configyml&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;_config.yml&lt;/code&gt;配置文件&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#section-8&quot; id=&quot;markdown-toc-section-8&quot;&gt;创建页面&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#front-matteryaml&quot; id=&quot;markdown-toc-front-matteryaml&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;front matter&lt;/code&gt;(Yaml头信息)&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#site&quot; id=&quot;markdown-toc-site&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;site&lt;/code&gt;变量&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#page&quot; id=&quot;markdown-toc-page&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;page&lt;/code&gt;变量&lt;/a&gt;&lt;/li&gt;
+          &lt;li&gt;&lt;a href=&quot;#liquid&quot; id=&quot;markdown-toc-liquid&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;liquid&lt;/code&gt;语法&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#section-9&quot; id=&quot;markdown-toc-section-9&quot;&gt;改造自己的主题&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#section-10&quot; id=&quot;markdown-toc-section-10&quot;&gt;除此之外我做了什么&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#jekyllthemes&quot; id=&quot;markdown-toc-jekyllthemes&quot;&gt;上传自己的主题到JekyllThemes&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#jekyll-7&quot; id=&quot;markdown-toc-jekyll-7&quot;&gt;Jekyll&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#section-11&quot; id=&quot;markdown-toc-section-11&quot;&gt;参考文档&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;jekyll&quot;&gt;搭建本地的Jekyll环境&lt;/h2&gt;
+
+&lt;p&gt;因为图方便所以个人直接在Ubuntu下搭建了环境，在Mac下也几乎一样。&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;安装ruby环境&lt;br /&gt;
+  &lt;code class=&quot;highlighter-rouge&quot;&gt;sudo apt-get install ruby&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;安装Jekyll&lt;br /&gt;
+  &lt;code class=&quot;highlighter-rouge&quot;&gt;sudo gem install jekyll&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;安装kramdown&lt;br /&gt;
+  &lt;code class=&quot;highlighter-rouge&quot;&gt;sudo gem install kramdown&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;安装rouge&lt;br /&gt;
+  &lt;code class=&quot;highlighter-rouge&quot;&gt;sudo gem install rouge&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;测试Jekyll是否安装完成&lt;br /&gt;
+  &lt;code class=&quot;highlighter-rouge&quot;&gt;jekyll --version&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;从上面可以看出，这是一套基于Ruby语言的工具集。&lt;br /&gt;
+&lt;strong&gt;题外话：&lt;/strong&gt;gem install是ruby用来管理ruby工具集的工具，而npm install是nodejs用来管理js工具集的工具。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;section&quot;&gt;本地跑起来&lt;/h2&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;jekyll new mytheme
+cd mytheme
+jekyll server
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;运行上面的命令，然后访问&lt;a href=&quot;http://127.0.0.1:4000&quot;&gt;127.0.0.1:4000&lt;/a&gt;，就能看到一个由Jekyll搭建的博客了。&lt;/p&gt;
+
+&lt;h2 id=&quot;github-pages&quot;&gt;Github Pages环境本地化&lt;/h2&gt;
+
+&lt;p&gt;上面搭建的只是Jekyll的本地环境，当push到Github Pages后环境会有所变化，为了本地看到的效果和托管在Github Pages看到的效果一致，我们最好搭建本地的Github Pages环境。&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;升级ruby到2.0.0以上&lt;br /&gt;
+  如果&lt;code class=&quot;highlighter-rouge&quot;&gt;ruby --version&lt;/code&gt;查看版本低于2.0.0，那么需要升级ruby。&lt;/li&gt;
+  &lt;li&gt;安装ruby工具集管理工具&lt;a href=&quot;http://bundler.io/&quot;&gt;Bundler&lt;/a&gt;&lt;br /&gt;
+  &lt;code class=&quot;highlighter-rouge&quot;&gt;sudo gem install bundler&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;创建Gemfile&lt;br /&gt;
+  在上面的mytheme根目录下创建一个Gemfile文件，内容为：&lt;br /&gt;
+  &lt;code class=&quot;highlighter-rouge&quot;&gt;source &#39;https://rubygems.org&#39;&lt;/code&gt;&lt;br /&gt;
+  &lt;code class=&quot;highlighter-rouge&quot;&gt;gem &#39;github-pages&#39;, group::jekyll_plugins&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;安装Github Pages的工具集&lt;br /&gt;
+  在Gemfile所在的目录，即Jekyll主题的根目录，执行下面的命令：&lt;br /&gt;
+  &lt;code class=&quot;highlighter-rouge&quot;&gt;bundle install&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;跑起来&lt;br /&gt;
+  &lt;code class=&quot;highlighter-rouge&quot;&gt;bundle exec jekyll serve&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;如果出现&lt;code class=&quot;highlighter-rouge&quot;&gt;bundle exec jekyll serve&lt;/code&gt;能启动，而&lt;code class=&quot;highlighter-rouge&quot;&gt;jekyll serve&lt;/code&gt;不能启动，则删除Gemfile和Gemfile.lock重新运行&lt;code class=&quot;highlighter-rouge&quot;&gt;jekyll serve&lt;/code&gt;即可。&lt;br /&gt;
+更多Github Pages本地化环境搭建，可参考&lt;a href=&quot;https://help.github.com/articles/setting-up-your-github-pages-site-locally-with-jekyll&quot;&gt;github-helper-setting-up-your-github-pages-site-locally-with-jekyll&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;windowsjekyll&quot;&gt;Windows下搭建Jekyll环境&lt;/h2&gt;
+&lt;p&gt;因为不少的时间在Windows平台下工作，所以后来还是搭建了Windows下的Jekyll环境。&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;安装ruby环境&lt;br /&gt;
+  下载&lt;a href=&quot;http://rubyinstaller.org/downloads&quot;&gt;ruby for windows&lt;/a&gt;，随便搜索即可，建议安装ruby2.0以上。&lt;/li&gt;
+  &lt;li&gt;安装完毕，设置Windows环境变量&lt;br /&gt;
+  在我的电脑 - 属性 - 高级 - 环境变量 - 系统 - path字段，添加ruby的安装路径。比如&lt;code class=&quot;highlighter-rouge&quot;&gt;C:\Ruby22\bin;&lt;/code&gt;，安装包有提供选项可以在安装时自动添加到path。&lt;/li&gt;
+  &lt;li&gt;安装Jekyll&lt;br /&gt;
+ 打开命令行，输入gem.bat (Ruby22/bin/gem.bat)，如果没有找到该命令，说明环境变量还没有生效。在命令行输入&lt;code class=&quot;highlighter-rouge&quot;&gt;set a = b&lt;/code&gt;，然后重启命令行即可(运行set只是让命令行重新加载环境变量)。&lt;br /&gt;
+ 执行&lt;code class=&quot;highlighter-rouge&quot;&gt;gem install jekyll&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;安装bundler&lt;br /&gt;
+ &lt;code class=&quot;highlighter-rouge&quot;&gt;gem install bundler&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;使用bundler安装github pages的依赖&lt;br /&gt;
+ &lt;code class=&quot;highlighter-rouge&quot;&gt;bundle install&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;跑起来&lt;br /&gt;
+ &lt;code class=&quot;highlighter-rouge&quot;&gt;bundle exec jekyll server&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;如果端口被占用&lt;br /&gt;
+ &lt;code class=&quot;highlighter-rouge&quot;&gt;bundle exec jekyll server --port 5000&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;bundle-install&quot;&gt;bundle install失败&lt;/h3&gt;
+&lt;p&gt;bundle install出现了以下错误:&lt;/p&gt;
+
+&lt;p&gt;Please update your PATH to include build tools or download the DevKit&lt;br /&gt;
+from ‘http://rubyinstaller.org/downloads’ and follow the instructions&lt;br /&gt;
+at ‘http://github.com/oneclick/rubyinstaller/wiki/Development-Kit’&lt;br /&gt;
+大致意思是插件需要编译安装，而系统没有安装编译环境，只有运行环境，请按照wiki里面的步骤安装。&lt;/p&gt;
+
+&lt;p&gt;修复：&lt;br /&gt;
+下载&lt;a href=&quot;http://rubyinstaller.org/downloads&quot;&gt;ruby-devkit&lt;/a&gt;，如果ruby是32位则下载32位的devkit，否则下载64位的。&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;ruby –version可以看到是32位还是64位&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;安装：&lt;br /&gt;
+详细说明在&lt;a href=&quot;https://github.com/oneclick/rubyinstaller/wiki/Development-Kit&quot;&gt;github wiki&lt;/a&gt;里&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;解压devkit到目录A&lt;/li&gt;
+  &lt;li&gt;进入目录A&lt;/li&gt;
+  &lt;li&gt;命令行下运行&lt;code class=&quot;highlighter-rouge&quot;&gt;ruby dk.rb init&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;运行&lt;code class=&quot;highlighter-rouge&quot;&gt;ruby dk.rb review&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;运行&lt;code class=&quot;highlighter-rouge&quot;&gt;ruby dk.rb install&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;如果上述步骤只有info输出而没有warning输出，则应该安装成功了&lt;/li&gt;
+  &lt;li&gt;测试&lt;code class=&quot;highlighter-rouge&quot;&gt;gem install json --platform=ruby&lt;/code&gt;如果安装成功，则表示devkit安装成功&lt;/li&gt;
+  &lt;li&gt;如果失败，可以重装ruby和ruby-devkit，或者选择更低的ruby版本&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;rubybinbundlebundlebat&quot;&gt;ruby/bin下面的bundle与bundle.bat区别&lt;/h3&gt;
+
+&lt;p&gt;bundle是ruby脚本而bundle.bat是windows批处理文件&lt;br /&gt;
+在windows命令行下，bundle其实执行的是bundle.bat，所以不会报错。bundle文件不会被识别为可执行文件。&lt;br /&gt;
+在mingw命令行下(mingw/msys.bat)，bundle可以成功执行，而bundle.bat则会因为使用了windows命令而报错。&lt;/p&gt;
+
+&lt;h2 id=&quot;section-1&quot;&gt;环境配置总结&lt;/h2&gt;
+&lt;p&gt;环境的配置，简而言之，只有以下的步骤：&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;安装ruby&lt;/li&gt;
+  &lt;li&gt;gem install jekyll&lt;/li&gt;
+  &lt;li&gt;gem install bundle&lt;/li&gt;
+  &lt;li&gt;git clone https://github.com/jokinkuang/stepbystep.git&lt;/li&gt;
+  &lt;li&gt;cd stepbystep&lt;/li&gt;
+  &lt;li&gt;bundle install&lt;/li&gt;
+  &lt;li&gt;bundle exec jekyll server&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;section-2&quot;&gt;需要一个网页原型&lt;/h2&gt;
+
+&lt;p&gt;Github Pages和Jekyll本地环境已经搭建完成，访问&lt;a href=&quot;http://127.0.0.1:4000&quot;&gt;127.0.0.1:4000&lt;/a&gt;也能够看到一个简单的博客，接下来就是思考自己的博客应该长哪样。&lt;/p&gt;
+
+&lt;p&gt;一般来说，要定制自己的博客，最好先设计出博客的网页原型，所谓网页原型即是使用html、css甚至js来完成静态的网页效果。当前博客的原型只有三个页面：&lt;code class=&quot;highlighter-rouge&quot;&gt;index.html&lt;/code&gt;、&lt;code class=&quot;highlighter-rouge&quot;&gt;article.html&lt;/code&gt;和&lt;code class=&quot;highlighter-rouge&quot;&gt;post.html&lt;/code&gt;。&lt;/p&gt;
+
+&lt;p&gt;最后，&lt;strong&gt;Jekyll模板已经跑起来了，网页原型也有了，怎么将两者结合起来呢？&lt;/strong&gt;在整合之前，我们需要先了解Jekyll博客系统。&lt;/p&gt;
+
+&lt;h2 id=&quot;jekyll-1&quot;&gt;初步认识Jekyll&lt;/h2&gt;
+
+&lt;h3 id=&quot;jekyll-2&quot;&gt;Jekyll是什么&lt;/h3&gt;
+
+&lt;p&gt;Jekyll的描述是，将纯文本转化为静态博客网站，不需要数据库和评论功能。&lt;br /&gt;
+其实更贴切的描述应该是这样&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Jekyll是一个静态博客系统，在服务器启动前可写，在服务器启动后只读，所以无法实现数据库和评论功能。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;section-3&quot;&gt;静态网页&lt;/h3&gt;
+
+&lt;p&gt;静态网页和动态网页的区别是，静态网页无论是否访问，它就已经存在那里，并且内容已经固定不可改。所以Jekyll在每次增加文章时就已经生成对应的静态网页，而不是每次访问时动态生成的。&lt;/p&gt;
+
+&lt;p&gt;举个例子&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;当前Jekyll模板有一个页面：categories.html（目录和对应的文章列表页）&lt;/p&gt;
+
+  &lt;p&gt;当新增一篇demo.md文章后，Jekyll会重新生成新的博客站点，demo.md会被转化为demo.html，而categories.html会被重新生成，内容是包含demo这篇新文章的列表。&lt;/p&gt;
+
+  &lt;p&gt;&lt;strong&gt;所以&lt;/strong&gt;，Jekyll的页面都是在访问前就已经重新生成了，这就是静态。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;section-4&quot;&gt;没有数据库&lt;/h3&gt;
+
+&lt;p&gt;如果&lt;code class=&quot;highlighter-rouge&quot;&gt;数据库&lt;/code&gt;指的是像MySQL那种可读写的数据库，Jekyll确实没有。但是如果&lt;code class=&quot;highlighter-rouge&quot;&gt;数据库&lt;/code&gt;指的只是存储数据的地方，Jekyll其实是有的，只不过是&lt;code class=&quot;highlighter-rouge&quot;&gt;只读&lt;/code&gt;的。&lt;/p&gt;
+
+&lt;p&gt;Jekyll内的&lt;code class=&quot;highlighter-rouge&quot;&gt;_config.yml&lt;/code&gt;配置、各种内置对象(&lt;code class=&quot;highlighter-rouge&quot;&gt;site&lt;/code&gt;、&lt;code class=&quot;highlighter-rouge&quot;&gt;page&lt;/code&gt;、&lt;code class=&quot;highlighter-rouge&quot;&gt;categories&lt;/code&gt;等)、用户自定义的内容（变量、集合、文本、网页等），都可以看做是Jekyll的数据库，开发者可以访问这个数据库组织自己的页面内容，&lt;strong&gt;除了可以在Jekyll构建站点时直接访问，还可以写到json格式的文件暴露出来在网页初始化时访问&lt;/strong&gt;。&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;但有一点要注意：Jekyll内所有可访问的变量都是&lt;code class=&quot;highlighter-rouge&quot;&gt;静态&lt;/code&gt;的，也即是&lt;code class=&quot;highlighter-rouge&quot;&gt;只读&lt;/code&gt;的，所以不可以重新赋值！&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;section-5&quot;&gt;没有评论功能&lt;/h3&gt;
+
+&lt;p&gt;Jekyll是无法写入的，所以无法支持评论功能。任何写入操作都只能借助第三方服务。&lt;/p&gt;
+
+&lt;h2 id=&quot;markdown&quot;&gt;理解Markdown是如何工作的&lt;/h2&gt;
+
+&lt;p&gt;这是一段markdown文本：&lt;/p&gt;
+
+&lt;div class=&quot;language-markdown highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gu&quot;&gt;## Markdown Demo&lt;/span&gt;
+
+This is a &lt;span class=&quot;sb&quot;&gt;`markdown`&lt;/span&gt; demo
+&lt;span class=&quot;gt&quot;&gt;
+&amp;gt; try it&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;使用markdown转换器转换后得到的html是这样的：&lt;/p&gt;
+
+&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;h2&amp;gt;&lt;/span&gt;Markdown Demo&lt;span class=&quot;nt&quot;&gt;&amp;lt;/h2&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;p&amp;gt;&lt;/span&gt;This is a &lt;span class=&quot;nt&quot;&gt;&amp;lt;code&amp;gt;&lt;/span&gt;markdown&lt;span class=&quot;nt&quot;&gt;&amp;lt;/code&amp;gt;&lt;/span&gt; demo&lt;span class=&quot;nt&quot;&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;blockquote&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;p&amp;gt;&lt;/span&gt;try it&lt;span class=&quot;nt&quot;&gt;&amp;lt;/p&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/blockquote&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;直接使用浏览器打开是这样的：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/w3c/images/markdown/markdown-plain.jpg&quot; alt=&quot;markdown-plain&quot; title=&quot;html效果&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Markdown转换结果只是单纯的html页面，关于页面的样式，需要我们自己提供css&lt;/strong&gt;&lt;br /&gt;
+添加下面的css&lt;/p&gt;
+
+&lt;div class=&quot;language-css highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;style&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;h2&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+	&lt;span class=&quot;nl&quot;&gt;color&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;red&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;blockquote&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+	&lt;span class=&quot;nl&quot;&gt;background-color&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;#fef3f3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+	&lt;span class=&quot;nl&quot;&gt;border-left&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;4px&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;solid&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;#d6a6a6&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+	&lt;span class=&quot;nl&quot;&gt;margin&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;&amp;lt;/&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;style&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;为页面添加css后html是这样的：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/w3c/images/markdown/markdown-css.jpg&quot; alt=&quot;markdown-css&quot; title=&quot;添加css后html效果&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;总结&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Markdown解析器只是将文本转换为html，并不会为html添加默认的css样式。&lt;br /&gt;
+Jekyll模板里有对应的css文件用于转换后的html页面效果。&lt;br /&gt;
+&lt;strong&gt;另外注意，不同的markdown转换器得到的html标签的属性可能不一样，有的转换器可能会在标签中加入转换器名称做标识，所以css选择器具体要以转换后的结果为准。&lt;/strong&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;比如，Markdown的TOC功能得到的列表是这样的&lt;/p&gt;
+
+&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;ul&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;id=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;markdown-toc&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;li&amp;gt;&lt;/span&gt;目录&lt;span class=&quot;nt&quot;&gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/ul&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;highlight&quot;&gt;理解Highlight语法高亮是如何实现的&lt;/h2&gt;
+
+&lt;p&gt;markdown里代码块是这样的：&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt; ```css
+  &amp;lt;style&amp;gt;
+ ```
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;通过rouge语法高亮引擎，得到的html内容是这样的：&lt;/p&gt;
+
+&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;div&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;language-css highlighter-rouge&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;pre&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;highlight&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;code&amp;gt;&lt;/span&gt;
+      &lt;span class=&quot;nt&quot;&gt;&amp;lt;span&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;o&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;ni&quot;&gt;&amp;amp;lt;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;/span&amp;gt;&lt;/span&gt;
+      &lt;span class=&quot;nt&quot;&gt;&amp;lt;span&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;nt&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;style&lt;span class=&quot;nt&quot;&gt;&amp;lt;/span&amp;gt;&lt;/span&gt;
+      &lt;span class=&quot;nt&quot;&gt;&amp;lt;span&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;o&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;ni&quot;&gt;&amp;amp;gt;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;/span&amp;gt;&lt;/span&gt;&amp;gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/code&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;/pre&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/div&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;rouge语法高亮引擎附带了对应的rouge.css：&lt;/p&gt;
+
+&lt;div class=&quot;language-css highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nc&quot;&gt;.highlight&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nl&quot;&gt;color&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;#D53FB7&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;nc&quot;&gt;.highlight&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;.o&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nl&quot;&gt;color&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;#f92672&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;nc&quot;&gt;.highlight&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;.nt&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nl&quot;&gt;color&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;#f92672&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;于是，页面的代码块就根据关键字、变量、字符串等有了不一样的颜色&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;总结&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;语法高亮引擎的作用，只是根据代码的语言，分割出与之对应的关键字、变量、字符串等，并赋予对应的css样式，最后调整css的颜色就形成了代码高亮的效果。&lt;br /&gt;
+同样，Jekyll模板里有对应的css文件用于高亮效果。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Tips&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;rouge.css导出需要执行命令，可以参考&lt;a href=&quot;https://github.com/jneen/rouge&quot;&gt;rouge文档&lt;/a&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;rougify foo.rb
+&lt;span class=&quot;gp&quot;&gt;$ &lt;/span&gt;rougify style monokai.sublime &amp;gt; rouge.css
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;jekyll-3&quot;&gt;开始制作自己的Jekyll主题&lt;/h2&gt;
+
+&lt;h3 id=&quot;jekyll-4&quot;&gt;新建Jekyll模板&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;按照上面的指引，新建一个模板，并搭建好Github Pages的本地环境：&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;jekyll new mytheme&lt;/code&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;jekyll-5&quot;&gt;认识Jekyll模板的结构&lt;/h3&gt;
+&lt;p&gt;下面是用&lt;code class=&quot;highlighter-rouge&quot;&gt;tree&lt;/code&gt;命令输出的目录结构，只是位置进行了调整&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;err&quot;&gt;├──&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;index&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;html&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;├──&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;about&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;md&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;├──&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;_config&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;yml&lt;/span&gt;       &lt;span class=&quot;c1&quot;&gt;# Jekyll核心配置文件&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;├──&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;feed&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;xml&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;├──&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Gemfile&lt;/span&gt;           &lt;span class=&quot;c1&quot;&gt;# Github Pages本地化的文件&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;├──&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Gemfile&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;lock&lt;/span&gt;      &lt;span class=&quot;c1&quot;&gt;# Github Pages本地化的文件&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;├──&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;_sass&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;│  &lt;/span&gt; &lt;span class=&quot;err&quot;&gt;├──&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;_base&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;scss&lt;/span&gt;                  &lt;span class=&quot;c1&quot;&gt;# markdown对应的css&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;│  &lt;/span&gt; &lt;span class=&quot;err&quot;&gt;├──&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;_layout&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;scss&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;│  &lt;/span&gt; &lt;span class=&quot;err&quot;&gt;└──&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;_syntax&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;highlighting&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;scss&lt;/span&gt;   &lt;span class=&quot;c1&quot;&gt;# 语法高亮对应的css&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;├──&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;css&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;│  &lt;/span&gt; &lt;span class=&quot;err&quot;&gt;└──&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;scss&lt;/span&gt;           &lt;span class=&quot;c1&quot;&gt;# 其实就是css&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;├──&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;_includes&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;│  &lt;/span&gt; &lt;span class=&quot;err&quot;&gt;├──&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;footer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;html&lt;/span&gt;         &lt;span class=&quot;c1&quot;&gt;# 页脚html片段&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;│  &lt;/span&gt; &lt;span class=&quot;err&quot;&gt;├──&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;header&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;html&lt;/span&gt;         &lt;span class=&quot;c1&quot;&gt;# 页头html片段&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;│  &lt;/span&gt; &lt;span class=&quot;err&quot;&gt;├──&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;head&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;html&lt;/span&gt;           &lt;span class=&quot;c1&quot;&gt;# html片段&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;│  &lt;/span&gt; &lt;span class=&quot;err&quot;&gt;├──&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;icon&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;github&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;html&lt;/span&gt;    &lt;span class=&quot;c1&quot;&gt;# html片段&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;│  &lt;/span&gt; &lt;span class=&quot;err&quot;&gt;├──&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;icon&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;github&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;svg&lt;/span&gt;     &lt;span class=&quot;c1&quot;&gt;# github图标&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;│  &lt;/span&gt; &lt;span class=&quot;err&quot;&gt;├──&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;icon&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;twitter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;html&lt;/span&gt;   &lt;span class=&quot;c1&quot;&gt;# html片段&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;│  &lt;/span&gt; &lt;span class=&quot;err&quot;&gt;└──&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;icon&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;twitter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;svg&lt;/span&gt;    &lt;span class=&quot;c1&quot;&gt;# twitter图标&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;├──&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;_layouts&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;│  &lt;/span&gt; &lt;span class=&quot;err&quot;&gt;├──&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;default&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;html&lt;/span&gt;        &lt;span class=&quot;c1&quot;&gt;# default页面&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;│  &lt;/span&gt; &lt;span class=&quot;err&quot;&gt;├──&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;page&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;html&lt;/span&gt;           &lt;span class=&quot;c1&quot;&gt;# page页面&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;│  &lt;/span&gt; &lt;span class=&quot;err&quot;&gt;└──&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;post&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;html&lt;/span&gt;           &lt;span class=&quot;c1&quot;&gt;# post页面&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;├──&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;_posts&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;│  &lt;/span&gt; &lt;span class=&quot;err&quot;&gt;└──&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2016&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;08&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;24&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;welcome&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;to&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;jekyll&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;markdown&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;└──&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;_site&lt;/span&gt;             &lt;span class=&quot;c1&quot;&gt;# Jekyll最终生成的静态网站&lt;/span&gt;
+    &lt;span class=&quot;err&quot;&gt;├──&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;about&lt;/span&gt;
+    &lt;span class=&quot;err&quot;&gt;│  &lt;/span&gt; &lt;span class=&quot;err&quot;&gt;└──&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;index&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;html&lt;/span&gt;
+    &lt;span class=&quot;err&quot;&gt;├──&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;css&lt;/span&gt;
+    &lt;span class=&quot;err&quot;&gt;│  &lt;/span&gt; &lt;span class=&quot;err&quot;&gt;└──&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;css&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;# 如果不喜欢上面的那堆scss，那么复制这个过去就够了&lt;/span&gt;
+    &lt;span class=&quot;err&quot;&gt;├──&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;feed&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;xml&lt;/span&gt;
+    &lt;span class=&quot;err&quot;&gt;├──&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Gemfile&lt;/span&gt;
+    &lt;span class=&quot;err&quot;&gt;├──&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Gemfile&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;lock&lt;/span&gt;
+    &lt;span class=&quot;err&quot;&gt;├──&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;index&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;html&lt;/span&gt;
+    &lt;span class=&quot;err&quot;&gt;└──&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;jekyll&lt;/span&gt;
+        &lt;span class=&quot;err&quot;&gt;└──&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;update&lt;/span&gt;
+            &lt;span class=&quot;err&quot;&gt;└──&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2016&lt;/span&gt;
+                &lt;span class=&quot;err&quot;&gt;└──&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;08&lt;/span&gt;
+                    &lt;span class=&quot;err&quot;&gt;└──&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;24&lt;/span&gt;
+                        &lt;span class=&quot;err&quot;&gt;└──&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;welcome&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;to&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;jekyll&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;html&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;section-6&quot;&gt;简化模板&lt;/h3&gt;
+&lt;p&gt;去掉不必要的文件，简化当前模板，得到结构：&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;err&quot;&gt;├──&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;index&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;html&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;├──&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;_config&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;yml&lt;/span&gt;       &lt;span class=&quot;c1&quot;&gt;# Jekyll核心配置文件&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;├──&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;feed&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;xml&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;├──&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Gemfile&lt;/span&gt;           &lt;span class=&quot;c1&quot;&gt;# Github Pages本地化的文件&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;├──&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Gemfile&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;lock&lt;/span&gt;      &lt;span class=&quot;c1&quot;&gt;# Github Pages本地化的文件&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;├──&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;css&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;│  &lt;/span&gt; &lt;span class=&quot;err&quot;&gt;└──&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;markdown&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;css&lt;/span&gt;    &lt;span class=&quot;c1&quot;&gt;# 提取上面_site/css/main.css中设置html部分&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;│  &lt;/span&gt; &lt;span class=&quot;err&quot;&gt;└──&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;highlight&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;css&lt;/span&gt;   &lt;span class=&quot;c1&quot;&gt;# 提取上面_site/css/main.css中语法高亮部分&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;├──&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;_includes&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;├──&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;_layouts&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;│  &lt;/span&gt; &lt;span class=&quot;err&quot;&gt;└──&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;post&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;html&lt;/span&gt;       &lt;span class=&quot;c1&quot;&gt;# 文章页框架&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;├──&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;_posts&lt;/span&gt;
+&lt;span class=&quot;err&quot;&gt;│  &lt;/span&gt; &lt;span class=&quot;err&quot;&gt;└──&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2016&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;08&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;24&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;welcome&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;to&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;jekyll&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;markdown&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;如果不知道如何动手，删除多余文件保留上面的结构即可&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;section-7&quot;&gt;将网页原型加入模板&lt;/h3&gt;
+&lt;p&gt;把设计好的html、javascript、css复制到模板开始改造，在改造前需要&lt;strong&gt;深入理解Jekyll&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;jekyll-6&quot;&gt;深入理解Jekyll&lt;/h3&gt;
+
+&lt;h4 id=&quot;layouts&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;_layouts&lt;/code&gt;目录&lt;/h4&gt;
+&lt;p&gt;该目录下的页面是”包含”其它内容的关系，一般是页面框架&lt;/p&gt;
+
+&lt;h4 id=&quot;includes&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;_includes&lt;/code&gt;目录&lt;/h4&gt;
+&lt;p&gt;该目录下的片段是“被包含”的关系，可以是任何格式的文件，片段也可以include片段。&lt;br /&gt;
+include的语法：  &lt;code class=&quot;highlighter-rouge&quot;&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;include&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;head.html&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;_layouts和_includes与普通页面的关系图：&lt;br /&gt;
+&lt;img src=&quot;/w3c/images/jekyll/jekyll-layout-include.jpg&quot; alt=&quot;jekyll-layout-include&quot; title=&quot;layout与include关系图&quot; /&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;注意：default.html里访问index.html生成的内容是直接访问&lt;code class=&quot;highlighter-rouge&quot;&gt;content&lt;/code&gt;，而不是&lt;code class=&quot;highlighter-rouge&quot;&gt;page.content&lt;/code&gt;或&lt;code class=&quot;highlighter-rouge&quot;&gt;post.content&lt;/code&gt;，这两者的关系大概是前者才是经过处理后的html片段，而后者是原始的文本，包含未解析的liquid语法。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h4 id=&quot;configyml&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;_config.yml&lt;/code&gt;配置文件&lt;/h4&gt;
+&lt;p&gt;Jekyll站点的配置文件，可以存储数据，用于配置Jekyll的插件和运行环境&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;# 自定义变量&lt;/span&gt;
+&lt;span class=&quot;ss&quot;&gt;domain: &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;http://jokinkuang.info&quot;&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# the domain URL for your site&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# 配置&lt;/span&gt;
+&lt;span class=&quot;ss&quot;&gt;excerpt_separator: &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\n\n&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# you can specify your own separator here, default is &quot;\n\n&quot; String&lt;/span&gt;
+&lt;span class=&quot;ss&quot;&gt;permalink: &lt;/span&gt;&lt;span class=&quot;sr&quot;&gt;/:year/&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:month&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:day&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;ss&quot;&gt;:title&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;html&lt;/span&gt;
+&lt;span class=&quot;ss&quot;&gt;highlighter: &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;rouge&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;# 使用rouge作为语法高亮引擎&lt;/span&gt;
+&lt;span class=&quot;ss&quot;&gt;markdown: &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;kramdown&lt;/span&gt;  &lt;span class=&quot;c1&quot;&gt;# 使用kramdown作为markdown的转换器&lt;/span&gt;
+&lt;span class=&quot;ss&quot;&gt;kramdown:
+  input: &lt;/span&gt;&lt;span class=&quot;no&quot;&gt;GFM&lt;/span&gt;
+  &lt;span class=&quot;ss&quot;&gt;hard_wrap: &lt;/span&gt;&lt;span class=&quot;kp&quot;&gt;true&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# a newline in markdown text would be changed to &amp;lt;br&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;ss&quot;&gt;gems:
+  &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;jemoji&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# 要站点支持Github表情，必须添加&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# 上传到Github Pages时Github会进行配置的项，详见：Github Help With Configuring Jekyll&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# Github Pages默认配置项，Jekyll的配置可以覆盖&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;# kramdown:&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;#   input: GFM&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;#   hard_wrap: false&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;# gems:&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;#   - jekyll-coffeescript&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;#   - jekyll-paginate&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;# Github Pages不可改变项，会覆盖Jekyll的配置&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;# lsi: false&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;# safe: true&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;# source: [your repo&#39;s top level directory]&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;# incremental: false&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;# highlighter: rouge&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;# gist:&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;#  noscript: false&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;# kramdown:&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;#  math_engine: mathjax&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h4 id=&quot;section-8&quot;&gt;创建页面&lt;/h4&gt;
+
+&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;方式一&lt;/td&gt;
+      &lt;td&gt;&lt;strong&gt;某路径&lt;/strong&gt;下添加&lt;code class=&quot;highlighter-rouge&quot;&gt;xxx.html&lt;/code&gt;，访问地址为&lt;code class=&quot;highlighter-rouge&quot;&gt;该路径/xxx.html&lt;/code&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;方式二&lt;/td&gt;
+      &lt;td&gt;&lt;strong&gt;某路径&lt;/strong&gt;下添加&lt;code class=&quot;highlighter-rouge&quot;&gt;xxx/index.html&lt;/code&gt;，访问地址为&lt;code class=&quot;highlighter-rouge&quot;&gt;该路径/xxx&lt;/code&gt;，无需后缀&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h4 id=&quot;front-matteryaml&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;front matter&lt;/code&gt;(Yaml头信息)&lt;/h4&gt;
+&lt;p&gt;每个页面都可以有自己的头信息，可以覆盖Jekyll和_config.yml里面的值&lt;/p&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;o&quot;&gt;---&lt;/span&gt;
+&lt;span class=&quot;ss&quot;&gt;layout: &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;post&lt;/span&gt;
+&lt;span class=&quot;ss&quot;&gt;title: &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;一步一步创建&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;Jekyll&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;主题&lt;/span&gt;
+&lt;span class=&quot;ss&quot;&gt;categories: &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;jekyll&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;github&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;markdown&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;rouge&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+&lt;span class=&quot;ss&quot;&gt;date: &lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2016&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;9&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;15&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;47&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mo&quot;&gt;05&lt;/span&gt;
+&lt;span class=&quot;ss&quot;&gt;excerpt: &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&quot;&lt;/span&gt;   &lt;span class=&quot;c1&quot;&gt;# 覆盖清掉文章的摘要&lt;/span&gt;
+&lt;span class=&quot;ss&quot;&gt;pid: &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&quot;&lt;/span&gt;       &lt;span class=&quot;c1&quot;&gt;# 新建一个pid的字符串变量&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;---&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h4 id=&quot;site&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;site&lt;/code&gt;变量&lt;/h4&gt;
+&lt;p&gt;来自&lt;code class=&quot;highlighter-rouge&quot;&gt;_config.yml&lt;/code&gt;配置文件和Jekyll内置变量，下面是常用的属性：&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;site.posts&lt;/td&gt;
+      &lt;td&gt;从新到旧排序的posts文章列表集合&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;site.categories&lt;/td&gt;
+      &lt;td&gt;以目录分类的文章列表Map&lt;code class=&quot;highlighter-rouge&quot;&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;cate1:[post1,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;post2],&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;cate2:[post3,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;post4]&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;site.tags&lt;/td&gt;
+      &lt;td&gt;同上，以tags分类的文章列表Map&lt;code class=&quot;highlighter-rouge&quot;&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;tag1:[post1,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;post2],&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;tag2:[post3,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;post4]&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;site.XXX&lt;/td&gt;
+      &lt;td&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;_config.yml&lt;/code&gt;配置文件中&lt;code class=&quot;highlighter-rouge&quot;&gt;XXX: val&lt;/code&gt;的val值，val可以是字符串/数组/集合&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h4 id=&quot;page&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;page&lt;/code&gt;变量&lt;/h4&gt;
+&lt;p&gt;指代当前页面的变量，在index.html里使用page，page指的就是index.html这个页面，常用属性：&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;page.content&lt;/td&gt;
+      &lt;td&gt;页面&lt;strong&gt;源码&lt;/strong&gt;(含有markdown/liquid等语句)&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;page.title&lt;/td&gt;
+      &lt;td&gt;页面标题&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;page.excerpt&lt;/td&gt;
+      &lt;td&gt;页面摘要&lt;strong&gt;源码&lt;/strong&gt;，可通过_config.yml配置摘要算法&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;page.url&lt;/td&gt;
+      &lt;td&gt;页面的&lt;strong&gt;相对路径&lt;/strong&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;page.date&lt;/td&gt;
+      &lt;td&gt;页面的时间和日期&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;page.categories&lt;/td&gt;
+      &lt;td&gt;页面的categories数组，&lt;code class=&quot;highlighter-rouge&quot;&gt;linux/ruby/_posts/ruby.md&lt;/code&gt;文章会把linux和ruby加入categories，和上面的site.categories不同！&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;page.tags&lt;/td&gt;
+      &lt;td&gt;页面的tags数组&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;page.path&lt;/td&gt;
+      &lt;td&gt;页面的实际路径(源码路径)&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;注意：当前页面的Front Matter中设置的xxx: val可以通过page.xxx访问val值&lt;br /&gt;
+另外：site.posts数组的元素post和page具有几乎一样的属性&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h4 id=&quot;liquid&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;liquid&lt;/code&gt;语法&lt;/h4&gt;
+&lt;p&gt;Jekyll内变量操作是使用&lt;a href=&quot;https://github.com/Shopify/liquid/wiki/Liquid-for-Designers&quot;&gt;Liquid语法&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;主要有：&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;显示变量的值&lt;br /&gt;
+ &lt;code class=&quot;highlighter-rouge&quot;&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;变量名&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/p&gt;
+
+    &lt;p&gt;如果要组成字符串，可以这样：&lt;code class=&quot;highlighter-rouge&quot;&gt;&quot;字符串头部{{ 变量名 }}字符串尾部&quot;&lt;/code&gt;&lt;/p&gt;
+
+    &lt;p&gt;也可以使用Filter：&lt;code class=&quot;highlighter-rouge&quot;&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;字符串头部&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;append&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;变量名&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;append&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;字符串尾部&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/p&gt;
+
+    &lt;p&gt;如，显示文章的标题：&lt;code class=&quot;highlighter-rouge&quot;&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;page.title&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;使用变量的值进行计算&lt;br /&gt;
+ 文章的标题计算 &lt;code class=&quot;highlighter-rouge&quot;&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;assign&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;titleAndDate&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;page.title&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;|&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;append:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;page.date&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;err&quot;&gt;%&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/p&gt;
+
+    &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;assign x = y&lt;/code&gt;是声明一个变量并赋值，&lt;strong&gt;声明必须赋值！&lt;/strong&gt;&lt;/p&gt;
+
+    &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;xxx | append: &quot;str&quot;&lt;/code&gt;是Liquid语法中的Filter，可以理解为管道，也可以简单理解为&lt;code class=&quot;highlighter-rouge&quot;&gt;对象|方法:参数&lt;/code&gt;&lt;/p&gt;
+
+    &lt;p&gt;Filter可以连续执行：&lt;code class=&quot;highlighter-rouge&quot;&gt;xxx | append: &quot;str1&quot; | append: &quot;str2&quot;&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;if语句&lt;/p&gt;
+
+    &lt;div class=&quot;language-liquid highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;{%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kr&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;site&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;title&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;==&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;%}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;assign&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;title&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;A&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;%}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kr&quot;&gt;elsif&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;site&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;title&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;==&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;stepbystep&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;%}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;assign&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;title&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;B&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;%}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kr&quot;&gt;else&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;%}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;assign&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;title&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;C&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;%}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;kr&quot;&gt;endif&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;%}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;for语句&lt;/p&gt;
+
+    &lt;div class=&quot;language-liquid highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;{%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;post&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;in&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;site.posts&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;%}&lt;/span&gt;
+ &lt;span class=&quot;p&quot;&gt;{%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;assign&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;title&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;post&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;title&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;%}&lt;/span&gt;
+ The post title is &lt;span class=&quot;p&quot;&gt;{{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;title&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{%&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;endfor&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;%}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;访问map的key和value&lt;br /&gt;
+ 像&lt;code class=&quot;highlighter-rouge&quot;&gt;site.categories&lt;/code&gt;其实是一个map，访问分类是linux的文章集合有两种方式：&lt;br /&gt;
+ 方式一: &lt;code class=&quot;highlighter-rouge&quot;&gt;site.categories.linux&lt;/code&gt;即是分类为linux的posts列表&lt;br /&gt;
+ 方式二: &lt;code class=&quot;highlighter-rouge&quot;&gt;for cate in site.categories&lt;/code&gt;，&lt;code class=&quot;highlighter-rouge&quot;&gt;cate[0]&lt;/code&gt;是linux，&lt;code class=&quot;highlighter-rouge&quot;&gt;cate[1]&lt;/code&gt;是posts列表&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;注意：如果{% %}里面的是语句，&lt;strong&gt;一行只能有一个而不能有多个&lt;/strong&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h3 id=&quot;section-9&quot;&gt;改造自己的主题&lt;/h3&gt;
+&lt;p&gt;至此，Jekyll的使用、Liquid的语法、Markdown的样式、语法高亮的配色都已经讲述，接下来就是动手完成自己的主题，以下是一些点：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;加入&lt;code class=&quot;highlighter-rouge&quot;&gt;html&lt;/code&gt;、&lt;code class=&quot;highlighter-rouge&quot;&gt;css&lt;/code&gt;、&lt;code class=&quot;highlighter-rouge&quot;&gt;js&lt;/code&gt;等需要的文件&lt;/li&gt;
+  &lt;li&gt;提取相同的内容到&lt;code class=&quot;highlighter-rouge&quot;&gt;_includes&lt;/code&gt;目录&lt;/li&gt;
+  &lt;li&gt;需要复用的页面框架，比如post文章页，放到&lt;code class=&quot;highlighter-rouge&quot;&gt;_layouts&lt;/code&gt;目录&lt;/li&gt;
+  &lt;li&gt;一些配置字符串，放在&lt;code class=&quot;highlighter-rouge&quot;&gt;_config.yml&lt;/code&gt;文件内&lt;/li&gt;
+  &lt;li&gt;使用&lt;strong&gt;Liquid语法&lt;/strong&gt;在页面中访问&lt;code class=&quot;highlighter-rouge&quot;&gt;site&lt;/code&gt;，&lt;code class=&quot;highlighter-rouge&quot;&gt;page&lt;/code&gt;等信息组织内容&lt;/li&gt;
+  &lt;li&gt;调整html页面标签的css定制自己的Markdown样式&lt;/li&gt;
+  &lt;li&gt;调整语法高亮的css定制自己的语法高亮颜色值&lt;/li&gt;
+  &lt;li&gt;你可能需要一个MarkdownDemo来测试站点的样式&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;section-10&quot;&gt;除此之外我做了什么&lt;/h2&gt;
+&lt;p&gt;请参考&lt;a href=&quot;http://www.jokinkuang.info/2016/09/18/what-did-i-do-for-the-blog.html&quot;&gt;我做了什么&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;jekyllthemes&quot;&gt;上传自己的主题到JekyllThemes&lt;/h2&gt;
+&lt;p&gt;如果希望自己的主题可以让更多人看到或使用，可以上传到&lt;a href=&quot;http://jekyllthemes.org/&quot;&gt;JekyllThemes&lt;/a&gt;这个站点&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;准备一张250x200的预览图&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;fork&lt;/code&gt;这个&lt;a href=&quot;https://github.com/mattvh/jekyllthemes/fork&quot;&gt;JekyllThemes&lt;/a&gt;项目源码到自己的Github仓库&lt;/li&gt;
+  &lt;li&gt;找到自己的Github仓库中fork的这个JekyllThemes项目&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;clone&lt;/code&gt;自己仓库的JekyllThemes项目到本地&lt;/li&gt;
+  &lt;li&gt;将预览图放到&lt;code class=&quot;highlighter-rouge&quot;&gt;thumbnails&lt;/code&gt;目录，在&lt;code class=&quot;highlighter-rouge&quot;&gt;_posts&lt;/code&gt;下复制一篇文章，替换为自己的主题信息&lt;/li&gt;
+  &lt;li&gt;执行&lt;code class=&quot;highlighter-rouge&quot;&gt;bundle exec jekyll server&lt;/code&gt;本地预览效果&lt;/li&gt;
+  &lt;li&gt;本地调试直到网站已经添加了自己的主题&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;commit&lt;/code&gt;并且&lt;code class=&quot;highlighter-rouge&quot;&gt;push&lt;/code&gt;添加的代码(此时代码只是提交到自己仓库的JekyllThemes项目)&lt;/li&gt;
+  &lt;li&gt;网页访问自己仓库的JekyllThemes项目，点击&lt;code class=&quot;highlighter-rouge&quot;&gt;New pull request&lt;/code&gt;发起一个合并请求&lt;/li&gt;
+  &lt;li&gt;此时提交已经发送给JekyllThemes项目的管理员，等待管理员合并提交&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;注意：图片的规格最好一致，并且进行本地测试，否则即使提交了也很可能会被管理员拒绝合并代码&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;jekyll-7&quot;&gt;Jekyll&lt;/h2&gt;
+&lt;p&gt;Error: No repo name found. Specify using PAGES_REPO_NWO environment variables, ‘repository’ in your configuration, or set up an ‘origin’ git remote pointing to your github.com repository.&lt;/p&gt;
+
+&lt;p&gt;Error: No such file or directory - git rev-parse HEAD&lt;br /&gt;
+###&lt;/p&gt;
+
+&lt;h2 id=&quot;section-11&quot;&gt;参考文档&lt;/h2&gt;
+
+&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;阅读·&lt;a href=&quot;http://jekyll.bootcss.com/&quot;&gt;Jekyll的中文文档&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;a href=&quot;http://jekyllrb.com/&quot;&gt;英文文档&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;阅读·&lt;a href=&quot;https://help.shopify.com/themes/liquid&quot;&gt;Liquid的文档1&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;a href=&quot;https://github.com/Shopify/liquid/wiki/Liquid-for-Designers&quot;&gt;文档2&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;a href=&quot;https://shopify.github.io/liquid/&quot;&gt;文档3&lt;/a&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;阅读·&lt;a href=&quot;https://github.com/jneen/rouge&quot;&gt;语法高亮引擎rouge的文档&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;阅读·&lt;a href=&quot;http://kramdown.gettalong.org/&quot;&gt;Markdown转换器kramdown的文档（支持maruku语法）&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;阅读·&lt;a href=&quot;http://maruku.rubyforge.org/maruku.html&quot;&gt;Markdown转换器maruku的文档（支持TOC语法）&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+</description>
+        <pubDate>Sat, 03 Sep 2016 23:47:05 +0800</pubDate>
+        <link>http://yourdomain.github.io/2016/09/03/how-to-create-the-jekyll-theme.html</link>
+        <guid isPermaLink="true">http://yourdomain.github.io/2016/09/03/how-to-create-the-jekyll-theme.html</guid>
+        
+        
+        <category>jekyll</category>
+        
+      </item>
+    
+      <item>
+        <title>Markdown Demo</title>
+        <description>&lt;blockquote&gt;
+  &lt;p&gt;一个用来测试当前站点的Markdown样式的Demo&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Attentions (放在开头)：
+
+1,markdown的解析遇到一个空行作为一次解析，所以上下两个语法需要有一个空行做间隔。
+  比如：
+  # H1
+  ## H2
+  只能解析H1，##H2被解析为&amp;lt;p&amp;gt;
+
+  要正确被解析，应该在两个解析间插入空行
+
+2,markdown语法关键字与内容一般都要留个空格。
+  比如： # 空格 H1
+
+3,代码块内不能再使用markdown关键字，因为代码块是&amp;lt;pre&amp;gt;。
+
+4,本demo开启了kramdown的hard_wrap: true自动将换行符转换为&amp;lt;br&amp;gt;。
+
+5,本demo展示了本站点的样式(css)，如果不喜欢，可以通过此demo修改。
+
+6,本demo还包含了markdown的基本语法（红块）。
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;p&gt;:smile:本Demo的&lt;a href=&quot;https://raw.githubusercontent.com/jokinkuang/stepbystep/master/_posts/2016-8-24-markdown_demo.md&quot;&gt;Markdown源码&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;目录：&lt;/p&gt;
+&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#kramdown-markdown-syntax&quot; id=&quot;markdown-toc-kramdown-markdown-syntax&quot;&gt;Kramdown Markdown Syntax&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#h1&quot; id=&quot;markdown-toc-h1&quot;&gt;H1&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#h2&quot; id=&quot;markdown-toc-h2&quot;&gt;H2&lt;/a&gt;        &lt;ul&gt;
+          &lt;li&gt;&lt;a href=&quot;#h3&quot; id=&quot;markdown-toc-h3&quot;&gt;H3&lt;/a&gt;            &lt;ul&gt;
+              &lt;li&gt;&lt;a href=&quot;#h4&quot; id=&quot;markdown-toc-h4&quot;&gt;H4&lt;/a&gt;                &lt;ul&gt;
+                  &lt;li&gt;&lt;a href=&quot;#h5&quot; id=&quot;markdown-toc-h5&quot;&gt;H5&lt;/a&gt;&lt;/li&gt;
+                &lt;/ul&gt;
+              &lt;/li&gt;
+            &lt;/ul&gt;
+          &lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#toc&quot; id=&quot;markdown-toc-toc&quot;&gt;TOC&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#blockquote&quot; id=&quot;markdown-toc-blockquote&quot;&gt;blockquote&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#italic&quot; id=&quot;markdown-toc-italic&quot;&gt;italic&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#emphasis&quot; id=&quot;markdown-toc-emphasis&quot;&gt;emphasis&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#inline-code&quot; id=&quot;markdown-toc-inline-code&quot;&gt;inline code&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#unordered-list&quot; id=&quot;markdown-toc-unordered-list&quot;&gt;unordered list&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#ordered-list&quot; id=&quot;markdown-toc-ordered-list&quot;&gt;ordered list&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#link&quot; id=&quot;markdown-toc-link&quot;&gt;link&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#image&quot; id=&quot;markdown-toc-image&quot;&gt;image&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#gfm-syntax&quot; id=&quot;markdown-toc-gfm-syntax&quot;&gt;GFM Syntax&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#task-lists&quot; id=&quot;markdown-toc-task-lists&quot;&gt;Task Lists&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#tables&quot; id=&quot;markdown-toc-tables&quot;&gt;Tables&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#sha-references&quot; id=&quot;markdown-toc-sha-references&quot;&gt;SHA references&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#automatic-linking-for-urls&quot; id=&quot;markdown-toc-automatic-linking-for-urls&quot;&gt;Automatic linking for URLs&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#strikethrough&quot; id=&quot;markdown-toc-strikethrough&quot;&gt;Strikethrough&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#emoji&quot; id=&quot;markdown-toc-emoji&quot;&gt;Emoji&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;kramdown-markdown-syntax&quot;&gt;Kramdown Markdown Syntax&lt;/h1&gt;
+
+&lt;h1 id=&quot;h1&quot;&gt;H1&lt;/h1&gt;
+
+&lt;h2 id=&quot;h2&quot;&gt;H2&lt;/h2&gt;
+
+&lt;h3 id=&quot;h3&quot;&gt;H3&lt;/h3&gt;
+
+&lt;h4 id=&quot;h4&quot;&gt;H4&lt;/h4&gt;
+
+&lt;h6 id=&quot;h5&quot;&gt;H5&lt;/h6&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;# 空格 TEXT or&lt;br /&gt;
+- - - -&lt;br /&gt;
+TEXT&lt;br /&gt;
+=====  or -—-&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;toc&quot;&gt;TOC&lt;/h2&gt;
+&lt;p&gt;If you create a list, and then set the toc attribute, when rendering Maruku will create an auto-generated table of contents(TOC). TOC was supported by Maruku, and Kramdown implements the Maruku so it also support TOC!&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;add following to the post&lt;/p&gt;
+
+  &lt;p&gt;* 空格(or 1. 空格) This is a list and would become a table of contents(TOC) and this text will be scraped that you cannot see(it doesn’t matter what you write here)!&lt;br /&gt;
+{:toc}&lt;/p&gt;
+
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;blockquote&quot;&gt;blockquote&lt;/h2&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;This is a blockquote.&lt;/p&gt;
+
+  &lt;p&gt;This is the second paragraph in the blockquote.&lt;/p&gt;
+
+&lt;/blockquote&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&amp;gt; 空格 TEXT&lt;br /&gt;
+&amp;gt; 空格 TEXT&lt;br /&gt;
+&amp;gt; 空格 TEXT&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;italic&quot;&gt;italic&lt;/h2&gt;
+&lt;p&gt;Some of these words &lt;em&gt;are emphasized&lt;/em&gt;.&lt;br /&gt;
+Some of these words &lt;em&gt;are emphasized also&lt;/em&gt;.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;*TEXT*  or _TEXT_&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;emphasis&quot;&gt;emphasis&lt;/h2&gt;
+&lt;p&gt;Use two asterisks for &lt;strong&gt;strong emphasis&lt;/strong&gt;.&lt;br /&gt;
+Or, if you prefer, &lt;strong&gt;use two underscores instead&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;*&lt;em&gt;TEXT*&lt;/em&gt;  or _&lt;em&gt;TEXT_&lt;/em&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;inline-code&quot;&gt;inline code&lt;/h2&gt;
+&lt;p&gt;inline &lt;code class=&quot;highlighter-rouge&quot;&gt;code&lt;/code&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;`TEXT`&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;unordered-list&quot;&gt;unordered list&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;Candy.&lt;/li&gt;
+  &lt;li&gt;Gum.&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Booze.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Candy.&lt;/li&gt;
+  &lt;li&gt;Gum.&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Booze.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Candy.&lt;/li&gt;
+  &lt;li&gt;Gum.&lt;/li&gt;
+  &lt;li&gt;Booze.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;* 空格 TEXT  or&lt;br /&gt;
+- - - -&lt;br /&gt;
++ 空格 TEXT  or&lt;br /&gt;
+- - - -&lt;br /&gt;
+- 空格 TEXT&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;ordered-list&quot;&gt;ordered list&lt;/h2&gt;
+&lt;ol&gt;
+  &lt;li&gt;Red&lt;/li&gt;
+  &lt;li&gt;Green&lt;/li&gt;
+  &lt;li&gt;Blue&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;blockquote&gt;
+  &lt;ol&gt;
+    &lt;li&gt;空格 TEXT&lt;br /&gt;
+数字有没有序是没关系的&lt;/li&gt;
+  &lt;/ol&gt;
+&lt;/blockquote&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;A list item.&lt;br /&gt;
+With multiple paragraphs.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Another item in the list.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;* 空格 TEXT&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;link&quot;&gt;link&lt;/h2&gt;
+&lt;p&gt;This is an &lt;a href=&quot;http://example.com/&quot;&gt;example link&lt;/a&gt;.&lt;br /&gt;
+This is an &lt;a href=&quot;http://example.com/&quot; title=&quot;With a Title&quot;&gt;example link&lt;/a&gt;.&lt;br /&gt;
+I get 10 times more traffic from &lt;a href=&quot;http://google.com/&quot; title=&quot;Google&quot;&gt;Google&lt;/a&gt; than from&lt;br /&gt;
+&lt;a href=&quot;http://search.yahoo.com/&quot; title=&quot;Yahoo Search&quot;&gt;Yahoo&lt;/a&gt; or &lt;a href=&quot;http://search.msn.com/&quot; title=&quot;MSN Search&quot;&gt;MSN&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;I start my morning with a cup of coffee and&lt;br /&gt;
+&lt;a href=&quot;http://www.nytimes.com/&quot;&gt;The New York Times&lt;/a&gt;.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;[example link](http://example.com/ “With a Title”)  or&lt;br /&gt;
+- - - -&lt;br /&gt;
+[example link][id]&lt;br /&gt;
+空行&lt;br /&gt;
+[id]: http://example.com/ “With a Title”&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;image&quot;&gt;image&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&quot;/w3c/images/avator.jpg&quot; alt=&quot;alt text&quot; title=&quot;Title&quot; /&gt;&lt;br /&gt;
+&lt;img src=&quot;/w3c/images/avator.jpg&quot; alt=&quot;alt text&quot; title=&quot;Title&quot; /&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;The same as Link&lt;br /&gt;
+But start with  &lt;code class=&quot;highlighter-rouge&quot;&gt;!&lt;/code&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;How to make the image to show center？&lt;br /&gt;
+1.  CSS           cannot&lt;br /&gt;
+2.  javascript    can&lt;br /&gt;
+3.  use img in markdown text instead&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;NOTE kmarkdown 转换图片是直接转换成 &amp;lt;p&amp;gt;&amp;lt;img /&amp;gt;&amp;lt;/p&amp;gt;，因为css3也没有选择父的选择器（比如没有选择器可以选择含有&amp;lt;img&amp;gt;的&amp;lt;p&amp;gt;），所以从css角度无法实现图片居中。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h1 id=&quot;gfm-syntax&quot;&gt;GFM Syntax&lt;/h1&gt;
+
+&lt;div class=&quot;language-c highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;main&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+	&lt;span class=&quot;n&quot;&gt;printf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;hello world!&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;```language&lt;br /&gt;
+  // code here&lt;br /&gt;
+```&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;task-lists&quot;&gt;Task Lists&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;[x] @mentions, #refs, &lt;a href=&quot;&quot;&gt;links&lt;/a&gt;, &lt;strong&gt;formatting&lt;/strong&gt;, and &lt;del&gt;tags&lt;/del&gt; supported&lt;/li&gt;
+  &lt;li&gt;[x] list syntax required (any unordered or ordered list supported)&lt;/li&gt;
+  &lt;li&gt;[x] this is a complete item&lt;/li&gt;
+  &lt;li&gt;[ ] this is an incomplete item&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;tables&quot;&gt;Tables&lt;/h2&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;First Header&lt;/th&gt;
+      &lt;th&gt;Second Header&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Content from cell 1&lt;/td&gt;
+      &lt;td&gt;Content from cell 2&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Content in the first column&lt;/td&gt;
+      &lt;td&gt;Content in the second column&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;表格&lt;br /&gt;
+cell1 | cell2  （ | 两边要空格）&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;sha-references&quot;&gt;SHA references&lt;/h2&gt;
+
+&lt;p&gt;Any reference to a commit’s SHA-1 hash will be automatically converted into a link to that commit on GitHub.&lt;/p&gt;
+
+&lt;p&gt;16c999e8c71134401a78d4d46435517b2271d6ac&lt;br /&gt;
+mojombo@16c999e8c71134401a78d4d46435517b2271d6ac&lt;br /&gt;
+mojombo/github-flavored-markdown@16c999e8c71134401a78d4d46435517b2271d6ac&lt;br /&gt;
+Issue references within a repository&lt;/p&gt;
+
+&lt;p&gt;Any number that refers to an Issue or Pull Request will be automatically converted into a link.&lt;/p&gt;
+
+&lt;p&gt;#1&lt;br /&gt;
+mojombo#1&lt;br /&gt;
+mojombo/github-flavored-markdown#1&lt;br /&gt;
+Username @mentions&lt;/p&gt;
+
+&lt;p&gt;Typing an @ symbol, followed by a username, will notify that person to come and view the comment. This is called an “@mention”, because you’re mentioning the individual. You can also @mention teams within an organization.&lt;/p&gt;
+
+&lt;h2 id=&quot;automatic-linking-for-urls&quot;&gt;Automatic linking for URLs&lt;/h2&gt;
+
+&lt;p&gt;Any URL (like &lt;a href=&quot;http://www.github.com/&quot;&gt;http://www.github.com/&lt;/a&gt;) will be automatically converted into a clickable link.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;自动链接，必须以http开头&lt;br /&gt;
+&amp;lt;http://example.com&amp;gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;strikethrough&quot;&gt;Strikethrough&lt;/h2&gt;
+
+&lt;p&gt;Any word wrapped with two tildes (like &lt;del&gt;this&lt;/del&gt;) will appear crossed out.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;划掉线&lt;br /&gt;
+~~关键字~~&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;emoji&quot;&gt;Emoji&lt;/h2&gt;
+
+&lt;p&gt;GitHub supports emoji! :sparkles: :camel: :boom:&lt;/p&gt;
+
+&lt;p&gt;To see a list of every image we support, check out the Emoji Cheat Sheet.&lt;br /&gt;
+&lt;a href=&quot;http://www.webpagefx.com/tools/emoji-cheat-sheet/&quot;&gt;http://www.webpagefx.com/tools/emoji-cheat-sheet/&lt;/a&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;表情&lt;br /&gt;
+空格:emoji:&lt;/p&gt;
+&lt;/blockquote&gt;
+</description>
+        <pubDate>Wed, 24 Aug 2016 20:38:11 +0800</pubDate>
+        <link>http://yourdomain.github.io/2016/08/24/markdown_demo.html</link>
+        <guid isPermaLink="true">http://yourdomain.github.io/2016/08/24/markdown_demo.html</guid>
+        
+        
+        <category>markdown</category>
+        
+      </item>
+    
+      <item>
+        <title>Welcome to Jekyll!</title>
+        <description>&lt;p&gt;Jekyll new 默认生成的欢迎页！&lt;/p&gt;
+
+&lt;p&gt;You’ll find this post in your &lt;code class=&quot;highlighter-rouge&quot;&gt;_posts&lt;/code&gt; directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run &lt;code class=&quot;highlighter-rouge&quot;&gt;jekyll serve&lt;/code&gt;, which launches a web server and auto-regenerates your site when a file is updated.&lt;/p&gt;
+
+&lt;p&gt;To add new posts, simply add a file in the &lt;code class=&quot;highlighter-rouge&quot;&gt;_posts&lt;/code&gt; directory that follows the convention &lt;code class=&quot;highlighter-rouge&quot;&gt;YYYY-MM-DD-name-of-post.ext&lt;/code&gt; and includes the necessary front matter. Take a look at the source for this post to get an idea about how it works.&lt;/p&gt;
+
+&lt;p&gt;Jekyll also offers powerful support for code snippets:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;print_hi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Hi, &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;print_hi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;Tom&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;c1&quot;&gt;#=&amp;gt; prints &#39;Hi, Tom&#39; to STDOUT.&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Check out the &lt;a href=&quot;http://jekyllrb.com&quot;&gt;Jekyll docs&lt;/a&gt; for more info on how to get the most out of Jekyll. File all bugs/feature requests at &lt;a href=&quot;https://github.com/jekyll/jekyll&quot;&gt;Jekyll’s GitHub repo&lt;/a&gt;. If you have questions, you can ask them on &lt;a href=&quot;https://github.com/jekyll/jekyll-help&quot;&gt;Jekyll’s dedicated Help repository&lt;/a&gt;.&lt;/p&gt;
+
+</description>
+        <pubDate>Sun, 31 Jul 2016 02:07:16 +0800</pubDate>
+        <link>http://yourdomain.github.io/2016/07/31/welcome-to-jekyll.html</link>
+        <guid isPermaLink="true">http://yourdomain.github.io/2016/07/31/welcome-to-jekyll.html</guid>
+        
+        
+        <category>jekyll</category>
+        
+      </item>
+    
+  </channel>
+</rss>

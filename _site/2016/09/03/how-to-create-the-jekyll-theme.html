@@ -1,0 +1,1175 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<meta name="author" content="author" />
+
+<title>一步一步创建Jekyll主题 — Your Title</title>
+<meta name="description" content="讲述当前Jekyll站点的制作过程"/>
+
+<link rel="icon" href="/w3c/images/sicon.png" type="image/x-icon" />
+<link rel="shortcut icon" href="/w3c/images/sicon.png" type="image/x-icon" />
+<link rel="canonical" href="http://yourdomain.github.io/2016/09/03/how-to-create-the-jekyll-theme.html" href="http://yourdomain.github.io/db/feed.xml">
+
+
+<link href='/w3c/css/markdown.css' rel='stylesheet' type='text/css' />
+<link href='/w3c/css/rouge.css' rel='stylesheet' type='text/css' />
+
+<style type="text/css">
+html {
+	display: block;
+	height: 100%;
+	overflow-y: scroll;
+}
+body {
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	padding: 0;
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+.content {
+	line-height: 20px;
+	color: #413838;
+}
+.pin {
+	position: fixed;
+	right: 10px;
+	z-index: 100;
+	bottom: 40%;
+	display: none;
+}
+.pin span {
+	border: 1px solid #999999;
+  border-radius: 100%;
+  padding: 2px;
+}
+/****** post ******/
+.center-aside {
+	width: 60%;
+	margin-right: auto;
+	margin-left: auto;
+}
+.center-aside .header-image {
+	height: 200px;
+	background: url("/w3c/images/bg.jpg");
+	background-position: center;
+	background-size: cover;
+	-webkit-background-size: cover;
+	-o-background-size: cover;
+}
+.center-aside .author {
+	margin-top: 10px;
+	margin-bottom: 30px;
+	padding-left: 8px;
+	padding-bottom: 15px;
+	border-bottom: 1px solid #eeeeee;
+	overflow: hidden;
+	font-size: 15px;
+	color: #999999;
+}
+.center-aside .author .avatar {
+	float: left;
+	width: 80px;
+	height: 80px;
+	margin-right: 10px;
+	border-radius: 50%;
+}
+.center-aside .author .avatar img {
+	width: 100%;
+	height: 100%;
+	border-radius: 100%;
+	-webkit-border-radius: 100%;
+	box-sizing: border-box;
+}
+.center-aside .author .info {
+	margin-top: 7px;
+	letter-spacing: 1px;
+}
+.center-aside .author .info .talk{
+	margin: 0;
+	margin-top: 3px;
+}
+.center-aside .author .info .talk img{
+  vertical-align: initial;
+}
+.center-aside .title {
+	font-size: 32px;
+	font-weight: bold;
+	line-height: 1.5;
+	margin: 10px 0;
+	text-align: center;
+}
+.center-aside .meta {
+	margin: 10px 0 20px 0;
+	text-align: center;
+}
+.center-aside .meta span {
+	position: relative;
+	top: 1px;
+	margin-right: 10px;
+	font-size: 13px;
+	color: #999999;
+}
+.center-aside .post {
+	padding: 0px 10px;
+	line-height: 1.5em;
+	color: #413838;
+}
+.post-footer {
+	text-align: center;
+  margin-top: 50px;
+  padding-bottom: 20px
+}
+.post-tags {
+	margin: 5px 10px;
+}
+.post-tags span.tag {
+	border: 1px solid #999999;
+  border-radius: 4px;
+  padding: 2px;
+	line-height: 1.8em;
+	margin-left: 5px;
+}
+.PageNavigation {
+  font-size: 14px;
+  display: block;
+  width: auto;
+  overflow: hidden;
+	padding: 0 5px;
+}
+.PageNavigation a {
+  display: block;
+  width: 50%;
+  float: left;
+  margin: 1em 0;
+}
+.PageNavigation .next {
+	float: right;
+  text-align: right;
+}
+.footer {
+  text-align: center;
+  margin-top: 50px;
+  padding-bottom: 50px
+}
+</style>
+<style type="text/css">
+ul.nostyle {
+	margin-left: 0;
+	padding-left: 20px;
+	list-style: none;
+}
+a, a:hover, a:visited {
+	color: #bf8b8b;
+	text-decoration: none;
+	cursor: auto;
+}
+a.blue-link, a.blue-link:hover, a.blue-link:visited {
+	color: #4094c7;
+}
+a.grey-link, a.grey-link:hover, a.grey-link:visited {
+	color: #999999;
+}
+</style>
+<style type="text/css">
+@media (max-width: 1366px)
+{
+	.center-aside {
+		width: 800px;
+	}
+}
+@media (max-width: 768px)
+{
+	.center-aside {
+		width: 100%;
+	}
+}
+</style>
+</head>
+
+<body>
+	
+	
+
+
+
+
+<img src="http://yourdomain.github.io/w3c/images/jekyll.jpg" style="display:none;"/>
+<div class="content">
+	<div class="pin"><span><a href="javascript:void(0);">up</a></span>
+	</div>
+	<div class="top-aside">
+	</div>
+	<div class="center-aside">
+		<div class="header-image">
+			<a style="display:block;height:100%;" href="/article" title="Go Home"></a>
+		</div>
+		<div class="author">
+				<div>
+	      <a class="avatar" href="/aboutme">
+	        <img src="/w3c/images/avator.jpg" alt="100" title="About Me"/>
+				</a>
+				</div>
+				<div class="info">
+					<span class="label">
+	          作者
+	      	</span>
+	      	<a class="author-name blue-link" href="/aboutme">
+	        	<span>author</span>
+					</a>
+					<span style="margin-left: 10px;">2016-09-03 23:47:05</span>
+	      	<div>
+						<span>写了<a class="blue-link" href="/article"><i style="font-style:normal;" id="totalPosts">0</i>篇</a>文章</span>，
+	        	<span>共<i style="font-style:normal;" id="totalWords">0</i>字</span>，
+						<span>获得了<i style="font-style:normal;" id="totalComments">0</i>条评论</span>
+						<!-- <span>获得了<i style="font-style:normal;" id="totalLikes">0</i>个喜欢</span> -->
+	      	</div>
+					<div class="talk"><span id="shuoshuo">暂无说说</span><a class="blue-link" target="_parent" href="/#comments"> · 评论</a></div>
+				</div>
+    </div>
+		<div class="title">一步一步创建Jekyll主题</div>
+		<div class="meta">
+            <span class="wordage">字数·2066</span>
+            <!-- <span class="views-count">阅读5448</span> -->
+            <span ><a class="grey-link post-data" target="_parent" href="#comments" data-method="comments" data-thread-key="20160903-154705" data-text="评论·%s">评论0</a></span>
+						<span class="post-data" data-method="likes" data-thread-key="20160903-154705" data-text="喜欢·%s">喜欢0</span>
+            <span class="post-data" data-method="reposts" data-thread-key="20160903-154705" data-text="转发·%s">转发0</span>
+    </div>
+
+		<div class="post">
+			<p>讲述当前Jekyll站点的制作过程</p>
+
+<h2>目录</h2>
+
+<ul id="markdown-toc">
+  <li><a href="#jekyll" id="markdown-toc-jekyll">搭建本地的Jekyll环境</a></li>
+  <li><a href="#section" id="markdown-toc-section">本地跑起来</a></li>
+  <li><a href="#github-pages" id="markdown-toc-github-pages">Github Pages环境本地化</a></li>
+  <li><a href="#windowsjekyll" id="markdown-toc-windowsjekyll">Windows下搭建Jekyll环境</a>    <ul>
+      <li><a href="#bundle-install" id="markdown-toc-bundle-install">bundle install失败</a></li>
+      <li><a href="#rubybinbundlebundlebat" id="markdown-toc-rubybinbundlebundlebat">ruby/bin下面的bundle与bundle.bat区别</a></li>
+    </ul>
+  </li>
+  <li><a href="#section-1" id="markdown-toc-section-1">环境配置总结</a></li>
+  <li><a href="#section-2" id="markdown-toc-section-2">需要一个网页原型</a></li>
+  <li><a href="#jekyll-1" id="markdown-toc-jekyll-1">初步认识Jekyll</a>    <ul>
+      <li><a href="#jekyll-2" id="markdown-toc-jekyll-2">Jekyll是什么</a></li>
+      <li><a href="#section-3" id="markdown-toc-section-3">静态网页</a></li>
+      <li><a href="#section-4" id="markdown-toc-section-4">没有数据库</a></li>
+      <li><a href="#section-5" id="markdown-toc-section-5">没有评论功能</a></li>
+    </ul>
+  </li>
+  <li><a href="#markdown" id="markdown-toc-markdown">理解Markdown是如何工作的</a></li>
+  <li><a href="#highlight" id="markdown-toc-highlight">理解Highlight语法高亮是如何实现的</a></li>
+  <li><a href="#jekyll-3" id="markdown-toc-jekyll-3">开始制作自己的Jekyll主题</a>    <ul>
+      <li><a href="#jekyll-4" id="markdown-toc-jekyll-4">新建Jekyll模板</a></li>
+      <li><a href="#jekyll-5" id="markdown-toc-jekyll-5">认识Jekyll模板的结构</a></li>
+      <li><a href="#section-6" id="markdown-toc-section-6">简化模板</a></li>
+      <li><a href="#section-7" id="markdown-toc-section-7">将网页原型加入模板</a></li>
+      <li><a href="#jekyll-6" id="markdown-toc-jekyll-6">深入理解Jekyll</a>        <ul>
+          <li><a href="#layouts" id="markdown-toc-layouts"><code class="highlighter-rouge">_layouts</code>目录</a></li>
+          <li><a href="#includes" id="markdown-toc-includes"><code class="highlighter-rouge">_includes</code>目录</a></li>
+          <li><a href="#configyml" id="markdown-toc-configyml"><code class="highlighter-rouge">_config.yml</code>配置文件</a></li>
+          <li><a href="#section-8" id="markdown-toc-section-8">创建页面</a></li>
+          <li><a href="#front-matteryaml" id="markdown-toc-front-matteryaml"><code class="highlighter-rouge">front matter</code>(Yaml头信息)</a></li>
+          <li><a href="#site" id="markdown-toc-site"><code class="highlighter-rouge">site</code>变量</a></li>
+          <li><a href="#page" id="markdown-toc-page"><code class="highlighter-rouge">page</code>变量</a></li>
+          <li><a href="#liquid" id="markdown-toc-liquid"><code class="highlighter-rouge">liquid</code>语法</a></li>
+        </ul>
+      </li>
+      <li><a href="#section-9" id="markdown-toc-section-9">改造自己的主题</a></li>
+    </ul>
+  </li>
+  <li><a href="#section-10" id="markdown-toc-section-10">除此之外我做了什么</a></li>
+  <li><a href="#jekyllthemes" id="markdown-toc-jekyllthemes">上传自己的主题到JekyllThemes</a></li>
+  <li><a href="#jekyll-7" id="markdown-toc-jekyll-7">Jekyll</a></li>
+  <li><a href="#section-11" id="markdown-toc-section-11">参考文档</a></li>
+</ul>
+
+<h2 id="jekyll">搭建本地的Jekyll环境</h2>
+
+<p>因为图方便所以个人直接在Ubuntu下搭建了环境，在Mac下也几乎一样。</p>
+
+<ol>
+  <li>安装ruby环境<br />
+  <code class="highlighter-rouge">sudo apt-get install ruby</code></li>
+  <li>安装Jekyll<br />
+  <code class="highlighter-rouge">sudo gem install jekyll</code></li>
+  <li>安装kramdown<br />
+  <code class="highlighter-rouge">sudo gem install kramdown</code></li>
+  <li>安装rouge<br />
+  <code class="highlighter-rouge">sudo gem install rouge</code></li>
+  <li>测试Jekyll是否安装完成<br />
+  <code class="highlighter-rouge">jekyll --version</code></li>
+</ol>
+
+<blockquote>
+  <p>从上面可以看出，这是一套基于Ruby语言的工具集。<br />
+<strong>题外话：</strong>gem install是ruby用来管理ruby工具集的工具，而npm install是nodejs用来管理js工具集的工具。</p>
+</blockquote>
+
+<h2 id="section">本地跑起来</h2>
+<div class="highlighter-rouge"><pre class="highlight"><code>jekyll new mytheme
+cd mytheme
+jekyll server
+</code></pre>
+</div>
+<p>运行上面的命令，然后访问<a href="http://127.0.0.1:4000">127.0.0.1:4000</a>，就能看到一个由Jekyll搭建的博客了。</p>
+
+<h2 id="github-pages">Github Pages环境本地化</h2>
+
+<p>上面搭建的只是Jekyll的本地环境，当push到Github Pages后环境会有所变化，为了本地看到的效果和托管在Github Pages看到的效果一致，我们最好搭建本地的Github Pages环境。</p>
+
+<ol>
+  <li>升级ruby到2.0.0以上<br />
+  如果<code class="highlighter-rouge">ruby --version</code>查看版本低于2.0.0，那么需要升级ruby。</li>
+  <li>安装ruby工具集管理工具<a href="http://bundler.io/">Bundler</a><br />
+  <code class="highlighter-rouge">sudo gem install bundler</code></li>
+  <li>创建Gemfile<br />
+  在上面的mytheme根目录下创建一个Gemfile文件，内容为：<br />
+  <code class="highlighter-rouge">source 'https://rubygems.org'</code><br />
+  <code class="highlighter-rouge">gem 'github-pages', group::jekyll_plugins</code></li>
+  <li>安装Github Pages的工具集<br />
+  在Gemfile所在的目录，即Jekyll主题的根目录，执行下面的命令：<br />
+  <code class="highlighter-rouge">bundle install</code></li>
+  <li>跑起来<br />
+  <code class="highlighter-rouge">bundle exec jekyll serve</code></li>
+</ol>
+
+<p>如果出现<code class="highlighter-rouge">bundle exec jekyll serve</code>能启动，而<code class="highlighter-rouge">jekyll serve</code>不能启动，则删除Gemfile和Gemfile.lock重新运行<code class="highlighter-rouge">jekyll serve</code>即可。<br />
+更多Github Pages本地化环境搭建，可参考<a href="https://help.github.com/articles/setting-up-your-github-pages-site-locally-with-jekyll">github-helper-setting-up-your-github-pages-site-locally-with-jekyll</a></p>
+
+<h2 id="windowsjekyll">Windows下搭建Jekyll环境</h2>
+<p>因为不少的时间在Windows平台下工作，所以后来还是搭建了Windows下的Jekyll环境。</p>
+
+<ol>
+  <li>安装ruby环境<br />
+  下载<a href="http://rubyinstaller.org/downloads">ruby for windows</a>，随便搜索即可，建议安装ruby2.0以上。</li>
+  <li>安装完毕，设置Windows环境变量<br />
+  在我的电脑 - 属性 - 高级 - 环境变量 - 系统 - path字段，添加ruby的安装路径。比如<code class="highlighter-rouge">C:\Ruby22\bin;</code>，安装包有提供选项可以在安装时自动添加到path。</li>
+  <li>安装Jekyll<br />
+ 打开命令行，输入gem.bat (Ruby22/bin/gem.bat)，如果没有找到该命令，说明环境变量还没有生效。在命令行输入<code class="highlighter-rouge">set a = b</code>，然后重启命令行即可(运行set只是让命令行重新加载环境变量)。<br />
+ 执行<code class="highlighter-rouge">gem install jekyll</code></li>
+  <li>安装bundler<br />
+ <code class="highlighter-rouge">gem install bundler</code></li>
+  <li>使用bundler安装github pages的依赖<br />
+ <code class="highlighter-rouge">bundle install</code></li>
+  <li>跑起来<br />
+ <code class="highlighter-rouge">bundle exec jekyll server</code></li>
+  <li>如果端口被占用<br />
+ <code class="highlighter-rouge">bundle exec jekyll server --port 5000</code></li>
+</ol>
+
+<h3 id="bundle-install">bundle install失败</h3>
+<p>bundle install出现了以下错误:</p>
+
+<p>Please update your PATH to include build tools or download the DevKit<br />
+from ‘http://rubyinstaller.org/downloads’ and follow the instructions<br />
+at ‘http://github.com/oneclick/rubyinstaller/wiki/Development-Kit’<br />
+大致意思是插件需要编译安装，而系统没有安装编译环境，只有运行环境，请按照wiki里面的步骤安装。</p>
+
+<p>修复：<br />
+下载<a href="http://rubyinstaller.org/downloads">ruby-devkit</a>，如果ruby是32位则下载32位的devkit，否则下载64位的。</p>
+
+<blockquote>
+  <p>ruby –version可以看到是32位还是64位</p>
+</blockquote>
+
+<p>安装：<br />
+详细说明在<a href="https://github.com/oneclick/rubyinstaller/wiki/Development-Kit">github wiki</a>里</p>
+
+<ol>
+  <li>解压devkit到目录A</li>
+  <li>进入目录A</li>
+  <li>命令行下运行<code class="highlighter-rouge">ruby dk.rb init</code></li>
+  <li>运行<code class="highlighter-rouge">ruby dk.rb review</code></li>
+  <li>运行<code class="highlighter-rouge">ruby dk.rb install</code></li>
+  <li>如果上述步骤只有info输出而没有warning输出，则应该安装成功了</li>
+  <li>测试<code class="highlighter-rouge">gem install json --platform=ruby</code>如果安装成功，则表示devkit安装成功</li>
+  <li>如果失败，可以重装ruby和ruby-devkit，或者选择更低的ruby版本</li>
+</ol>
+
+<h3 id="rubybinbundlebundlebat">ruby/bin下面的bundle与bundle.bat区别</h3>
+
+<p>bundle是ruby脚本而bundle.bat是windows批处理文件<br />
+在windows命令行下，bundle其实执行的是bundle.bat，所以不会报错。bundle文件不会被识别为可执行文件。<br />
+在mingw命令行下(mingw/msys.bat)，bundle可以成功执行，而bundle.bat则会因为使用了windows命令而报错。</p>
+
+<h2 id="section-1">环境配置总结</h2>
+<p>环境的配置，简而言之，只有以下的步骤：</p>
+
+<ol>
+  <li>安装ruby</li>
+  <li>gem install jekyll</li>
+  <li>gem install bundle</li>
+  <li>git clone https://github.com/jokinkuang/stepbystep.git</li>
+  <li>cd stepbystep</li>
+  <li>bundle install</li>
+  <li>bundle exec jekyll server</li>
+</ol>
+
+<h2 id="section-2">需要一个网页原型</h2>
+
+<p>Github Pages和Jekyll本地环境已经搭建完成，访问<a href="http://127.0.0.1:4000">127.0.0.1:4000</a>也能够看到一个简单的博客，接下来就是思考自己的博客应该长哪样。</p>
+
+<p>一般来说，要定制自己的博客，最好先设计出博客的网页原型，所谓网页原型即是使用html、css甚至js来完成静态的网页效果。当前博客的原型只有三个页面：<code class="highlighter-rouge">index.html</code>、<code class="highlighter-rouge">article.html</code>和<code class="highlighter-rouge">post.html</code>。</p>
+
+<p>最后，<strong>Jekyll模板已经跑起来了，网页原型也有了，怎么将两者结合起来呢？</strong>在整合之前，我们需要先了解Jekyll博客系统。</p>
+
+<h2 id="jekyll-1">初步认识Jekyll</h2>
+
+<h3 id="jekyll-2">Jekyll是什么</h3>
+
+<p>Jekyll的描述是，将纯文本转化为静态博客网站，不需要数据库和评论功能。<br />
+其实更贴切的描述应该是这样</p>
+
+<blockquote>
+  <p>Jekyll是一个静态博客系统，在服务器启动前可写，在服务器启动后只读，所以无法实现数据库和评论功能。</p>
+</blockquote>
+
+<h3 id="section-3">静态网页</h3>
+
+<p>静态网页和动态网页的区别是，静态网页无论是否访问，它就已经存在那里，并且内容已经固定不可改。所以Jekyll在每次增加文章时就已经生成对应的静态网页，而不是每次访问时动态生成的。</p>
+
+<p>举个例子</p>
+
+<blockquote>
+  <p>当前Jekyll模板有一个页面：categories.html（目录和对应的文章列表页）</p>
+
+  <p>当新增一篇demo.md文章后，Jekyll会重新生成新的博客站点，demo.md会被转化为demo.html，而categories.html会被重新生成，内容是包含demo这篇新文章的列表。</p>
+
+  <p><strong>所以</strong>，Jekyll的页面都是在访问前就已经重新生成了，这就是静态。</p>
+</blockquote>
+
+<h3 id="section-4">没有数据库</h3>
+
+<p>如果<code class="highlighter-rouge">数据库</code>指的是像MySQL那种可读写的数据库，Jekyll确实没有。但是如果<code class="highlighter-rouge">数据库</code>指的只是存储数据的地方，Jekyll其实是有的，只不过是<code class="highlighter-rouge">只读</code>的。</p>
+
+<p>Jekyll内的<code class="highlighter-rouge">_config.yml</code>配置、各种内置对象(<code class="highlighter-rouge">site</code>、<code class="highlighter-rouge">page</code>、<code class="highlighter-rouge">categories</code>等)、用户自定义的内容（变量、集合、文本、网页等），都可以看做是Jekyll的数据库，开发者可以访问这个数据库组织自己的页面内容，<strong>除了可以在Jekyll构建站点时直接访问，还可以写到json格式的文件暴露出来在网页初始化时访问</strong>。</p>
+
+<blockquote>
+  <p>但有一点要注意：Jekyll内所有可访问的变量都是<code class="highlighter-rouge">静态</code>的，也即是<code class="highlighter-rouge">只读</code>的，所以不可以重新赋值！</p>
+</blockquote>
+
+<h3 id="section-5">没有评论功能</h3>
+
+<p>Jekyll是无法写入的，所以无法支持评论功能。任何写入操作都只能借助第三方服务。</p>
+
+<h2 id="markdown">理解Markdown是如何工作的</h2>
+
+<p>这是一段markdown文本：</p>
+
+<div class="language-markdown highlighter-rouge"><pre class="highlight"><code><span class="gu">## Markdown Demo</span>
+
+This is a <span class="sb">`markdown`</span> demo
+<span class="gt">
+&gt; try it</span>
+</code></pre>
+</div>
+
+<p>使用markdown转换器转换后得到的html是这样的：</p>
+
+<div class="language-html highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;h2&gt;</span>Markdown Demo<span class="nt">&lt;/h2&gt;</span>
+<span class="nt">&lt;p&gt;</span>This is a <span class="nt">&lt;code&gt;</span>markdown<span class="nt">&lt;/code&gt;</span> demo<span class="nt">&lt;/p&gt;</span>
+<span class="nt">&lt;blockquote&gt;</span>
+    <span class="nt">&lt;p&gt;</span>try it<span class="nt">&lt;/p&gt;</span>
+<span class="nt">&lt;/blockquote&gt;</span>
+</code></pre>
+</div>
+
+<p>直接使用浏览器打开是这样的：</p>
+
+<p><img src="/w3c/images/markdown/markdown-plain.jpg" alt="markdown-plain" title="html效果" /></p>
+
+<p><strong>Markdown转换结果只是单纯的html页面，关于页面的样式，需要我们自己提供css</strong><br />
+添加下面的css</p>
+
+<div class="language-css highlighter-rouge"><pre class="highlight"><code><span class="o">&lt;</span><span class="nt">style</span><span class="o">&gt;</span>
+<span class="nt">h2</span> <span class="p">{</span>
+	<span class="nl">color</span><span class="p">:</span> <span class="no">red</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nt">blockquote</span> <span class="p">{</span>
+	<span class="nl">background-color</span><span class="p">:</span> <span class="m">#fef3f3</span><span class="p">;</span>
+	<span class="nl">border-left</span><span class="p">:</span> <span class="m">4px</span> <span class="nb">solid</span> <span class="m">#d6a6a6</span><span class="p">;</span>
+	<span class="nl">margin</span><span class="p">:</span> <span class="m">0</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="o">&lt;/</span><span class="nt">style</span><span class="o">&gt;</span>
+</code></pre>
+</div>
+
+<p>为页面添加css后html是这样的：</p>
+
+<p><img src="/w3c/images/markdown/markdown-css.jpg" alt="markdown-css" title="添加css后html效果" /></p>
+
+<p>总结</p>
+
+<blockquote>
+  <p>Markdown解析器只是将文本转换为html，并不会为html添加默认的css样式。<br />
+Jekyll模板里有对应的css文件用于转换后的html页面效果。<br />
+<strong>另外注意，不同的markdown转换器得到的html标签的属性可能不一样，有的转换器可能会在标签中加入转换器名称做标识，所以css选择器具体要以转换后的结果为准。</strong></p>
+</blockquote>
+
+<p>比如，Markdown的TOC功能得到的列表是这样的</p>
+
+<div class="language-html highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;ul</span> <span class="na">id=</span><span class="s">"markdown-toc"</span><span class="nt">&gt;</span>
+<span class="nt">&lt;li&gt;</span>目录<span class="nt">&lt;/li&gt;</span>
+<span class="nt">&lt;/ul&gt;</span>
+</code></pre>
+</div>
+
+<h2 id="highlight">理解Highlight语法高亮是如何实现的</h2>
+
+<p>markdown里代码块是这样的：</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code> ```css
+  &lt;style&gt;
+ ```
+</code></pre>
+</div>
+
+<p>通过rouge语法高亮引擎，得到的html内容是这样的：</p>
+
+<div class="language-html highlighter-rouge"><pre class="highlight"><code><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"language-css highlighter-rouge"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;pre</span> <span class="na">class=</span><span class="s">"highlight"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;code&gt;</span>
+      <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"o"</span><span class="nt">&gt;</span><span class="ni">&amp;lt;</span><span class="nt">&lt;/span&gt;</span>
+      <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"nt"</span><span class="nt">&gt;</span>style<span class="nt">&lt;/span&gt;</span>
+      <span class="nt">&lt;span</span> <span class="na">class=</span><span class="s">"o"</span><span class="nt">&gt;</span><span class="ni">&amp;gt;</span><span class="nt">&lt;/span&gt;</span>&gt;
+    <span class="nt">&lt;/code&gt;</span>
+  <span class="nt">&lt;/pre&gt;</span>
+<span class="nt">&lt;/div&gt;</span>
+</code></pre>
+</div>
+
+<p>rouge语法高亮引擎附带了对应的rouge.css：</p>
+
+<div class="language-css highlighter-rouge"><pre class="highlight"><code><span class="nc">.highlight</span> <span class="p">{</span>
+  <span class="nl">color</span><span class="p">:</span> <span class="m">#D53FB7</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nc">.highlight</span> <span class="nc">.o</span> <span class="p">{</span>
+  <span class="nl">color</span><span class="p">:</span> <span class="m">#f92672</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="nc">.highlight</span> <span class="nc">.nt</span> <span class="p">{</span>
+  <span class="nl">color</span><span class="p">:</span> <span class="m">#f92672</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<p><strong>于是，页面的代码块就根据关键字、变量、字符串等有了不一样的颜色</strong></p>
+
+<p>总结</p>
+
+<blockquote>
+  <p>语法高亮引擎的作用，只是根据代码的语言，分割出与之对应的关键字、变量、字符串等，并赋予对应的css样式，最后调整css的颜色就形成了代码高亮的效果。<br />
+同样，Jekyll模板里有对应的css文件用于高亮效果。</p>
+</blockquote>
+
+<p><code class="highlighter-rouge">Tips</code></p>
+
+<p>rouge.css导出需要执行命令，可以参考<a href="https://github.com/jneen/rouge">rouge文档</a></p>
+
+<div class="language-shell highlighter-rouge"><pre class="highlight"><code><span class="gp">$ </span>rougify foo.rb
+<span class="gp">$ </span>rougify style monokai.sublime &gt; rouge.css
+</code></pre>
+</div>
+
+<h2 id="jekyll-3">开始制作自己的Jekyll主题</h2>
+
+<h3 id="jekyll-4">新建Jekyll模板</h3>
+<p><strong>按照上面的指引，新建一个模板，并搭建好Github Pages的本地环境：</strong></p>
+
+<p><code class="highlighter-rouge">jekyll new mytheme</code></p>
+
+<h3 id="jekyll-5">认识Jekyll模板的结构</h3>
+<p>下面是用<code class="highlighter-rouge">tree</code>命令输出的目录结构，只是位置进行了调整</p>
+
+<div class="language-ruby highlighter-rouge"><pre class="highlight"><code><span class="err">├──</span> <span class="n">index</span><span class="p">.</span><span class="nf">html</span>
+<span class="err">├──</span> <span class="n">about</span><span class="p">.</span><span class="nf">md</span>
+<span class="err">├──</span> <span class="n">_config</span><span class="p">.</span><span class="nf">yml</span>       <span class="c1"># Jekyll核心配置文件</span>
+<span class="err">├──</span> <span class="n">feed</span><span class="p">.</span><span class="nf">xml</span>
+<span class="err">├──</span> <span class="no">Gemfile</span>           <span class="c1"># Github Pages本地化的文件</span>
+<span class="err">├──</span> <span class="no">Gemfile</span><span class="p">.</span><span class="nf">lock</span>      <span class="c1"># Github Pages本地化的文件</span>
+<span class="err">├──</span> <span class="n">_sass</span>
+<span class="err">│  </span> <span class="err">├──</span> <span class="n">_base</span><span class="p">.</span><span class="nf">scss</span>                  <span class="c1"># markdown对应的css</span>
+<span class="err">│  </span> <span class="err">├──</span> <span class="n">_layout</span><span class="p">.</span><span class="nf">scss</span>
+<span class="err">│  </span> <span class="err">└──</span> <span class="n">_syntax</span><span class="o">-</span><span class="n">highlighting</span><span class="p">.</span><span class="nf">scss</span>   <span class="c1"># 语法高亮对应的css</span>
+<span class="err">├──</span> <span class="n">css</span>
+<span class="err">│  </span> <span class="err">└──</span> <span class="n">main</span><span class="p">.</span><span class="nf">scss</span>           <span class="c1"># 其实就是css</span>
+<span class="err">├──</span> <span class="n">_includes</span>
+<span class="err">│  </span> <span class="err">├──</span> <span class="n">footer</span><span class="p">.</span><span class="nf">html</span>         <span class="c1"># 页脚html片段</span>
+<span class="err">│  </span> <span class="err">├──</span> <span class="n">header</span><span class="p">.</span><span class="nf">html</span>         <span class="c1"># 页头html片段</span>
+<span class="err">│  </span> <span class="err">├──</span> <span class="n">head</span><span class="p">.</span><span class="nf">html</span>           <span class="c1"># html片段</span>
+<span class="err">│  </span> <span class="err">├──</span> <span class="n">icon</span><span class="o">-</span><span class="n">github</span><span class="p">.</span><span class="nf">html</span>    <span class="c1"># html片段</span>
+<span class="err">│  </span> <span class="err">├──</span> <span class="n">icon</span><span class="o">-</span><span class="n">github</span><span class="p">.</span><span class="nf">svg</span>     <span class="c1"># github图标</span>
+<span class="err">│  </span> <span class="err">├──</span> <span class="n">icon</span><span class="o">-</span><span class="n">twitter</span><span class="p">.</span><span class="nf">html</span>   <span class="c1"># html片段</span>
+<span class="err">│  </span> <span class="err">└──</span> <span class="n">icon</span><span class="o">-</span><span class="n">twitter</span><span class="p">.</span><span class="nf">svg</span>    <span class="c1"># twitter图标</span>
+<span class="err">├──</span> <span class="n">_layouts</span>
+<span class="err">│  </span> <span class="err">├──</span> <span class="n">default</span><span class="p">.</span><span class="nf">html</span>        <span class="c1"># default页面</span>
+<span class="err">│  </span> <span class="err">├──</span> <span class="n">page</span><span class="p">.</span><span class="nf">html</span>           <span class="c1"># page页面</span>
+<span class="err">│  </span> <span class="err">└──</span> <span class="n">post</span><span class="p">.</span><span class="nf">html</span>           <span class="c1"># post页面</span>
+<span class="err">├──</span> <span class="n">_posts</span>
+<span class="err">│  </span> <span class="err">└──</span> <span class="mi">2016</span><span class="o">-</span><span class="mi">08</span><span class="o">-</span><span class="mi">24</span><span class="o">-</span><span class="n">welcome</span><span class="o">-</span><span class="n">to</span><span class="o">-</span><span class="n">jekyll</span><span class="p">.</span><span class="nf">markdown</span>
+<span class="err">└──</span> <span class="n">_site</span>             <span class="c1"># Jekyll最终生成的静态网站</span>
+    <span class="err">├──</span> <span class="n">about</span>
+    <span class="err">│  </span> <span class="err">└──</span> <span class="n">index</span><span class="p">.</span><span class="nf">html</span>
+    <span class="err">├──</span> <span class="n">css</span>
+    <span class="err">│  </span> <span class="err">└──</span> <span class="n">main</span><span class="p">.</span><span class="nf">css</span>  <span class="c1"># 如果不喜欢上面的那堆scss，那么复制这个过去就够了</span>
+    <span class="err">├──</span> <span class="n">feed</span><span class="p">.</span><span class="nf">xml</span>
+    <span class="err">├──</span> <span class="no">Gemfile</span>
+    <span class="err">├──</span> <span class="no">Gemfile</span><span class="p">.</span><span class="nf">lock</span>
+    <span class="err">├──</span> <span class="n">index</span><span class="p">.</span><span class="nf">html</span>
+    <span class="err">└──</span> <span class="n">jekyll</span>
+        <span class="err">└──</span> <span class="n">update</span>
+            <span class="err">└──</span> <span class="mi">2016</span>
+                <span class="err">└──</span> <span class="mi">08</span>
+                    <span class="err">└──</span> <span class="mi">24</span>
+                        <span class="err">└──</span> <span class="n">welcome</span><span class="o">-</span><span class="n">to</span><span class="o">-</span><span class="n">jekyll</span><span class="p">.</span><span class="nf">html</span>
+</code></pre>
+</div>
+
+<h3 id="section-6">简化模板</h3>
+<p>去掉不必要的文件，简化当前模板，得到结构：</p>
+
+<div class="language-ruby highlighter-rouge"><pre class="highlight"><code><span class="err">├──</span> <span class="n">index</span><span class="p">.</span><span class="nf">html</span>
+<span class="err">├──</span> <span class="n">_config</span><span class="p">.</span><span class="nf">yml</span>       <span class="c1"># Jekyll核心配置文件</span>
+<span class="err">├──</span> <span class="n">feed</span><span class="p">.</span><span class="nf">xml</span>
+<span class="err">├──</span> <span class="no">Gemfile</span>           <span class="c1"># Github Pages本地化的文件</span>
+<span class="err">├──</span> <span class="no">Gemfile</span><span class="p">.</span><span class="nf">lock</span>      <span class="c1"># Github Pages本地化的文件</span>
+<span class="err">├──</span> <span class="n">css</span>
+<span class="err">│  </span> <span class="err">└──</span> <span class="n">markdown</span><span class="p">.</span><span class="nf">css</span>    <span class="c1"># 提取上面_site/css/main.css中设置html部分</span>
+<span class="err">│  </span> <span class="err">└──</span> <span class="n">highlight</span><span class="p">.</span><span class="nf">css</span>   <span class="c1"># 提取上面_site/css/main.css中语法高亮部分</span>
+<span class="err">├──</span> <span class="n">_includes</span>
+<span class="err">├──</span> <span class="n">_layouts</span>
+<span class="err">│  </span> <span class="err">└──</span> <span class="n">post</span><span class="p">.</span><span class="nf">html</span>       <span class="c1"># 文章页框架</span>
+<span class="err">├──</span> <span class="n">_posts</span>
+<span class="err">│  </span> <span class="err">└──</span> <span class="mi">2016</span><span class="o">-</span><span class="mi">08</span><span class="o">-</span><span class="mi">24</span><span class="o">-</span><span class="n">welcome</span><span class="o">-</span><span class="n">to</span><span class="o">-</span><span class="n">jekyll</span><span class="p">.</span><span class="nf">markdown</span>
+
+</code></pre>
+</div>
+
+<blockquote>
+  <p>如果不知道如何动手，删除多余文件保留上面的结构即可</p>
+</blockquote>
+
+<h3 id="section-7">将网页原型加入模板</h3>
+<p>把设计好的html、javascript、css复制到模板开始改造，在改造前需要<strong>深入理解Jekyll</strong></p>
+
+<h3 id="jekyll-6">深入理解Jekyll</h3>
+
+<h4 id="layouts"><code class="highlighter-rouge">_layouts</code>目录</h4>
+<p>该目录下的页面是”包含”其它内容的关系，一般是页面框架</p>
+
+<h4 id="includes"><code class="highlighter-rouge">_includes</code>目录</h4>
+<p>该目录下的片段是“被包含”的关系，可以是任何格式的文件，片段也可以include片段。<br />
+include的语法：  <code class="highlighter-rouge"><span class="p">{</span><span class="err">%</span><span class="w"> </span><span class="err">include</span><span class="w"> </span><span class="err">head.html</span><span class="w"> </span><span class="err">%</span><span class="p">}</span></code></p>
+
+<p>_layouts和_includes与普通页面的关系图：<br />
+<img src="/w3c/images/jekyll/jekyll-layout-include.jpg" alt="jekyll-layout-include" title="layout与include关系图" /></p>
+
+<blockquote>
+  <p>注意：default.html里访问index.html生成的内容是直接访问<code class="highlighter-rouge">content</code>，而不是<code class="highlighter-rouge">page.content</code>或<code class="highlighter-rouge">post.content</code>，这两者的关系大概是前者才是经过处理后的html片段，而后者是原始的文本，包含未解析的liquid语法。</p>
+</blockquote>
+
+<h4 id="configyml"><code class="highlighter-rouge">_config.yml</code>配置文件</h4>
+<p>Jekyll站点的配置文件，可以存储数据，用于配置Jekyll的插件和运行环境</p>
+
+<div class="language-ruby highlighter-rouge"><pre class="highlight"><code><span class="c1"># 自定义变量</span>
+<span class="ss">domain: </span><span class="s2">"http://jokinkuang.info"</span> <span class="c1"># the domain URL for your site</span>
+
+<span class="c1"># 配置</span>
+<span class="ss">excerpt_separator: </span><span class="s2">"</span><span class="se">\n\n</span><span class="s2">"</span> <span class="c1"># you can specify your own separator here, default is "\n\n" String</span>
+<span class="ss">permalink: </span><span class="sr">/:year/</span><span class="ss">:month</span><span class="o">/</span><span class="ss">:day</span><span class="o">/</span><span class="ss">:title</span><span class="p">.</span><span class="nf">html</span>
+<span class="ss">highlighter: </span><span class="n">rouge</span>  <span class="c1"># 使用rouge作为语法高亮引擎</span>
+<span class="ss">markdown: </span><span class="n">kramdown</span>  <span class="c1"># 使用kramdown作为markdown的转换器</span>
+<span class="ss">kramdown:
+  input: </span><span class="no">GFM</span>
+  <span class="ss">hard_wrap: </span><span class="kp">true</span> <span class="c1"># a newline in markdown text would be changed to &lt;br&gt;</span>
+<span class="ss">gems:
+  </span><span class="o">-</span> <span class="n">jemoji</span> <span class="c1"># 要站点支持Github表情，必须添加</span>
+
+<span class="c1"># 上传到Github Pages时Github会进行配置的项，详见：Github Help With Configuring Jekyll</span>
+
+<span class="c1"># Github Pages默认配置项，Jekyll的配置可以覆盖</span>
+<span class="c1"># kramdown:</span>
+<span class="c1">#   input: GFM</span>
+<span class="c1">#   hard_wrap: false</span>
+<span class="c1"># gems:</span>
+<span class="c1">#   - jekyll-coffeescript</span>
+<span class="c1">#   - jekyll-paginate</span>
+
+<span class="c1"># Github Pages不可改变项，会覆盖Jekyll的配置</span>
+<span class="c1"># lsi: false</span>
+<span class="c1"># safe: true</span>
+<span class="c1"># source: [your repo's top level directory]</span>
+<span class="c1"># incremental: false</span>
+<span class="c1"># highlighter: rouge</span>
+<span class="c1"># gist:</span>
+<span class="c1">#  noscript: false</span>
+<span class="c1"># kramdown:</span>
+<span class="c1">#  math_engine: mathjax</span>
+</code></pre>
+</div>
+
+<h4 id="section-8">创建页面</h4>
+
+<table>
+  <tbody>
+    <tr>
+      <td>方式一</td>
+      <td><strong>某路径</strong>下添加<code class="highlighter-rouge">xxx.html</code>，访问地址为<code class="highlighter-rouge">该路径/xxx.html</code></td>
+    </tr>
+    <tr>
+      <td>方式二</td>
+      <td><strong>某路径</strong>下添加<code class="highlighter-rouge">xxx/index.html</code>，访问地址为<code class="highlighter-rouge">该路径/xxx</code>，无需后缀</td>
+    </tr>
+  </tbody>
+</table>
+
+<h4 id="front-matteryaml"><code class="highlighter-rouge">front matter</code>(Yaml头信息)</h4>
+<p>每个页面都可以有自己的头信息，可以覆盖Jekyll和_config.yml里面的值</p>
+
+<div class="language-ruby highlighter-rouge"><pre class="highlight"><code><span class="o">---</span>
+<span class="ss">layout: </span><span class="n">post</span>
+<span class="ss">title: </span><span class="err">一步一步创建</span><span class="no">Jekyll</span><span class="err">主题</span>
+<span class="ss">categories: </span><span class="p">[</span><span class="n">jekyll</span> <span class="n">github</span> <span class="n">markdown</span> <span class="n">rouge</span><span class="p">]</span>
+<span class="ss">date: </span><span class="mi">2016</span><span class="o">-</span><span class="mi">9</span><span class="o">-</span><span class="mi">3</span> <span class="mi">15</span><span class="p">:</span><span class="mi">47</span><span class="p">:</span><span class="mo">05</span>
+<span class="ss">excerpt: </span><span class="s2">""</span>   <span class="c1"># 覆盖清掉文章的摘要</span>
+<span class="ss">pid: </span><span class="s2">""</span>       <span class="c1"># 新建一个pid的字符串变量</span>
+<span class="o">---</span>
+</code></pre>
+</div>
+
+<h4 id="site"><code class="highlighter-rouge">site</code>变量</h4>
+<p>来自<code class="highlighter-rouge">_config.yml</code>配置文件和Jekyll内置变量，下面是常用的属性：</p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>site.posts</td>
+      <td>从新到旧排序的posts文章列表集合</td>
+    </tr>
+    <tr>
+      <td>site.categories</td>
+      <td>以目录分类的文章列表Map<code class="highlighter-rouge"><span class="p">{</span><span class="err">cate1:[post1,</span><span class="w"> </span><span class="err">post2],</span><span class="w"> </span><span class="err">cate2:[post3,</span><span class="w"> </span><span class="err">post4]</span><span class="p">}</span></code></td>
+    </tr>
+    <tr>
+      <td>site.tags</td>
+      <td>同上，以tags分类的文章列表Map<code class="highlighter-rouge"><span class="p">{</span><span class="err">tag1:[post1,</span><span class="w"> </span><span class="err">post2],</span><span class="w"> </span><span class="err">tag2:[post3,</span><span class="w"> </span><span class="err">post4]</span><span class="p">}</span></code></td>
+    </tr>
+    <tr>
+      <td>site.XXX</td>
+      <td><code class="highlighter-rouge">_config.yml</code>配置文件中<code class="highlighter-rouge">XXX: val</code>的val值，val可以是字符串/数组/集合</td>
+    </tr>
+  </tbody>
+</table>
+
+<h4 id="page"><code class="highlighter-rouge">page</code>变量</h4>
+<p>指代当前页面的变量，在index.html里使用page，page指的就是index.html这个页面，常用属性：</p>
+
+<table>
+  <tbody>
+    <tr>
+      <td>page.content</td>
+      <td>页面<strong>源码</strong>(含有markdown/liquid等语句)</td>
+    </tr>
+    <tr>
+      <td>page.title</td>
+      <td>页面标题</td>
+    </tr>
+    <tr>
+      <td>page.excerpt</td>
+      <td>页面摘要<strong>源码</strong>，可通过_config.yml配置摘要算法</td>
+    </tr>
+    <tr>
+      <td>page.url</td>
+      <td>页面的<strong>相对路径</strong></td>
+    </tr>
+    <tr>
+      <td>page.date</td>
+      <td>页面的时间和日期</td>
+    </tr>
+    <tr>
+      <td>page.categories</td>
+      <td>页面的categories数组，<code class="highlighter-rouge">linux/ruby/_posts/ruby.md</code>文章会把linux和ruby加入categories，和上面的site.categories不同！</td>
+    </tr>
+    <tr>
+      <td>page.tags</td>
+      <td>页面的tags数组</td>
+    </tr>
+    <tr>
+      <td>page.path</td>
+      <td>页面的实际路径(源码路径)</td>
+    </tr>
+  </tbody>
+</table>
+
+<blockquote>
+  <p>注意：当前页面的Front Matter中设置的xxx: val可以通过page.xxx访问val值<br />
+另外：site.posts数组的元素post和page具有几乎一样的属性</p>
+</blockquote>
+
+<h4 id="liquid"><code class="highlighter-rouge">liquid</code>语法</h4>
+<p>Jekyll内变量操作是使用<a href="https://github.com/Shopify/liquid/wiki/Liquid-for-Designers">Liquid语法</a></p>
+
+<p>主要有：</p>
+
+<ol>
+  <li>
+    <p>显示变量的值<br />
+ <code class="highlighter-rouge"><span class="p">{</span><span class="err">{</span><span class="w"> </span><span class="err">变量名</span><span class="w"> </span><span class="p">}</span><span class="err">}</span></code></p>
+
+    <p>如果要组成字符串，可以这样：<code class="highlighter-rouge">"字符串头部{{ 变量名 }}字符串尾部"</code></p>
+
+    <p>也可以使用Filter：<code class="highlighter-rouge"><span class="p">{</span><span class="err">{</span><span class="w"> </span><span class="nt">"字符串头部"</span><span class="w"> </span><span class="err">|</span><span class="w"> </span><span class="err">append</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="err">变量名</span><span class="w"> </span><span class="err">|</span><span class="w"> </span><span class="err">append</span><span class="w"> </span><span class="err">:</span><span class="w"> </span><span class="s2">"字符串尾部"</span><span class="w"> </span><span class="p">}</span><span class="err">}</span></code></p>
+
+    <p>如，显示文章的标题：<code class="highlighter-rouge"><span class="p">{</span><span class="err">{</span><span class="w"> </span><span class="err">page.title</span><span class="w"> </span><span class="p">}</span><span class="err">}</span></code></p>
+  </li>
+  <li>
+    <p>使用变量的值进行计算<br />
+ 文章的标题计算 <code class="highlighter-rouge"><span class="p">{</span><span class="err">%</span><span class="w"> </span><span class="err">assign</span><span class="w"> </span><span class="err">titleAndDate</span><span class="w"> </span><span class="err">=</span><span class="w"> </span><span class="err">page.title</span><span class="w"> </span><span class="err">|</span><span class="w"> </span><span class="err">append:</span><span class="w"> </span><span class="err">page.date</span><span class="w"> </span><span class="err">%</span><span class="p">}</span></code></p>
+
+    <p><code class="highlighter-rouge">assign x = y</code>是声明一个变量并赋值，<strong>声明必须赋值！</strong></p>
+
+    <p><code class="highlighter-rouge">xxx | append: "str"</code>是Liquid语法中的Filter，可以理解为管道，也可以简单理解为<code class="highlighter-rouge">对象|方法:参数</code></p>
+
+    <p>Filter可以连续执行：<code class="highlighter-rouge">xxx | append: "str1" | append: "str2"</code></p>
+  </li>
+  <li>
+    <p>if语句</p>
+
+    <div class="language-liquid highlighter-rouge"><pre class="highlight"><code><span class="p">{%</span><span class="w"> </span><span class="kr">if</span><span class="w"> </span><span class="nv">site</span><span class="p">.</span><span class="nv">title</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">""</span><span class="w"> </span><span class="p">%}</span>
+<span class="p">{%</span><span class="w"> </span><span class="nt">assign</span><span class="w"> </span><span class="nv">title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"A"</span><span class="w"> </span><span class="p">%}</span>
+<span class="p">{%</span><span class="w"> </span><span class="kr">elsif</span><span class="w"> </span><span class="nv">site</span><span class="p">.</span><span class="nv">title</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">"stepbystep"</span><span class="w"> </span><span class="p">%}</span>
+<span class="p">{%</span><span class="w"> </span><span class="nt">assign</span><span class="w"> </span><span class="nv">title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"B"</span><span class="w"> </span><span class="p">%}</span>
+<span class="p">{%</span><span class="w"> </span><span class="kr">else</span><span class="w"> </span><span class="p">%}</span>
+<span class="p">{%</span><span class="w"> </span><span class="nt">assign</span><span class="w"> </span><span class="nv">title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"C"</span><span class="w"> </span><span class="p">%}</span>
+<span class="p">{%</span><span class="w"> </span><span class="kr">endif</span><span class="w"> </span><span class="p">%}</span>
+</code></pre>
+    </div>
+  </li>
+  <li>
+    <p>for语句</p>
+
+    <div class="language-liquid highlighter-rouge"><pre class="highlight"><code><span class="p">{%</span><span class="w"> </span><span class="nt">for</span><span class="w"> </span>post<span class="w"> </span>in<span class="w"> </span>site.posts<span class="w"> </span><span class="p">%}</span>
+ <span class="p">{%</span><span class="w"> </span><span class="nt">assign</span><span class="w"> </span><span class="nv">title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nv">post</span><span class="p">.</span><span class="nv">title</span><span class="w"> </span><span class="p">%}</span>
+ The post title is <span class="p">{{</span><span class="w"> </span><span class="nv">title</span><span class="w"> </span><span class="p">}}</span>
+<span class="p">{%</span><span class="w"> </span><span class="nt">endfor</span><span class="w"> </span><span class="p">%}</span>
+</code></pre>
+    </div>
+  </li>
+  <li>
+    <p>访问map的key和value<br />
+ 像<code class="highlighter-rouge">site.categories</code>其实是一个map，访问分类是linux的文章集合有两种方式：<br />
+ 方式一: <code class="highlighter-rouge">site.categories.linux</code>即是分类为linux的posts列表<br />
+ 方式二: <code class="highlighter-rouge">for cate in site.categories</code>，<code class="highlighter-rouge">cate[0]</code>是linux，<code class="highlighter-rouge">cate[1]</code>是posts列表</p>
+  </li>
+</ol>
+
+<blockquote>
+  <p>注意：如果{% %}里面的是语句，<strong>一行只能有一个而不能有多个</strong></p>
+</blockquote>
+
+<h3 id="section-9">改造自己的主题</h3>
+<p>至此，Jekyll的使用、Liquid的语法、Markdown的样式、语法高亮的配色都已经讲述，接下来就是动手完成自己的主题，以下是一些点：</p>
+
+<ul>
+  <li>加入<code class="highlighter-rouge">html</code>、<code class="highlighter-rouge">css</code>、<code class="highlighter-rouge">js</code>等需要的文件</li>
+  <li>提取相同的内容到<code class="highlighter-rouge">_includes</code>目录</li>
+  <li>需要复用的页面框架，比如post文章页，放到<code class="highlighter-rouge">_layouts</code>目录</li>
+  <li>一些配置字符串，放在<code class="highlighter-rouge">_config.yml</code>文件内</li>
+  <li>使用<strong>Liquid语法</strong>在页面中访问<code class="highlighter-rouge">site</code>，<code class="highlighter-rouge">page</code>等信息组织内容</li>
+  <li>调整html页面标签的css定制自己的Markdown样式</li>
+  <li>调整语法高亮的css定制自己的语法高亮颜色值</li>
+  <li>你可能需要一个MarkdownDemo来测试站点的样式</li>
+</ul>
+
+<h2 id="section-10">除此之外我做了什么</h2>
+<p>请参考<a href="http://www.jokinkuang.info/2016/09/18/what-did-i-do-for-the-blog.html">我做了什么</a></p>
+
+<h2 id="jekyllthemes">上传自己的主题到JekyllThemes</h2>
+<p>如果希望自己的主题可以让更多人看到或使用，可以上传到<a href="http://jekyllthemes.org/">JekyllThemes</a>这个站点</p>
+
+<ol>
+  <li>准备一张250x200的预览图</li>
+  <li><code class="highlighter-rouge">fork</code>这个<a href="https://github.com/mattvh/jekyllthemes/fork">JekyllThemes</a>项目源码到自己的Github仓库</li>
+  <li>找到自己的Github仓库中fork的这个JekyllThemes项目</li>
+  <li><code class="highlighter-rouge">clone</code>自己仓库的JekyllThemes项目到本地</li>
+  <li>将预览图放到<code class="highlighter-rouge">thumbnails</code>目录，在<code class="highlighter-rouge">_posts</code>下复制一篇文章，替换为自己的主题信息</li>
+  <li>执行<code class="highlighter-rouge">bundle exec jekyll server</code>本地预览效果</li>
+  <li>本地调试直到网站已经添加了自己的主题</li>
+  <li><code class="highlighter-rouge">commit</code>并且<code class="highlighter-rouge">push</code>添加的代码(此时代码只是提交到自己仓库的JekyllThemes项目)</li>
+  <li>网页访问自己仓库的JekyllThemes项目，点击<code class="highlighter-rouge">New pull request</code>发起一个合并请求</li>
+  <li>此时提交已经发送给JekyllThemes项目的管理员，等待管理员合并提交</li>
+</ol>
+
+<blockquote>
+  <p>注意：图片的规格最好一致，并且进行本地测试，否则即使提交了也很可能会被管理员拒绝合并代码</p>
+</blockquote>
+
+<h2 id="jekyll-7">Jekyll</h2>
+<p>Error: No repo name found. Specify using PAGES_REPO_NWO environment variables, ‘repository’ in your configuration, or set up an ‘origin’ git remote pointing to your github.com repository.</p>
+
+<p>Error: No such file or directory - git rev-parse HEAD<br />
+###</p>
+
+<h2 id="section-11">参考文档</h2>
+
+<table>
+  <tbody>
+    <tr>
+      <td>阅读·<a href="http://jekyll.bootcss.com/">Jekyll的中文文档</a></td>
+      <td><a href="http://jekyllrb.com/">英文文档</a></td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>阅读·<a href="https://help.shopify.com/themes/liquid">Liquid的文档1</a></td>
+      <td><a href="https://github.com/Shopify/liquid/wiki/Liquid-for-Designers">文档2</a></td>
+      <td><a href="https://shopify.github.io/liquid/">文档3</a></td>
+    </tr>
+    <tr>
+      <td>阅读·<a href="https://github.com/jneen/rouge">语法高亮引擎rouge的文档</a></td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>阅读·<a href="http://kramdown.gettalong.org/">Markdown转换器kramdown的文档（支持maruku语法）</a></td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>阅读·<a href="http://maruku.rubyforge.org/maruku.html">Markdown转换器maruku的文档（支持TOC语法）</a></td>
+      <td> </td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+
+		</div>
+
+		<div class="post-footer">
+			<p>&copy; Your Title</p>
+		</div>
+
+		<div class="post-tags">
+			TAGS:
+			
+			
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+		
+	
+
+	
+		
+
+
+			
+			<span class="tag"><a href="/article?category=jekyll">jekyll</a></span>
+			
+		</div>
+
+		<div class="PageNavigation">
+		  
+		    <a class="prev" href="/2016/08/24/markdown_demo.html">&nbsp;&laquo; Markdown Demo</a>
+		  
+		  
+		    <a class="next" href="/2016/09/03/stey-by-step-to-create-a-jekyll-theme.html">step by step to create a jekyll theme &raquo;&nbsp;</a>
+		  
+		</div>
+
+		<div style="height: 20px;"></div>
+		<div class="ds-share flat" data-thread-key="20160903-154705" data-title="一步一步创建Jekyll主题" data-images="http://yourdomain.github.io/w3c/images/jekyll.jpg" data-content="" data-url="http://yourdomain.github.io/2016/09/03/how-to-create-the-jekyll-theme.html">
+    <div class="ds-share-inline">
+      <ul  class="ds-share-icons-16">
+      	<li ><span class="ds-more">分享到：</span></li>
+        <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+        <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+        <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+				<li><a class="ds-facebook" href="javascript:void(0);" data-service="facebook">Facebook</a></li>
+      </ul>
+      <div class="ds-share-icons-more">
+      </div>
+    </div>
+ 		</div>
+		<!-- duoshuo -->
+		<div name="comments" id="comments">
+		<div class="ds-thread" data-thread-key="20160903-154705" data-max-depth="2" data-title="一步一步创建Jekyll主题" data-url="http://yourdomain.github.io/2016/09/03/how-to-create-the-jekyll-theme.html"></div>
+		</div>
+	</div>
+</div>
+
+<!-- duoshuo -->
+<script>
+// baidu-tongji
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+<script>
+// google-analytics
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', '', 'auto');
+  ga('send', 'pageview');
+</script>
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"sbys"};
+  var duoshuoDir = "/w3c/duoshuo/embed.min.js";
+  duoshuoDir = duoshuoDir.substring(0, duoshuoDir.lastIndexOf("/")+1);
+  //console.log(duoshuoDir);
+  var duoshuoShortName = "sbys";
+  var duoshuoUserName = "xk";
+</script>
+<script src="/w3c/duoshuo/embed.min.js"></script>
+<style type="text/css">
+/**************override duoshuo css*************/
+#ds-share #ds-reset.ds-share-inline {
+  margin: 0 7px;
+}
+#ds-thread {
+  margin: 5px 10px 5px 5px;
+}
+#ds-thread #ds-reset .ds-login-buttons .ds-social-links {
+	width: auto;
+}
+#ds-notify {
+  bottom: 5px;
+  right: 5px;
+}
+#ds-thread #ds-reset a.ds-user-name[data-user-id='6324572809590735618']:after {
+	content: "博主";
+	margin-left: 6px;
+	font-size: 12px;
+	color: #ffffff;
+	background: rgba(62, 46, 46, 0.35);
+	border-radius: 4px;
+	padding: 1px 3px;
+}
+#ds-thread #ds-reset span.ds-user-name:after {
+  content: "游客";
+  margin-left: 6px;
+  font-size: 12px;
+  color: #bbb6ae;
+  /* background: rgba(62, 46, 46, 0.35); */
+  border-radius: 4px;
+  padding: 1px 3px;
+}
+/* likes */
+#ds-thread #ds-reset a.ds-like-thread-button {
+  /* background: none; */
+  /* border: none; */
+  padding: 2px 5px;
+  border-radius: 15px;
+}
+/* recent comments */
+#ds-thread #ds-reset .ds-meta {
+  padding: 3px 0 0;
+  border: none;
+}
+#ds-thread #ds-reset a {
+  color: #333;
+}
+div#ds-recent-comments.ds-recent-comments {
+  border: 1px dotted #ddd;
+  border-radius: 10px;
+  padding: 0px 5px 7px 7px;
+}
+#ds-recent-comments li.ds-comment {
+  border-top: none;
+}
+#ds-recent-comments li.ds-comment .ds-excerpt {
+  color: #666;
+  margin-top: 10px;
+}
+/* hot comments */
+#ds-thread #ds-reset #ds-hot-posts {
+  border-radius: 10px;
+}
+/* share checkbox */
+#ds-thread #ds-reset .ds-post-options .ds-sync {
+  display: none;
+}
+/* comments */
+#ds-thread #ds-reset li.ds-tab a.ds-current {
+  border: 0px;
+}
+/* smiles */
+#ds-smilies-tooltip {
+  width: initial;
+  max-width: 600px;
+  margin-right: 15px;
+}
+#ds-smilies-tooltip ul.ds-smilies-tabs {
+  width: 80px;
+}
+#ds-smilies-tooltip .ds-smilies-container {
+  margin-left: 80px;
+}
+/* image */
+#ds-thread #ds-reset .ds-replybox .ds-avatar img {
+  margin-left: -8px;
+}
+</style>
+<!--多说的通知区域是从脚本插入的，要覆盖它的样式，也需要在脚本里覆盖，暂时不做 @2016-8-2-->
+
+
+<!-- jQuery -->
+<script type="text/javascript">
+	var sitefile = "/db/Sitefile";
+</script>
+<script src="http://cdn.bootcss.com/jquery/3.1.0/jquery.min.js"></script>
+<script src="/w3c/js/timeago.js"></script>
+<script src="/w3c/js/pagecache.js"></script>
+<script src="/w3c/js/jquery.duoshuo.js"></script>
+
+<script src="/w3c/js/post.js"></script>
+<script>
+$(".pin").on("click", function(event) {
+    var target = $("html, body");
+    if( target.length ) {
+        event.preventDefault();
+        $("html, body").stop().animate({
+            scrollTop: target.offset().top
+        }, 1000);
+    }
+});
+$(window).scroll(function(event){
+	var top = $(window).scrollTop();
+	var target = $("body");
+	if ( target.length ) {
+		if ( target.scrollTop() > 2000 ) {
+			$(".pin").show();
+		} else {
+			$(".pin").hide();
+		}
+	}
+});
+</script>
+</body>
+</html>
